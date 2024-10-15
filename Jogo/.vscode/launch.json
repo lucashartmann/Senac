@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Jogo",
+            "request": "launch",
+            "mainClass": "Interface.Jogo",
+            "projectName": "Jogo_ea655e17"
+        },
+        {
+            "type": "java",
+            "name": "Launch Jogo",
+            "request": "launch",
+            "mainClass": "Jogo",
+            "vmArgs": "--module-path \"C:/javafx-sdk-23/lib\" --add-modules javafx.controls,javafx.fxml",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
