@@ -15,15 +15,14 @@ public class App {
         jogo = new Jogo();
         tabuleiro = new Tabuleiro(jogo.getTabuleiroView());
         cacador = new Jogador(18, Tipo.CAÇADOR, jogo.getJogadorView());
-        zumbi = new Jogador(6, Tipo.ZUMBI, null); // Adicione a imagem do zumbi se necessário
         tabuleiro.add(cacador);
         jogo.executar(null);
         for (ImageView inimigo : jogo.getInimigos()) {
             zumbi = new Jogador(6, Tipo.ZUMBI, inimigo); // Adicione a imagem do zumbi se necessário
             tabuleiro.add(zumbi);
         }
-        while (tabuleiro.containsPlayer(cacador)) {
-            if (jogo.getColisao()) {
+        while (tabuleiro.containsPlayer(cacador) == true) {
+            if (jogo.getColisao() == true) {
                 iniciarCombate();
             }
         }
