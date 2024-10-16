@@ -1,6 +1,8 @@
+import Interface.Jogo;
+
 public class Main {
     public static void main(String[] args){
-        App app = new App();
-        app.executar();
+        Jogo jogo = new Jogo();
+        jogo.executar(null);
     }
 }
