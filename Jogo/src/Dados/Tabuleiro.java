@@ -31,8 +31,15 @@ public class Tabuleiro {
       return null;
    }
 
-   public boolean containsPlayer(Jogador jogador){
+   public boolean contains(Jogador jogador){
       if (inimigos.contains(jogador)) {
+         return true;
+      }
+      return false;
+   }
+
+   public boolean isEmpty(){
+      if (inimigos.isEmpty()) {
          return true;
       }
       return false;
