@@ -1,46 +1,80 @@
-Algoritmo "boletim com condicao"
+Algoritmo "Boletim com condicoes"
 // Disciplina   : [Linguagem e Lógica de Programação]
-// Professor   : Antonio Carlos Nicolodi
+// Professor   : Miguel
 // Descrição   : Aqui você descreve o que o programa faz! (função)
-// Autor(a)    : Nome do(a) aluno(a)
-// Data atual  : 24/10/2024
+// Autor(a)    : Lucas
+// Data atual  : 29/10/2024
 Var
-
    nome, turma : caractere
-   nota1, nota2, nota3, nota4, nota5, media, soma : real
+   n, n1, n2, n3, n4, media : real
 
 Inicio
+   Escreva("Digite seu nome: ")
+   Leia(nome)
+   Escreva("Digite sua turma: ")
+   Leia(turma)
+   Escreva("Digite sua primeira nota: ")
+   leia(n)
 
-   escreval("### BOLETIM ###")
-   escreva("Informe seu nome: ")
-   leia(nome)
-   escreva("Informe sua turma: ")
-   leia(turma)
-   escreva("Informe sua primeira nota: ")
-   leia(nota1)
-   escreva("Informe sua segunda nota: ")
-   leia(nota2)
-   escreva("Informe sua terceira nota: ")
-   leia(nota3)
-   escreva("Informe sua quarta nota: ")
-   leia(nota4)
-   escreva("Informe sua quinta nota: ")
-   leia(nota5)
-   soma <- nota1 + nota2 + nota3 + nota4 + nota5
-   media <- soma / 5
-   escreval()
+   enquanto n > 10 faca
+      Escreval("Nota não pode ser maior que 10")
+      Escreva("Digite sua primeira nota: ")
+      leia(n)
+   fimenquanto
 
-   escreval("### Resultado ###")
-   escreval("Nome do aluno: ", nome)
-   escreval("Turma do aluno: ", turma)
-   escreval ("Notas: ", nota1, ", ", nota2, ", ", nota3, ", ", nota4, ", ", nota5)
-   escreval("Média do aluno: ", media)
-   se (media >= 7) entao
-      escreval("Parabéns, você foi aprovado!")
+   Escreva("Digite sua segunda nota: ")
+   leia(n1)
+   enquanto n1 > 10 faca
+      Escreval("Nota não pode ser maior que 10")
+      Escreva("Digite sua segunda nota: ")
+      leia(n1)
+   fimenquanto
+
+   Escreva("Digite sua terceira nota: ")
+   leia(n2)
+   enquanto n2 > 10 faca
+      Escreval("Nota não pode ser maior que 10")
+      Escreva("Digite sua terceira nota: ")
+      leia(n2)
+   fimenquanto
+
+   Escreva("Digite sua quarta nota: ")
+   leia(n3)
+   enquanto n3 > 10 faca
+      Escreval("Nota não pode ser maior que 10")
+      Escreva("Digite sua quarta nota: ")
+      leia(n3)
+   fimenquanto
+
+   Escreva("Digite sua quinta nota: ")
+   leia(n4)
+   enquanto n4 > 10 faca
+      Escreval("Nota não pode ser maior que 10")
+      Escreva("Digite sua quinta nota: ")
+      leia(n4)
+   fimenquanto
+
+   media <- (n + n1 + n2 + n3 + n4) / 5
+
+   Escreval("Nome do aluno: ", nome)
+   Escreval("Turma do aluno: ", turma)
+   Escreval("Notas do aluno (em ordem): ", n, ", ", n1, ", ", n2, ", ", n3, ", ", n4)
+   Escreval("Situação curricular: ")
+   se(media >= 7) e (media <= 10) entao
+      Escreva("APROVADO")
    senao
-      escreval("Você foi reprovado!")
+      se(media >= 5) e (media < 7) entao
+         Escreva("RECUPERAÇÃO")
+      senao
+         se(media >= 0) e (media < 5) entao
+            Escreva("REPROVADO")
+         senao
+            se(media > 10) ou (media < 0)entao
+               Escreva("FALHA NO SISTEMA!")
+            fimse
+         fimse
+      fimse
    fimse
-
 
 
 Fimalgoritmo
