@@ -32,8 +32,8 @@ Inicio
       escreval()
       escreval("Nome do aluno: ", nome)
       escreval("Turma do aluno: ", turma)
-      escreval("Notas do aluno em sequência: ", nota, nota1, nota2)
-      escreval("Média final: ", media)
+      escreval("Notas do aluno em sequência: ", nota, ", ", nota1, ", ", nota2)
+      escreval("Média final: ", media:2:1)
       escreva("Situação final do aluno: ")
       se (media >= 7) entao
          escreval("Aprovado!")
