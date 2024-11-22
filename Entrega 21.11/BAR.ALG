@@ -10,15 +10,13 @@ Var
    quantBebidas, i, j, maxContagem, contagemAtual: inteiro
    maisPedida : caractere
 
-
 Inicio
    Escreval("### SISTEMA DO BAR DO ITO ###")
-
-   escreva("Quantas bebidas foram pedidas? ")
+   escreva("Quantas bebidas foram pedidas? (Máximo 10) ")
    leia(quantBebidas)
 
    se(quantBebidas > 10) entao
-      quantBebidas < 10
+      quantBebidas <- 10
    fimse
 
    para i de 1 ate quantBebidas faca
@@ -29,15 +27,13 @@ Inicio
    maxContagem <- 0
    maisPedida <- ""
 
-   para i de 1 ate 10 faca
+   para i de 1 ate quantBebidas faca
       contagemAtual <- 0
-
-      para j de 1 ate 10 faca
+      para j de 1 ate quantBebidas faca
          se (nomeBebidas[i] = nomeBebidas[j]) entao
             contagemAtual <- contagemAtual + 1
          fimse
       fimpara
-
       se (contagemAtual > maxContagem) entao
          maxContagem <- contagemAtual
          maisPedida <- nomeBebidas[i]
@@ -45,9 +41,9 @@ Inicio
    fimpara
 
    se(maxContagem > 1) entao
-      escreval("A bebida mais pedida foi: ", maisPedida)
+      escreval("A bebida mais pedida foi: ", maisPedida, " com ", maxContagem, " pedidos.")
    senao
-      escreval("As bebidas não foram repetidas")
+      escreval("As bebidas não foram repetidas.")
    fimse
 
 Fimalgoritmo
