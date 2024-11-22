@@ -28,7 +28,7 @@ Inicio
    escreva("Digite seu número de cadastro: ")
    leia(numCadastro)
 
-   enquanto (number < 1) ou (number > 3) faca
+   enquanto (number < 1) ou (number > 4) faca
       escreval()
       escreval("## MENU ##")
       escreval("1 -- Cadastrar carro")
@@ -81,8 +81,8 @@ Inicio
             escreva(faturamento[i], "")
          fimpara
          escreval()
-         escreval("Faturamento total: ", faturamentoTotal)
-         escreval("Sua comissão no mês: ", comissao)
+         escreval("Faturamento total: ", faturamentoTotal:2:2)
+         escreval("Sua comissão no mês: ", comissao:2:2)
       caso 4
          escreval()
          escreval("Você escolheu encerrar o programa")

@@ -8,7 +8,7 @@ Var
 
    nomeBebidas: vetor [1..10] de caractere
    quantBebidas, i, j, maxContagem, contagemAtual: inteiro
-   maisPedida : caractere
+   maisPedida, empate : caractere
 
 Inicio
    Escreval("### SISTEMA DO BAR DO ITO ###")
@@ -26,6 +26,7 @@ Inicio
 
    maxContagem <- 0
    maisPedida <- ""
+   empate <- "False"
 
    para i de 1 ate quantBebidas faca
       contagemAtual <- 0
@@ -37,13 +38,18 @@ Inicio
       se (contagemAtual > maxContagem) entao
          maxContagem <- contagemAtual
          maisPedida <- nomeBebidas[i]
+         empate <- "False"
+      senao
+         se ((contagemAtual = maxContagem) e (nomeBebidas[i] <> maisPedida)) entao
+            empate <- "True"
+         fimse
       fimse
    fimpara
 
-   se(maxContagem > 1) entao
+   se((maxContagem > 1) e (empate = "False")) entao
       escreval("A bebida mais pedida foi: ", maisPedida, " com ", maxContagem, " pedidos.")
    senao
-      escreval("As bebidas não foram repetidas.")
+      escreval("Não teve uma bebida mais pedida.")
    fimse
 
 Fimalgoritmo
