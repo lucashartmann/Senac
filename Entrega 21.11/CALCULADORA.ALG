@@ -69,10 +69,10 @@ Inicio
       escreval(subtracao(n, n1))
    caso 3
       escreva(n, " / ", n1 , " = " )
-      escreval(divisao(n, n1))
+      escreval(divisao(n, n1):2:2)
    caso 4
       escreva(n, " * ", n1 , " = " )
-      escreval(multiplicacao(n, n1))
+      escreval(multiplicacao(n, n1):2:2)
    outrocaso
       escreval("Você digitou uma operação inválida")
    fimescolha

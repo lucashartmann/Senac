@@ -12,7 +12,7 @@ Var
    quant, i, condicao, j : inteiro
    nome : caractere
 
-funcao cadastro(nome : caractere, j : inteiro) : inteiro
+funcao cadastro(nome : caractere; j : inteiro) : inteiro
 inicio
    funcionarios[j] <- nome
    retorne 1
