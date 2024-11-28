@@ -30,7 +30,6 @@ inicio
    number <- getSalary
 fimfuncao
 
-
 funcao getSalary() : inteiro
 inicio
    salary <- salaryPerHour * quantHours
@@ -54,10 +53,10 @@ inicio
    se transportDescount > transportSalary entao
       transportDescount <- transportSalary
    fimse
-   se (foodDescount > (foodSalary * (20/100))) entao
-      foodDescount <- foodSalary
+   se foodDescount > (foodSalary * (20 / 100)) entao
+      foodDescount <- foodSalary * (20 / 100)
    fimse
-   liquidSalary <- liquidSalary - transportDescount - inssDescount
+   liquidSalary <- salary - transportDescount - inssDescount - foodDescount
 fimfuncao
 
 funcao getData() : caractere
@@ -66,7 +65,7 @@ inicio
    escreval("------ Dados do Funcionário ------")
    escreval("Nome: ", name)
    escreval("Quantidade de horas trabalhadas no mês: ", quantHours)
-   escreval("Ssálario por hora: R$", salaryPerHour:2:2)
+   escreval("Sálario por hora: R$", salaryPerHour:2:2)
    escreval("Valor do vale transporte: R$", transportSalary:2:2)
    escreval("Valor do vale de alimentação: R$", foodSalary:2:2)
    escreval("Salário bruto: R$", salary:2:2)
