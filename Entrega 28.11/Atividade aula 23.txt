@@ -1,0 +1,10 @@
+Atividade aula 23.
+
+Formar grupos com duas pessoas.
+
+Procure na internet código de jogos no visualG.
+Baixe no mínimo 4 jogos.
+
+Objetivo é testar os jogos e realizar modificações no código de um dos jogos (as modificações são livres).
+
+Cada grupo vai apresentar um jogo original e  o jogo com as modificações realizadas. 

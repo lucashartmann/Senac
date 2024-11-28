@@ -27,3 +27,8 @@ Ao final:
 -- salário bruto 
 -- valor do desconto do INSS
 -- desconto de vale trasporte e alimentação.
+
+Enviar atividade por e-mail:
+mglmatiolla@gmail.com
+Assunto: Atividade TDS - loja de brinquedos
+corpo do e-mail: nome do aluno + atividade

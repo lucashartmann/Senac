@@ -7,81 +7,86 @@ Algoritmo "folha salarial"
 // Data atual  : 27/11/2024
 
 Var
+   nome: caractere
+   horasTrabalhadas, quantidadeFuncionarios, i: inteiro
+   salarioPorHora, valeAlimentacao, valeTransporte, salarioLiquido, salarioBruto : real
+   percentualINSS, descontoINSS, descontoTransporte, descontoAlimentacao, l: real
 
-   name: caractere
-   quantHours, quantEmployee, number, i: inteiro
-   salaryPerHour, foodSalary, transportSalary, liquidSalary, salary : real
-   inssDescountPercent, inssDescount, transportDescount, foodDescount: real
-
-funcao cadastro() : caractere
+funcao coletarDadosFuncionario() : real
 inicio
    escreval()
    escreval("---- Entrada de dados ----")
    escreva("Digite o nome do funcionario: ")
-   leia(name)
+   leia(nome)
    escreva("Digite a quantidade de horas trabalhadas no mês: ")
-   leia(quantHours)
-   escreva("Digite o sálario por hora: ")
-   leia(salaryPerHour)
-   escreva("Digite o valor do vale de alimentação: ")
-   leia(foodSalary)
+   leia(horasTrabalhadas)
+   escreva("Digite o salário por hora: ")
+   leia(salarioPorHora)
+   escreva("Digite o valor do vale alimentação: ")
+   leia(valeAlimentacao)
    escreva("Digite o valor do vale transporte: ")
-   leia(transportSalary)
-   number <- getSalary
+   leia(valeTransporte)
+   l <- calcularSalariosDescontos()
+   retorne l
 fimfuncao
 
-funcao getSalary() : inteiro
+funcao calcularPercentualINSS(salario: real) : real
 inicio
-   salary <- salaryPerHour * quantHours
-   se (salary <= 1412.00) entao
-      inssDescountPercent <- 7.5
+   se (salario <= 1412.00) entao
+      retorne 7.5
    senao
-      se (salary <= 2666.68) entao
-         inssDescountPercent <- 9
+      se (salario <= 2666.68) entao
+         retorne 9
       senao
-         se (salary <= 4000.03) entao
-            inssDescountPercent <- 12
+         se (salario <= 4000.03) entao
+            retorne 12
          senao
-            inssDescountPercent <- 14
+            retorne 14
          fimse
       fimse
    fimse
-   transportDescount <- salary * (6 / 100)
-   foodDescount <- salary * (6 / 100)
-   inssDescount <-  salary * (inssDescountPercent / 100)
-   liquidSalary <- salary
-   se transportDescount > transportSalary entao
-      transportDescount <- transportSalary
-   fimse
-   se foodDescount > (foodSalary * (20 / 100)) entao
-      foodDescount <- foodSalary * (20 / 100)
-   fimse
-   liquidSalary <- salary - transportDescount - inssDescount - foodDescount
 fimfuncao
 
-funcao getData() : caractere
+funcao calcularSalariosDescontos() : real
+inicio
+   salarioBruto <- salarioPorHora * horasTrabalhadas
+   percentualINSS <- calcularPercentualINSS(salarioBruto)
+   descontoINSS <- salarioBruto * (percentualINSS / 100)
+   descontoTransporte <- salarioBruto * (6 / 100)
+   se descontoTransporte > valeTransporte entao
+      descontoTransporte <- valeTransporte
+   fimse
+   descontoAlimentacao <- salarioBruto * (6 / 100)
+   se descontoAlimentacao > (valeAlimentacao * (20 / 100)) entao
+      descontoAlimentacao <- valeAlimentacao * (20 / 100)
+   fimse
+   salarioLiquido <- salarioBruto - descontoTransporte - descontoINSS - descontoAlimentacao
+   retorne salarioLiquido
+fimfuncao
+
+funcao exibirRelatorioFuncionario() : caractere
 inicio
    limpatela
    escreval("------ Dados do Funcionário ------")
-   escreval("Nome: ", name)
-   escreval("Quantidade de horas trabalhadas no mês: ", quantHours)
-   escreval("Sálario por hora: R$", salaryPerHour:2:2)
-   escreval("Valor do vale transporte: R$", transportSalary:2:2)
-   escreval("Valor do vale de alimentação: R$", foodSalary:2:2)
-   escreval("Salário bruto: R$", salary:2:2)
-   escreval("Salário liquido: R$", liquidSalary:2:2)
-   escreval("Desconto do INSS: %", inssDescountPercent)
-   escreval("Valor do desconto do INSS: R$", inssDescount:2:2)
-   escreval("Desconto do vale transporte: R$", transportDescount:2:2)
-   escreval("Desconto do vale alimentação: R$", foodDescount:2:2)
+   escreval("Nome: ", nome)
+   escreval("Horas trabalhadas: ", horasTrabalhadas)
+   escreval("Salário por hora: R$", salarioPorHora:2:2)
+   escreval("Vale transporte: R$", valeTransporte:2:2)
+   escreval("Vale alimentação: R$", valeAlimentacao:2:2)
+   escreval("Salário bruto: R$", salarioBruto:2:2)
+   escreval("Salário líquido: R$", salarioLiquido:2:2)
+   escreval("Percentual INSS: ", percentualINSS, "%")
+   escreval("Desconto INSS: R$", descontoINSS:2:2)
+   escreval("Desconto transporte: R$", descontoTransporte:2:2)
+   escreval("Desconto alimentação: R$", descontoAlimentacao:2:2)
 fimfuncao
 
 Inicio
    escreval("### FOLHA DE PAGAMENTO ###")
-   escreva("Digite quantos funcionários você deseja consultar: ")
-   leia(quantEmployee)
-   para i de 1 ate quantEmployee faca
-      escreval(cadastro)
-      escreval(getData)
+   escreva("Digite a quantidade de funcionários: ")
+   leia(quantidadeFuncionarios)
+   para i de 1 ate quantidadeFuncionarios faca
+      escreval(coletarDadosFuncionario)
+      escreval(exibirRelatorioFuncionario)
    fimpara
 Fimalgoritmo
