@@ -7,7 +7,7 @@ Var
    quantAlunos, quantProfessores, presenca, index : inteiro
    numCadastrosProfessores, matriculasCadastradas: vetor[1..10] de inteiro
    nomesAlunos, nomesProfessores, materias : vetor[1..10] de caractere
-   nome, cpf, rg, turma, teclaApertada, materia : caractere
+   nome, turma, teclaApertada, materia : caractere
    notasGeral, notasMateria : vetor[1..10] de real
    media, soma, nota : real
    verifica: logico
@@ -15,7 +15,10 @@ Var
 procedimento menuUsuario()
 inicio
    numero <- 0
+   limpatela
+   verifica <- falso
    enquanto (numero < 1) ou (numero > 8) faca
+      escreval()
       escreval("####### MENU #######")
       escreval()
       escreval("1 -- Ver frequência")
@@ -30,61 +33,75 @@ inicio
       escreva("Digite o número correspondente a opção desejada: ")
       leia(numero)
       escreval()
+      limpatela
       escolha(numero)
       caso 1
          escreval("Você escolheu ver frequência")
          escreval("Aulas dadas: ", quantAulas)
          escreval("Presença: ", quantPresenca)
          escreval("Faltas: ", quantFaltas)
-         numero <- 0
       caso 2
          escreval("Você escolheu ver media")
          se (soma <= 0) entao
             soma <- somaGeral
          fimse
-         escreval("Média: ", media(soma, quantNotas))
-         numero <- 0
+         media <-  media(soma, quantNotas)
+         escreval("Média: ", media)
       caso 3
          escreval("Você escolheu ver soma")
          soma <- somaGeral
          escreval("Soma: ", soma))
-         numero <- 0
       caso 4
          escreval("Você escolheu ver todas as notas")
          escreva("Notas: ")
-         para index de 1 ate quant faca
+         para index de 1 ate quantNotas faca
             escreva(notasGeral[index], "")
          fimpara
          escreval()
-         numero <- 0
       caso 5
          escreval("Você escolheu ver notas de certa materia")
-         escreva("Notas: ")
-         para index de 1 ate quant faca
-            escreva(notasMateria[index], "")
+         verifica <- falso
+         escreval("Digite a matéria desejada")
+         leia(materia)
+         para index de 1 ate quantProfessores faca
+            se (materias[index] = materia) entao
+               escreva("Notas: ")
+               para index de 1 ate quant faca
+                  escreva(notasMateria[index], "")
+               fimpara
+               verifica <- verdadeiro
+            fimse
          fimpara
-         escreval()
-         numero <- 0
-      caso 6
-         escreval("Você escolheu ver todas as materias")
-         dadosMaterias
-         numero <- 0
-      caso 7
-         escreval("Você escolheu pedir atestado de matricula")
-         atestado
-         numero <- 0
-      caso 8
-         escreval("Você escolheu sair")
-      outrocaso
-         escreval("Número inválido. Tente novamente")
-      fimescolha
-   fimenquanto
+         se(verifica = falso) entao
+            escreval("Matéria não encontrada")
+         fimse
+         verifica <- falso
+      fimenquanto
+   caso 6
+      escreval("Você escolheu ver todas as materias")
+      dadosMaterias
+   caso 7
+      escreval("Você escolheu pedir atestado de matricula")
+      atestado
+   caso 8
+      escreval("Você escolheu sair")
+      verifica <- verdadeiro
+   outrocaso
+      escreval("Número inválido. Tente novamente")
+   fimescolha
+   se (verifica = falso) entao
+      numero <- 0
+   fimse
+fimenquanto
 fimprocedimento
 
 procedimento menuProfessor()
 inicio
    numero <- 0
-   enquanto((numero < 1) ou (numero > 3)) faca
+   limpatela
+   verifica <- falso
+   enquanto (numero < 1) ou (numero > 3) faca
+      escreval()
       escreval("####### MENU #######")
       escreval()
       escreval("1 -- Cadastrar notas")
@@ -94,27 +111,35 @@ inicio
       escreva("Digite o número correspondente a opção desejada: ")
       leia(numero)
       escreval()
+      limpatela
       escolha(numero)
       caso 1
          escreval("Você escolheu cadastrar notas")
          cadastarNotas
-         numero <- 0
+         verifica <- falso
       caso 2
          escreval("Você escolheu cadastrar frequencia")
-         cadastrarFrequencia
-         numero <- 0
+         quantPresenca <- cadastrarFrequencia
+         verifica <- falso
       caso 3
          escreval("Você escolheu sair")
+         verifica <- verdadeiro
       outrocaso
          escreval("Número inválido. Tente novamente")
       fimescolha
+      se (verifica = falso) entao
+         numero <- 0
+      fimse
    fimenquanto
 fimprocedimento
 
 procedimento menuAdmin()
 inicio
    numero <- 0
+   limpatela
+   verifica <- falso
    enquanto (numero < 1) ou (numero > 5) faca
+      escreval()
       escreval("####### MENU #######")
       escreval()
       escreval("1 -- Cadastrar aluno")
@@ -126,28 +151,29 @@ inicio
       escreva("Digite o número correspondente a opção desejada: ")
       leia(numero)
       escreval()
+      limpatela
       escolha(numero)
       caso 1
          escreval("Você escolheu cadastrar aluno")
          cadastarAluno
-         numero <- 0
       caso 2
          escreval("Você escolheu cadastrar professor")
          cadastarProfessor
-         numero <- 0
       caso 3
          escreval("Você escolheu editar")
          editar
-         numero <- 0
       caso 4
          escreval("Você escolheu ver dados")
          dados
-         numero <- 0
       caso 5
          escreval("Você escolheu sair")
+         verifica <- verdadeiro
       outrocaso
          escreval("Número inválido. Tente novamente")
       fimescolha
+      se (verifica = falso) entao
+         numero <- 0
+      fimse
    fimenquanto
 fimprocedimento
 
@@ -161,6 +187,8 @@ inicio
       matricula <- matricula + 1
       escreva("Informe o nome do aluno: ")
       leia(nome)
+      escreva("Informe a turma do aluno: ")
+      leia(turma)
       nomesAlunos[index] <- nome
       aleatorio on
       aleatorio 1, matricula
@@ -195,19 +223,41 @@ fimprocedimento
 procedimento cadastarNotas()
 inicio
    quant <- 0
-   escreva("Quantos notas deseja cadastrar: ")
-   leia(quant)
-   quantNotas <- quantNotas + quant
-   para index de 1 ate quant faca
-      escreva("Informe a nota : ")
-      leia(nome)
-      notasMateria[index] <- nota
-      notasGeral[index] <- nota
+   verifica <- falso
+   escreva("Nome do aluno: ")
+   leia(nome)
+   para i de 1 ate quantAlunos faca
+      se (nomesAlunos[index] = nome) entao
+         verifica <- verdadeiro
+      fimse
    fimpara
+   se(verifica = verdadeiro) entao
+      verifica <- falso
+      escreva("Quantos notas deseja cadastrar: ")
+      leia(quant)
+      quantNotas <- quantNotas + quant
+      para index de 1 ate quantProfessores faca
+         se (materias[index] = materia) entao
+            para index de 1 ate quant faca
+               escreva("Informe a nota : ")
+               leia(nome)
+               notasMateria[index] <- nota
+               notasGeral[index] <- nota
+            fimpara
+            verifica <- verdadeiro
+         fimse
+      fimpara
+      se (verifica = falso) entao
+         escreval("Matéria não encontrada")
+      fimse
+   senao
+      escreval("Aluno não encontrado")
+   fimse
 fimprocedimento
 
 procedimento dados()
 inicio
+   escreval()
    escreval("Notas: ")
    para index de 1 ate quantNotas faca
       escreval(notasMateria[index], " ")
@@ -238,6 +288,7 @@ fimprocedimento
 
 procedimento editar()
 inicio
+   escreval()
    escreval("1 -- Aluno")
    escreval("2 -- Professor")
    escreval("Digite o número corresponde ao que voce deseja editar: ")
@@ -245,9 +296,9 @@ inicio
    escreval("Escreva o nome da pessoa desejada: ")
    leia(nome)
    verifica <- falso
-   se(number == 1) entao
+   se (number == 1) entao
       para index de 1 ate quantAlunos faca
-         se(nomesAlunos[index] = nome)
+         se (nomesAlunos[index] = nome) entao
             escreval("Digite o novo nome desejado: ")
             leia(nome)
             nomesAlunos[index] <- nome
@@ -256,7 +307,7 @@ inicio
       fimpara
    senao
       para index de 1 ate quantProfessores faca
-         se(nomesProfessores[index] = nome)
+         se (nomesProfessores[index] = nome) entao
             escreval("Digite o novo nome desejado: ")
             leia(nome)
             nomesProfessores[index] <- nome
@@ -271,12 +322,18 @@ fimprocedimento
 
 procedimento atestado()
 inicio
+   escreval("Escola Santo Joaquim")
    escreval("Ensino Médio 2024")
-   escreval("Nome do aluno: ")
-   escreval("Matricula do aluno: ")
-   escreval("CPF: ")
-   escreval("RG: ")
+   para i de 1 ate quantAlunos faca
+      se(matriculas[index] = matricula) entao
+         escrever("Nome do aluno: ", nomesAlunos[index])
+      fimse
+   fimpara
+   escreval("Matricula do aluno: ", matricula)
    escreval("Materias: ")
+   para index de 1 ate quantProfessores faca
+      escreval("Matéria: ", materias[index])
+   fimpara
 fimprocedimento
 
 funcao cadastrarFrequencia() : inteiro
@@ -308,15 +365,19 @@ Inicio
    escreval()
    escreval("Aperte uma tecla")
    leia(teclaApertada)
-   limpatela
    numero <- 0
+   user <- 0
+   cadastro <- 0
+   matricula <- 0
    enquanto (numero < 1) ou (numero > 4) faca
       limpatela
       escreval("####### LOGIN #######")
+      escreval()
       escreval("1 -- Aluno")
       escreval("2 -- Professor")
       escreval("3 -- Admin")
       escreval("4 -- Sair")
+      escreval()
       escreva("Digite o número correspondente a opção desejada: ")
       leia(numero)
       escolha(numero)
@@ -325,7 +386,7 @@ Inicio
          escreva("Informe sua matrícula: ")
          leia(matricula)
          para index de 1 ate quantAlunos faca
-            se(matriculaCadastradas[index] = matricula)
+            se (matriculasCadastradas[index] = matricula) entao
                user <- 1
             fimse
          fimpara
@@ -339,7 +400,7 @@ Inicio
          escreva("Informe seu número de cadastro: ")
          leia(cadastro)
          para index de 1 ate quantProfessores faca
-            se(numCadastrosProfessores[index] = cadastro)
+            se (numCadastrosProfessores[index] = cadastro) entao
                user <- 2
             fimse
          fimpara
@@ -357,6 +418,5 @@ Inicio
          escreval("Número inválido. Tente novamente")
       fimescolha
    fimenquanto
-   limpatela
 
 Fimalgoritmo
