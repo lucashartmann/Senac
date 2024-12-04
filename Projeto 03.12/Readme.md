@@ -10,3 +10,5 @@ Escola:
 * cadastroFrequencia
 * mudarDados
 * verMatérias e seus respectivos professores
+
+Falta: usar limpatela, imnplementar nota por matéria, implementar cpf rg e etc
