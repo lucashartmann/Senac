@@ -21,3 +21,6 @@ CHANGE endereco logradouro VARCHAR(50) NOT NULL;
 
 ALTER TABLE tabela01 
 MODIFY nome VARCHAR(60) NOT NULL;
+
+ALTER TABLE tabela01 
+DROP COLUMN idade;
