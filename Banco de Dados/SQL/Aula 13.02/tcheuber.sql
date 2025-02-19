@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/02/2025 às 15:52
+-- Tempo de geração: 19/02/2025 às 15:36
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -28,9 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `mecanico` (
+  `nome` varchar(30) NOT NULL,
+  `endereco` varchar(100) NOT NULL,
+  `cidade` varchar(100) NOT NULL,
+  `estado` varchar(2) NOT NULL,
   `cpf` varchar(11) NOT NULL,
-  `celular` bigint(11) NOT NULL,
-  `nome` varchar(30) NOT NULL
+  `celular` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -40,10 +43,14 @@ CREATE TABLE `mecanico` (
 --
 
 CREATE TABLE `motorista` (
+  `nome_completo` varchar(100) NOT NULL,
+  `categoria` char(1) NOT NULL,
   `numero` int(11) NOT NULL,
-  `nome` varchar(30) NOT NULL,
-  `celular` bigint(11) NOT NULL,
-  `categoria` char(1) NOT NULL
+  `cpf` varchar(11) NOT NULL,
+  `endereco` varchar(100) NOT NULL,
+  `cidade` varchar(100) NOT NULL,
+  `estado` varchar(2) NOT NULL,
+  `celular` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -54,11 +61,12 @@ CREATE TABLE `motorista` (
 
 CREATE TABLE `servico` (
   `numero` int(11) NOT NULL,
-  `placa` varchar(7) NOT NULL,
+  `data_solicitacao` date NOT NULL,
+  `data_problema` date NOT NULL,
+  `nome_veiculo` varchar(30) NOT NULL,
   `nome_motorista` varchar(30) NOT NULL,
-  `data_servico` date NOT NULL,
-  `servico` text NOT NULL,
-  `nome_veiculo` varchar(30) NOT NULL
+  `placa` varchar(7) NOT NULL,
+  `servico` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -68,11 +76,13 @@ CREATE TABLE `servico` (
 --
 
 CREATE TABLE `veiculo` (
-  `placa` varchar(7) NOT NULL,
   `nome` varchar(30) NOT NULL,
   `marca` varchar(20) NOT NULL,
   `modelo` varchar(20) NOT NULL,
-  `ano` int(4) NOT NULL
+  `placa` varchar(7) NOT NULL,
+  `ano` int(4) NOT NULL,
+  `numero_chassi` int(6) NOT NULL,
+  `cor` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -89,7 +99,8 @@ ALTER TABLE `mecanico`
 -- Índices de tabela `motorista`
 --
 ALTER TABLE `motorista`
-  ADD PRIMARY KEY (`numero`);
+  ADD PRIMARY KEY (`numero`),
+  ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
 -- Índices de tabela `servico`
