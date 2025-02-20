@@ -28,8 +28,17 @@ DROP COLUMN idade;
 ALTER TABLE tabela01 
 ADD cidade VARCHAR(100) NOT NULL AFTER nome;
 
+ALTER TABLE tabela01 
+ADD cidade VARCHAR(100) NOT NULL FIRST;
+
 INSERT INTO tabela01 (nome_completo, endereco, idade)
 VALUES ('Lucas Augusto', 'Partenon', 21)
 
-ALTER TABLE tabela01 
-ADD cidade VARCHAR(100) NOT NULL FIRST;
+INSERT INTO tabela01
+SET 
+nome_completo = 'Fernando Guimarões',
+endereco = 'Travessa Andradads 900',
+idade = 39;
+
+INSERT INTO servico (numero, data_solicitacao, data_problema, nome_veiculo, nome_motorista, placa, servico)
+VALUES (2, 20250224, 20250220, 'Lambretinha do Rogério', 'Luis', 'RGS200', 'Foi feito calibragem de pneus e conserto do motor');
