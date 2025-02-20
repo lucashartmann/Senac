@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19/02/2025 às 15:36
+-- Tempo de geração: 20/02/2025 às 15:55
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -36,6 +36,14 @@ CREATE TABLE `mecanico` (
   `celular` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `mecanico`
+--
+
+INSERT INTO `mecanico` (`nome`, `endereco`, `cidade`, `estado`, `cpf`, `celular`) VALUES
+('Jorge Augusto', 'Bento Gonçalves', 'Porto Alegre', 'RS', '0235314564', 5193435635),
+('Jorge', 'Porto Alegre', '', 'RS', '05634564587', 519485893959);
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +61,13 @@ CREATE TABLE `motorista` (
   `celular` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `motorista`
+--
+
+INSERT INTO `motorista` (`nome_completo`, `categoria`, `numero`, `cpf`, `endereco`, `cidade`, `estado`, `celular`) VALUES
+('Marcelo Fernando', 'A', 233, '02002030405', 'Avenida Bentinho da Silva', 'Araraquara', 'SP', 51000909876);
+
 -- --------------------------------------------------------
 
 --
@@ -69,6 +84,13 @@ CREATE TABLE `servico` (
   `servico` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `servico`
+--
+
+INSERT INTO `servico` (`numero`, `data_solicitacao`, `data_problema`, `nome_veiculo`, `nome_motorista`, `placa`, `servico`) VALUES
+(2, '2025-02-24', '2025-02-20', 'Lambretinha do Rogério', 'Luis', 'RGS200', 'Foi feito calibragem de pneus e conserto do motor');
+
 -- --------------------------------------------------------
 
 --
@@ -84,6 +106,13 @@ CREATE TABLE `veiculo` (
   `numero_chassi` int(6) NOT NULL,
   `cor` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `veiculo`
+--
+
+INSERT INTO `veiculo` (`nome`, `marca`, `modelo`, `placa`, `ano`, `numero_chassi`, `cor`) VALUES
+('BMX PRO X', 'BMX', 'PRO X', 'AAS-233', 2003, 224, 'Vermelha');
 
 --
 -- Índices para tabelas despejadas
@@ -122,13 +151,13 @@ ALTER TABLE `veiculo`
 -- AUTO_INCREMENT de tabela `motorista`
 --
 ALTER TABLE `motorista`
-  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
 
 --
 -- AUTO_INCREMENT de tabela `servico`
 --
 ALTER TABLE `servico`
-  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
