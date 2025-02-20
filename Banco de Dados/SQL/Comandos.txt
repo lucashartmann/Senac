@@ -28,5 +28,8 @@ DROP COLUMN idade;
 ALTER TABLE tabela01 
 ADD cidade VARCHAR(100) NOT NULL AFTER nome;
 
+INSERT INTO tabela01 (nome_completo, endereco, idade)
+VALUES ('Lucas Augusto', 'Partenon', 21)
+
 ALTER TABLE tabela01 
 ADD cidade VARCHAR(100) NOT NULL FIRST;
