@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20/02/2025 às 15:55
+-- Tempo de geração: 21/02/2025 às 15:41
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -41,8 +41,8 @@ CREATE TABLE `mecanico` (
 --
 
 INSERT INTO `mecanico` (`nome`, `endereco`, `cidade`, `estado`, `cpf`, `celular`) VALUES
-('Jorge Augusto', 'Bento Gonçalves', 'Porto Alegre', 'RS', '0235314564', 5193435635),
-('Jorge', 'Porto Alegre', '', 'RS', '05634564587', 519485893959);
+('Jorge', 'Bento Gonçalves', 'Porto Alegre', 'RS', '0235314564', 5193435635),
+('Giovani', 'João Pessoa 279', 'Bento Gonçalves', 'RS', '05634564587', 519485893959);
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE `motorista` (
 --
 
 INSERT INTO `motorista` (`nome_completo`, `categoria`, `numero`, `cpf`, `endereco`, `cidade`, `estado`, `celular`) VALUES
-('Marcelo Fernando', 'A', 233, '02002030405', 'Avenida Bentinho da Silva', 'Araraquara', 'SP', 51000909876);
+('Marcelo Fernando de Jesus', 'A', 233, '02002030405', 'Avenida Bentinho da Silva', 'Araraquara', 'SP', 51000909876);
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,8 @@ CREATE TABLE `servico` (
 --
 
 INSERT INTO `servico` (`numero`, `data_solicitacao`, `data_problema`, `nome_veiculo`, `nome_motorista`, `placa`, `servico`) VALUES
-(2, '2025-02-24', '2025-02-20', 'Lambretinha do Rogério', 'Luis', 'RGS200', 'Foi feito calibragem de pneus e conserto do motor');
+(2, '2025-02-24', '2025-02-20', 'Perua do seu João', 'Luis', 'RGS200', 'Foi feito calibragem de pneus e conserto do motor'),
+(232, '2021-04-02', '2020-12-30', 'Lambretinha do seu zé', 'Alceu', 'SSI-122', 'Foi enchido o pneu');
 
 -- --------------------------------------------------------
 
@@ -112,7 +113,7 @@ CREATE TABLE `veiculo` (
 --
 
 INSERT INTO `veiculo` (`nome`, `marca`, `modelo`, `placa`, `ano`, `numero_chassi`, `cor`) VALUES
-('BMX PRO X', 'BMX', 'PRO X', 'AAS-233', 2003, 224, 'Vermelha');
+('Bicicleta', 'BMX', 'PRO X', 'AAS-233', 2003, 224, 'Vermelha');
 
 --
 -- Índices para tabelas despejadas
@@ -157,7 +158,7 @@ ALTER TABLE `motorista`
 -- AUTO_INCREMENT de tabela `servico`
 --
 ALTER TABLE `servico`
-  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
