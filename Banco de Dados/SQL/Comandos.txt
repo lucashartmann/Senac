@@ -42,3 +42,11 @@ idade = 39;
 
 INSERT INTO servico (numero, data_solicitacao, data_problema, nome_veiculo, nome_motorista, placa, servico)
 VALUES (2, 20250224, 20250220, 'Lambretinha do Rogério', 'Luis', 'RGS200', 'Foi feito calibragem de pneus e conserto do motor');
+
+UPDATE tabela01
+SET nome_funci = 'Clotylde Souza Junior', idade = '31'
+WHERE id_tabela02 = 2 OR setor = 'Recepção';
+
+UPDATE tabela02
+SET cargo = 'Técnico em TI'
+WHERE id_tabela02 IN (1,2);
