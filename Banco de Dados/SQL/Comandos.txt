@@ -51,4 +51,17 @@ UPDATE tabela02
 SET cargo = 'Técnico em TI'
 WHERE id_tabela02 IN (1,2);
 
-ALTER TABLE nome_antigo RENAME TO nome_novo;
+DESCRIBE tabela01;
+DESCRIBE tabela02;
+show FIELDS FROM tabela01;
+SHOW FIELDS FROM tabela02;
+
+ALTER TABLE tabela01 DROP idade;
+ALTER TABLE tabela02 DROP cor;
+
+ALTER TABLE tabela01 RENAME TO cadastro;
+
+ALTER TABLE tabela02 RENAME TO veiculo;
+
+RENAME TABLE cadastro TO cliente;
+RENAME TABLE veiculo TO carro;
