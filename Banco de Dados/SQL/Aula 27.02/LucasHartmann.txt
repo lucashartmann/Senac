@@ -1,0 +1,137 @@
+CREATE database escola;
+USE escola;
+
+create table sala (
+    cod_sala INT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    localizacao VARCHAR(100) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+create table disciplina (
+    cod_dic INT PRIMARY KEY,
+    descricao TEXT(140) NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+create table cursos (
+    id_cursos INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    turno VARCHAR(50) NOT NULL,
+    area VARCHAR(50) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+create table aluno (
+    num_matricula INT PRIMARY KEY,
+    data_matric DATE NOT NULL,
+    data_nasci DATE NOT NULL,
+    rua VARCHAR(200) NOT NULL,
+    bairro VARCHAR(50) NOT NULL,
+    cep BIGINT(8) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    genero VARCHAR(15) NOT NULL,
+    nome VARCHAR(50)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+create table dependentes (
+    cod_depe INT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    grau_pare VARCHAR(50) NOT NULL,
+    data_nasc DATE NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+create table docente (
+    cod_doc INT PRIMARY KEY,
+    endereco VARCHAR(100) NOT NULL,
+    telefone BIGINT(11) NOT NULL,
+    nome VARCHAR(50) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+Optei por não fazer uma tabela para a matricula, e sim, incluir a data_matric na tabela Aluno.
+
+ALTER TABLE cursos 
+ADD data_inicio DATE NOT NULL, 
+ADD data_final DATE NOT NULL;
+
+ALTER TABLE disciplina 
+ADD nome VARCHAR(50) NOT NULL;
+
+ALTER TABLE aluno 
+ADD cpf VARCHAR(11) NOT NULL, 
+ADD uf CHAR(2) NOT NULL, 
+ADD telefone BIGINT(11) NOT NULL;
+
+ALTER TABLE docente 
+ADD formac_acad VARCHAR(50) NOT NULL;
+
+ALTER TABLE aluno 
+DROP COLUMN genero;
+
+INSERT INTO aluno (num_matricula, data_matric, data_nasci, rua, bairro, cep, cidade, nome, cpf, uf, telefone)
+VALUES (200, 20240507, 20030512, 'Travessa Ferreira de Abreu 300', 'Partenon', 90650000, 'Porto Alegre', 'Rogério', '99999999999', 'RS', 51989856478),
+(201, 20240507, 19981030, 'Lima e Silva 10', 'Cidade Baixa', 90650000, 'Porto Alegre', 'Marcelo', '99999999998', 'RS', 51989856473),
+(202, 20250102, 20000224, 'Zélia Maria Abichequer 192', 'Floresta', 90650001, 'Lajeado', 'Ana', '99999999997', 'RS', 51989856461),
+(203, 20230201, 19921221, 'Fernandes Paranaense', 'Rosagela Silva', 90620000, 'Natal', 'Pereira', '99999999996', 'RN', 55989816278),
+(204, 20241012, 20050301, 'Claudio Vieira 198', 'Águas Claras', 90450000, 'Encantado', 'Stefhanie', '99999999993', 'RS', 51989856400);
+
+INSERT INTO cursos (nome, turno, area, data_inicio, data_final)
+VALUES ('Desenvolvimento de Sistemas', 'Manhã', 'TI', 20230102, 20250102),
+('Design de Interiores', 'Tarde', 'Design', 20251202, 20271202),
+('Marketing Digital', 'Noite', 'Marketing', 20210708, 20250708),
+('Engenharia de Software', 'Tarde', 'TI', 20240506, 20280506),
+('Relações Internacionais', 'Noite', 'Administração', 20250304, 20280304);
+
+id_cursos é AUTO_INCREMENT, então não inseri nas declarações
+
+INSERT INTO dependentes (cod_depe, nome, grau_pare, data_nasc)
+VALUES (0, 'Fernanda', 'Filha', 20050102),
+(1, 'Raphael', 'Neto', 20080107),
+(2, 'Leonardo', 'Tio', 19901110),
+(3, 'Lisandra', 'Mãe', 19971001),
+(4, 'Amélia', 'Sobrinha', 20091203);
+
+INSERT INTO disciplina (cod_dic, descricao, nome)
+VALUES (101, 'Introdução á modelagem de banco de dados e SQL', 'Banco de Dados'),
+(105, 'Introdução aos conceitos da programação usando Java', 'Fundamentos da Programação');
+INSERT INTO disciplina (cod_dic, nome)
+VALUES
+(102, 'Lógica de Programação'),
+(103, 'Cálculo I'),
+(104, 'Matemática Discreta');
+
+Como botei descrição como NULL, decidi não inserir nas outras declarações
+
+INSERT INTO docente (cod_doc, endereco, nome, formac_acad)
+VALUES (1, 'Lima e Silva 24', 'Sandro', 'Engenharia Civil'),
+ (2, 'Lima e Silva 12', 'Luiz', 'Ciência de Dados'),
+ (3, 'Fernandes Vieira 400', 'Mayara', 'Medicina'),
+ (4, 'Avenida Bento Gonçalves 206', 'Pedro', 'Relações Internacionais'),
+ (5, 'Santa Teresinha 234', 'Maria', 'Ciência da Computação');
+
+INSERT INTO sala (cod_sala, nome, localizacao)
+VALUES (1, '201', 'Primeiro andar'),
+ (2, '298S', 'Espaço externo'),
+ (3, 'Laboratório', 'Terceiro andar'),
+ (4, 'Informática', 'Quarto andar'),
+ (5, '54BA', 'Quinto andar');
+
+UPDATE aluno
+SET telefone = 54987654768
+WHERE num_matricula = 200;
+
+UPDATE docente
+SET endereco = 'Fernandes Viera 900'
+WHERE nome = 'Sandro';
+
+UPDATE cursos
+SET nome = 'Engenharia Civil'
+WHERE id_cursos IN (1,2);
+
+UPDATE disciplina
+SET descricao = 'Introdução ao pensamento lógico direcionado á área de TI'
+WHERE cod_dic = 102;
+
+ALTER TABLE sala RENAME TO laboratorio;
+ALTER TABLE disciplina RENAME TO uc;
+ALTER TABLE docente RENAME TO professor;
+ALTER TABLE aluno RENAME TO cliente;
+
+

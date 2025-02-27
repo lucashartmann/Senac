@@ -50,3 +50,5 @@ WHERE id_tabela02 = 2 OR setor = 'Recepção';
 UPDATE tabela02
 SET cargo = 'Técnico em TI'
 WHERE id_tabela02 IN (1,2);
+
+ALTER TABLE nome_antigo RENAME TO nome_novo;
