@@ -7,9 +7,7 @@ CREATE TABLE tabela01(
 	endereco VARCHAR(100) NULL,
 	cpf VARCHAR(11) UNIQUE,
 	numero_telefone BIGINT(9)
-); 
-
-ENGINE=INNODB DEFAULT CHARSET=UTF8;
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
 
 ALTER TABLE tabela01 
 ADD cidade VARCHAR(100) NOT NULL,
@@ -58,10 +56,16 @@ SHOW FIELDS FROM tabela02;
 
 ALTER TABLE tabela01 DROP idade;
 ALTER TABLE tabela02 DROP cor;
-
 ALTER TABLE tabela01 RENAME TO cadastro;
-
 ALTER TABLE tabela02 RENAME TO veiculo;
 
 RENAME TABLE cadastro TO cliente;
 RENAME TABLE veiculo TO carro;
+
+SELECT * FROM `cliente`;
+SELECT * FROM `cliente` WHERE id_cliente=1;
+SELECT * FROM `cliente` WHERE cidade='Porto Alegre' AND idade=33;
+SELECT * FROM `cliente` WHERE cidade='Porto Alegre' OR idade<33;
+SELECT * FROM `carro` WHERE preco > 50.000 AND preco < 90.000;
+SELECT * FROM `carro` WHERE preco > 50.000 AND preco <= 90.000;
+SELECT * FROM `cliente` WHERE data_nasci < 20001022;
