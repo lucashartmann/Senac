@@ -94,14 +94,14 @@ CREATE TABLE livro (
     FOREIGN KEY (codigo_editora) REFERENCES editora (id_editora)
 )ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
-CREATE TABLE `aluno` (
-  `matricula` varchar(8) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `fone` varchar(11) NOT NULL,
-  `endereco` varchar(100) NOT NULL,
-  `sexo` char(1) NOT NULL,
-  `cpf` varchar(11) NOT NULL,
-  `email` varchar(50) NOT NULL
+CREATE TABLE aluno (
+  matricula varchar(8) NOT NULL,
+  nome varchar(50) NOT NULL,
+  fone varchar(11) NOT NULL,
+  endereco varchar(100) NOT NULL,
+  sexo char(1) NOT NULL,
+  cpf varchar(11) NOT NULL,
+  email varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE emprestimo (
@@ -114,7 +114,7 @@ CREATE TABLE emprestimo (
     FOREIGN KEY (codigo_livro) REFERENCES livro (id_livro)
 )ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
-INSERT INTO `autor` (`id_autor`, `nome_completo`, `nome`, `sobrenome`) VALUES
+INSERT INTO autor (id_autor, nome_completo, nome, sobrenome) VALUES
 (1, 'Carlos Alberto Heuser', 'Carlos Alberto', 'Heuser'),
 (2, 'Idalberto Chivenato', 'Idalberto', 'Chivenato'),
 (3, 'Paul Deitel', 'Paul', 'Deitel');
@@ -136,5 +136,6 @@ VALUES ('1', 1, 20250313, 20250320),
 
 SELECT * FROM livro JOIN editora ON editora.id_editora = livro.codigo_editora;
 SELECT * FROM livro JOIN autor ON autor.id_autor = livro.codigo_autor;
+SELECT * FROM livro JOIN genero ON genero.id_genero = livro.codigo_genero;
 
 seleciona tudo do livro, faz o join com o nome da tabela que quer trazer, e usa o ON com os elementos que se conversam
