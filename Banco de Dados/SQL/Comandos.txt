@@ -143,5 +143,7 @@ SELECT * FROM livro JOIN editora ON editora.id_editora = livro.codigo_editora;
 SELECT * FROM livro JOIN autor ON autor.id_autor = livro.codigo_autor;
 SELECT * FROM livro JOIN genero ON genero.id_genero = livro.codigo_genero;
 SELECT livro.nome, livro.ano, livro.edicao, editora.nome FROM livro JOIN editora ON editora.id_editora = livro.codigo_editora;
+SELECT livro.nome, livro.ano, livro.edicao, autor.nome_completo, autor.nome, autor.sobrenome FROM livro JOIN autor ON autor.id_autor = livro.codigo_autor;
+SELECT livro.nome, livro.ano, livro.edicao, genero.nome, genero.sigla FROM livro JOIN genero ON genero.id_genero = livro.codigo_genero;
 
 seleciona tudo do livro, faz o join com o nome da tabela que quer trazer, e usa o ON com os elementos que se conversam
