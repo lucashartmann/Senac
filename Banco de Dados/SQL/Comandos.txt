@@ -67,5 +67,74 @@ SELECT * FROM `cliente` WHERE id_cliente=1;
 SELECT * FROM `cliente` WHERE cidade='Porto Alegre' AND idade=33;
 SELECT * FROM `cliente` WHERE cidade='Porto Alegre' OR idade<33;
 SELECT * FROM `carro` WHERE preco > 50.000 AND preco < 90.000;
-SELECT * FROM `carro` WHERE preco > 50.000 AND preco <= 90.000;
-SELECT * FROM `cliente` WHERE data_nasci < 20001022;
+SELECT * FROM carro WHERE preco > 50.000 AND preco <= 90.000;
+SELECT * FROM cliente WHERE data_nasci < 20001022;
+
+create table editora(
+    id_editora int PRIMARY KEY AUTO_INCREMENT,
+    nome varchar(50) not null
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+create table genero(
+    id_genero int PRIMARY key AUTO_INCREMENT,
+    nome varchar(30) not null,
+    sigla varchar(30) not null
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE livro (
+    id_livro int PRIMARY KEY AUTO_INCREMENT,
+    nome varchar(50) NOT NULL,
+    ano int(4) NOT NULL,
+    edicao int(2) NOT NULL,
+    codigo_autor int NOT NULL,
+    codigo_genero int NOT NULL,
+    codigo_editora int NOT NULL,
+    FOREIGN KEY (codigo_autor) REFERENCES autor (id_autor),
+    FOREIGN KEY (codigo_genero) REFERENCES genero (id_genero),
+    FOREIGN KEY (codigo_editora) REFERENCES editora (id_editora)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE `aluno` (
+  `matricula` varchar(8) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `fone` varchar(11) NOT NULL,
+  `endereco` varchar(100) NOT NULL,
+  `sexo` char(1) NOT NULL,
+  `cpf` varchar(11) NOT NULL,
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE emprestimo (
+    id_emprestimo int PRIMARY KEY AUTO_INCREMENT,
+    codigo_matricula varchar(8) NOT NULL,
+    codigo_livro int NOT NULL,
+    data_retirada date NOT NULL,
+    data_devolucao date NOT NULL,
+    FOREIGN KEY (codigo_matricula) REFERENCES aluno (matricula),
+    FOREIGN KEY (codigo_livro) REFERENCES livro (id_livro)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+INSERT INTO `autor` (`id_autor`, `nome_completo`, `nome`, `sobrenome`) VALUES
+(1, 'Carlos Alberto Heuser', 'Carlos Alberto', 'Heuser'),
+(2, 'Idalberto Chivenato', 'Idalberto', 'Chivenato'),
+(3, 'Paul Deitel', 'Paul', 'Deitel');
+
+INSERT INTO livro (nome, ano, edicao, codigo_autor, codigo_genero, codigo_editora)
+VALUES ('Projeto de banco de dados', 2024, 2, 1, 1, 1),
+('Java', 2020, 4, 3, 1, 1),
+('Teoria da administração', 2019, 5, 3, 2, 2);
+
+INSERT INTO aluno (matricula, nome, fone, endereco, sexo, cpf, email)
+VALUES ('1', 'Maria', '51999999999', 'Caxias do Sul', 'F', '55555555555', 'maria@gmail.com'),
+('2', 'Joao', '51888888888', 'Porto Alegre', 'M', '88888888888', 'joao@gmail.com'),
+('3', 'Valdisney', '51777777777', 'Porto Alegre', 'M', '99999999999', 'valdisney@gmail.com');
+
+INSERT INTO emprestimo(codigo_matricula, codigo_livro, data_retirada, data_devolucao)
+VALUES ('1', 1, 20250313, 20250320),
+('2', 2, 20250313, 20250321),
+('3', 3, 20250313, 20250322);
+
+SELECT * FROM livro JOIN editora ON editora.id_editora = livro.codigo_editora;
+SELECT * FROM livro JOIN autor ON autor.id_autor = livro.codigo_autor;
+
+seleciona tudo do livro, faz o join com o nome da tabela que quer trazer, e usa o ON com os elementos que se conversam
