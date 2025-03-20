@@ -1,0 +1,84 @@
+CREATE DATABASE tcheuber;
+USE tcheuber;
+
+CREATE TABLE motoristas (
+    id_motoristas INT PRIMARY KEY AUTO_INCREMENT,
+    nome_completo VARCHAR(100) NOT NULL,
+    categoria_carteira CHAR(1) NOT NULL,
+    numero_carteira INT NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    endereco VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(100) NOT NULL,
+    celular BIGINT(11) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE veiculos (
+    id_veiculos INT PRIMARY KEY AUTO_INCREMENT,
+    marca VARCHAR(50) NOT NULL,
+    modelo VARCHAR(100) NOT NULL,
+    placa VARCHAR(7) NOT NULL,
+    ano_fabricacao INT(4) NOT NULL,
+    numero_chassi VARCHAR(17) NOT NULL,
+    cor VARCHAR(30) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE mecanicos (
+    id_mecanicos INT PRIMARY KEY AUTO_INCREMENT,
+    nome_completo VARCHAR(100) NOT NULL,
+    endereco VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    celular BIGINT(11) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE servicos (
+    id_servicos INT PRIMARY KEY AUTO_INCREMENT,
+    data_solicitacao DATE NOT NULL,
+    data_problema DATE NOT NULL,
+    descricao_problema TEXT(140) NULL,
+    codigo_veiculo INT NOT NULL,
+    codigo_motorista INT NOT NULL,
+    codigo_mecanico INT NOT NULL,
+    FOREIGN KEY (codigo_veiculo) REFERENCES veiculos (id_veiculos),
+    FOREIGN KEY (codigo_motorista) REFERENCES motoristas (id_motoristas),
+    FOREIGN KEY (codigo_mecanico) REFERENCES mecanicos (id_mecanicos)
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+INSERT INTO mecanicos (nome_completo, endereco, cidade, estado, cpf, celular) 
+VALUES ('Lucas de Abreu', 'Lima e Silva 255', 'Porto Alegre', 'Rio Grande do Sul', '11111111111', 51111111111), 
+('Marcelo Teixeira Lima', 'Venâncio Aires 99', 'Porto Alegre', 'Rio Grande do Sul', '22222222222', 51222222222), 
+('Sandra Abulquerque', 'Travessa Ferreira de Abreu 11', 'Blumenau', 'Santa Catarina', '33333333333', 51333333333), 
+('Fernanda Lima da Silva', 'Zélia Maria 22', 'Lajeado', 'Rio Grande do Sul', '44444444444', 51444444444), 
+('Rosângela Santos', 'Distrito 13', 'Encantado', 'Rio Grande do Sul', '55555555555', 51555555555);
+
+INSERT INTO veiculos (marca, modelo, placa, ano_fabricacao, numero_chassi, cor)
+VALUES ('Chevrolet', 'Trailblazer', 'AGF19349', 2008, 'AS20339581H583J43', 'Vermelho'),
+('Fiat', 'Uno', 'AGF19348', 2009, 'AS20339581H583J42', 'Verde'),
+('Chevrolet', 'Camaro', 'AGF19347', 2010, 'AS20339581H583J41', 'Laranja'),
+('Renault', 'Civic', 'AGF19346', 2011, 'AS20339581H583J40', 'Rosa'),
+('Fiat', 'Tipo', 'AGF19345', 2012, 'AS20339581H583J31', 'Azul');
+
+ALTER TABLE motoristas
+CHANGE id_motoristas id_motoristas INT AUTO_INCREMENT;
+
+ALTER TABLE motoristas 
+ADD codigo_carro INT NOT NULL,
+ADD FOREIGN KEY (codigo_carro) REFERENCES veiculos (id_veiculos);
+
+INSERT INTO motoristas (nome_completo, categoria_carteira, numero_carteira, cpf, endereco, cidade, estado, celular, codigo_carro)
+VALUES ('Leonardo Hoffman', 'A', 11111111111, '66666666666', 'Av. Bento Gonçalves 61', 'Porto Alegre', 'Rio Grande do Sul', 51111111111, 5),
+('Miguel Fernandes', 'B', 22222222222, '11111111111', 'Hélio Penha 122', 'Jurere', 'Santa Catarina', 51555555555, 4),
+('William Marcelo', 'C', 33333333333, '77777777777', 'Luiz Gonçalves 99', 'Anta Gorda', 'Rio Grande do Sul', 51444444444, 3),
+('Christopher Junior Eduardo', 'A', 44444444444, '88888888888', 'Teixeira Neves 44', 'Não-Me-Toque', 'Rio Grande do Sul', 51333333333, 2),
+('Yuri Echevarria', 'B', 55555555555, '99999999999', 'Fernandes Vieira 4000', 'Porto Alegre', 'Rio Grande do Sul', 51222222222, 1);
+
+INSERT INTO servicos (data_solicitacao, data_problema, codigo_veiculo, codigo_motorista, codigo_mecanico)
+VALUES (20240205, 20240105, 1, 1, 1),
+(20250205, 20241112, 3, 3, 3),
+(20240205, 20240105, 4, 4, 4),
+(20250202, 20250101, 5, 5, 5);
+
+INSERT INTO servicos (data_solicitacao, data_problema, descricao_problema, codigo_veiculo, codigo_motorista, codigo_mecanico)
+VALUES (20230205, 20230102, 'Carburador com defeito', 2, 2, 2);
