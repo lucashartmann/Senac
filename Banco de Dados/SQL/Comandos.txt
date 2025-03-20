@@ -41,7 +41,7 @@ CREATE TABLE aluno (
   sexo char(1) NOT NULL,
   cpf varchar(11) NOT NULL,
   email varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE emprestimo (
     id_emprestimo int PRIMARY KEY AUTO_INCREMENT,
