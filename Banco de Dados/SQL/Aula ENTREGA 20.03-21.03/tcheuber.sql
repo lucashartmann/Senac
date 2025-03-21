@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20/03/2025 às 15:56
+-- Tempo de geração: 21/03/2025 às 14:18
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,6 +20,57 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `tcheuber`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id_clientes` int(11) NOT NULL,
+  `nome_completo` varchar(100) NOT NULL,
+  `endereco` varchar(100) NOT NULL,
+  `cpf` varchar(11) NOT NULL,
+  `data_nasc` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Despejando dados para a tabela `clientes`
+--
+
+INSERT INTO `clientes` (`id_clientes`, `nome_completo`, `endereco`, `cpf`, `data_nasc`) VALUES
+(1, 'Roberslindo da Silva', 'Av. Maria Santa 11', '11111111111', '2003-07-05'),
+(2, 'Juriscreide Fernandes', 'Av. Julio Pereira 1999', '22222222222', '1999-03-04'),
+(3, 'Teresa Fagundes', 'Santa Terezinha 22', '33333333333', '1989-12-11'),
+(4, 'Kelvin Cristo', 'Marcelo Teireixa 123', '44444444444', '1992-09-04'),
+(5, 'Leonara Ambos', 'Av. Maria Santa 900', '55555555555', '2003-03-02');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `corridas`
+--
+
+CREATE TABLE `corridas` (
+  `id_corridas` int(11) NOT NULL,
+  `origem` varchar(100) NOT NULL,
+  `destino` varchar(100) NOT NULL,
+  `data_corrida` date NOT NULL,
+  `codigo_motorista` int(11) NOT NULL,
+  `codigo_cliente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Despejando dados para a tabela `corridas`
+--
+
+INSERT INTO `corridas` (`id_corridas`, `origem`, `destino`, `data_corrida`, `codigo_motorista`, `codigo_cliente`) VALUES
+(1, 'Av. Maria Santa 11', 'Av. Julio Pereira 1999', '2025-01-02', 1, 1),
+(2, 'Av. Julio Pereira 1999', 'Av. Maria Santa 11', '2024-05-06', 1, 2),
+(3, 'Santa Terezinha 22', 'Av. Maria Santa 900', '2021-03-04', 3, 3),
+(4, 'Marcelo Teireixa 123', 'Santa Terezinha 22', '2024-12-03', 4, 4),
+(5, 'Av. Maria Santa 900', 'Marcelo Teireixa 123', '2019-10-12', 5, 5);
 
 -- --------------------------------------------------------
 
@@ -137,6 +188,20 @@ INSERT INTO `veiculos` (`id_veiculos`, `marca`, `modelo`, `placa`, `ano_fabricac
 --
 
 --
+-- Índices de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id_clientes`);
+
+--
+-- Índices de tabela `corridas`
+--
+ALTER TABLE `corridas`
+  ADD PRIMARY KEY (`id_corridas`),
+  ADD KEY `codigo_cliente` (`codigo_cliente`),
+  ADD KEY `codigo_motorista` (`codigo_motorista`);
+
+--
 -- Índices de tabela `mecanicos`
 --
 ALTER TABLE `mecanicos`
@@ -169,6 +234,18 @@ ALTER TABLE `veiculos`
 --
 
 --
+-- AUTO_INCREMENT de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id_clientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `corridas`
+--
+ALTER TABLE `corridas`
+  MODIFY `id_corridas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de tabela `mecanicos`
 --
 ALTER TABLE `mecanicos`
@@ -195,6 +272,13 @@ ALTER TABLE `veiculos`
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `corridas`
+--
+ALTER TABLE `corridas`
+  ADD CONSTRAINT `corridas_ibfk_1` FOREIGN KEY (`codigo_cliente`) REFERENCES `clientes` (`id_clientes`),
+  ADD CONSTRAINT `corridas_ibfk_2` FOREIGN KEY (`codigo_motorista`) REFERENCES `veiculos` (`id_veiculos`);
 
 --
 -- Restrições para tabelas `motoristas`

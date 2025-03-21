@@ -33,6 +33,25 @@ CREATE TABLE mecanicos (
     celular BIGINT(11) NOT NULL
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+CREATE TABLE cliente (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    endereco VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    data_nasc DATE NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE corridas (
+    id_corridas INT PRIMARY KEY AUTO_INCREMENT,
+    origem VARCHAR(100) NOT NULL,
+    destino VARCHAR(100) NOT NULL,
+    data_corrida DATE NOT NULL,
+    codigo_motorista INT NOT NULL,
+    codigo_cliente INT NOT NULL,
+    FOREIGN KEY (codigo_cliente) REFERENCES cliente (id_cliente), 
+    FOREIGN KEY (codigo_motorista) REFERENCES veiculos (id_veiculos)
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 CREATE TABLE servicos (
     id_servicos INT PRIMARY KEY AUTO_INCREMENT,
     data_solicitacao DATE NOT NULL,
@@ -45,6 +64,13 @@ CREATE TABLE servicos (
     FOREIGN KEY (codigo_motorista) REFERENCES motoristas (id_motoristas),
     FOREIGN KEY (codigo_mecanico) REFERENCES mecanicos (id_mecanicos)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+INSERT INTO cliente (nome, endereco, cpf, data_nasc)
+VALUES ('Roberslindo da Silva', 'Av. Maria Santa 11', '11111111111', 20030705),
+('Juriscreide Fernandes', 'Av. Julio Pereira 1999', '22222222222', 19990304),
+('Teresa Fagundes', 'Santa Terezinha 22', '33333333333', 19891211),
+('Kelvin Cristo', 'Marcelo Teireixa 123', '44444444444', 19920904),
+('Leonara Ambos', 'Av. Maria Santa 900', '55555555555', 20030302);
 
 INSERT INTO mecanicos (nome_completo, endereco, cidade, estado, cpf, celular) 
 VALUES ('Lucas de Abreu', 'Lima e Silva 255', 'Porto Alegre', 'Rio Grande do Sul', '11111111111', 51111111111), 
@@ -82,3 +108,30 @@ VALUES (20240205, 20240105, 1, 1, 1),
 
 INSERT INTO servicos (data_solicitacao, data_problema, descricao_problema, codigo_veiculo, codigo_motorista, codigo_mecanico)
 VALUES (20230205, 20230102, 'Carburador com defeito', 2, 2, 2);
+
+INSERT INTO corridas (origem, destino, data_corrida, codigo_motorista, codigo_cliente)
+VALUES ('Av. Maria Santa 11', 'Av. Julio Pereira 1999', 20250102, 1, 1),
+('Av. Julio Pereira 1999', 'Av. Maria Santa 11', 20240506, 1, 2),
+('Santa Terezinha 22', 'Av. Maria Santa 900', 20210304, 3, 3),
+('Marcelo Teireixa 123', 'Santa Terezinha 22', 20241203, 4, 4),
+('Av. Maria Santa 900', 'Marcelo Teireixa 123', 20191012, 5, 5);
+
+RENAME TABLE cliente TO clientes;
+
+ALTER TABLE clientes
+CHANGE id_cliente id_clientes INT AUTO_INCREMENT;
+
+SELECT corridas.origem, corridas.destino, corridas.data_corrida FROM corridas JOIN motoristas ON motoristas.id_motoristas = corridas.codigo_motorista;
+
+SELECT corridas.origem, corridas.destino, corridas.data_corrida FROM corridas JOIN motoristas ON motoristas.id_motoristas = corridas.codigo_motorista JOIN clientes ON clientes.id_clientes = corridas.codigo_cliente;
+
+SELECT corridas.origem, corridas.destino, corridas.data_corrida, motoristas.nome_completo, clientes.nome FROM corridas JOIN motoristas ON motoristas.id_motoristas = corridas.codigo_motorista JOIN clientes ON clientes.id_clientes = corridas.codigo_cliente;
+
+ALTER TABLE clientes
+CHANGE nome nome_completo VARCHAR(100) NOT NULL;
+
+SELECT corridas.origem, corridas.destino, corridas.data_corrida, motoristas.nome_completo, clientes.nome_completo, veiculos.modelo FROM corridas JOIN motoristas ON motoristas.id_motoristas = corridas.codigo_motorista JOIN clientes ON clientes.id_clientes = corridas.codigo_cliente JOIN veiculos ON veiculos.id_veiculos = motoristas.codigo_carro;
+
+SELECT motoristas.nome_completo, veiculos.modelo FROM motoristas JOIN veiculos ON veiculos.id_veiculos = motoristas.codigo_carro;
+
+SELECT servicos.data_solicitacao, servicos.data_problema, mecanicos.nome_completo, motoristas.nome_completo, veiculos.placa FROM servicos JOIN motoristas ON motoristas.id_motoristas = servicos.codigo_motorista JOIN mecanicos ON mecanicos.id_mecanicos = servicos.codigo_mecanico JOIN veiculos ON veiculos.id_veiculos = servicos.codigo_veiculo;
