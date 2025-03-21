@@ -153,3 +153,9 @@ SELECT livro.nome, livro.ano, livro.edicao, autor.nome_completo, autor.nome, aut
 SELECT livro.nome, livro.ano, livro.edicao, genero.nome, genero.sigla FROM livro JOIN genero ON genero.id_genero = livro.codigo_genero;
 
 seleciona tudo do livro, faz o join com o nome da tabela que quer trazer, e usa o ON com os elementos que se conversam
+
+SELECT corridas.origem, corridas.destino, corridas.data_corrida, motoristas.nome_completo, clientes.nome_completo, veiculos.modelo FROM corridas JOIN motoristas ON motoristas.id_motoristas = corridas.codigo_motorista JOIN clientes ON clientes.id_clientes = corridas.codigo_cliente JOIN veiculos ON veiculos.id_veiculos = motoristas.codigo_carro;
+
+SELECT motoristas.nome_completo, veiculos.modelo FROM motoristas JOIN veiculos ON veiculos.id_veiculos = motoristas.codigo_carro;
+
+SELECT servicos.data_solicitacao, servicos.data_problema, mecanicos.nome_completo, motoristas.nome_completo, veiculos.placa FROM servicos JOIN motoristas ON motoristas.id_motoristas = servicos.codigo_motorista JOIN mecanicos ON mecanicos.id_mecanicos = servicos.codigo_mecanico JOIN veiculos ON veiculos.id_veiculos = servicos.codigo_veiculo;
