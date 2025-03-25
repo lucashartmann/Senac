@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19/03/2025 às 14:38
+-- Tempo de geração: 20-Mar-2025 às 02:26
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,35 +24,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `aluno`
+-- Estrutura da tabela `aluno`
 --
 
 CREATE TABLE `aluno` (
   `num_matri` int(11) NOT NULL,
   `data_nasci` date NOT NULL,
-  `rua` varchar(100) DEFAULT NULL,
-  `bairro` varchar(50) DEFAULT NULL,
-  `cep` varchar(10) DEFAULT NULL,
-  `cidade` varchar(50) DEFAULT NULL,
-  `genero` char(1) DEFAULT NULL,
+  `rua` varchar(100) NOT NULL,
+  `bairro` varchar(50) NOT NULL,
+  `cep` varchar(9) NOT NULL,
+  `cidade` varchar(50) NOT NULL,
+  `genero` char(1) NOT NULL,
   `nome` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `aluno`
+-- Extraindo dados da tabela `aluno`
 --
 
 INSERT INTO `aluno` (`num_matri`, `data_nasci`, `rua`, `bairro`, `cep`, `cidade`, `genero`, `nome`) VALUES
-(10001, '2000-06-15', 'Rua dos Estudantes, 100', 'Centro', '01234-567', 'São Paulo', 'M', 'Rafael Mendes'),
-(10002, '2001-04-22', 'Av. das Universidades, 200', 'Pinheiros', '02345-678', 'São Paulo', 'F', 'Juliana Costa'),
-(10003, '1999-11-10', 'Rua Doutor Silva, 300', 'Saúde', '03456-789', 'São Paulo', 'M', 'Bruno Almeida'),
-(10004, '2002-02-28', 'Av. Paulista, 400', 'Bela Vista', '04567-890', 'São Paulo', 'F', 'Carolina Souza'),
-(10005, '2000-09-17', 'Rua da Tecnologia, 500', 'Vila Mariana', '05678-901', 'São Paulo', 'M', 'Daniel Ferreira');
+(10006, '2001-02-15', 'Rua dos Estudantes, 101', 'Centro', '01234-568', 'São Paulo', 'M', 'Lucas Silva'),
+(10007, '2001-05-22', 'Av. das Universidades, 201', 'Pinheiros', '02345-679', 'São Paulo', 'F', 'Camila Oliveira'),
+(10008, '1998-10-10', 'Rua Doutor Silva, 301', 'Saúde', '03456-790', 'São Paulo', 'M', 'Felipe Almeida'),
+(10009, '2003-03-28', 'Av. Paulista, 401', 'Bela Vista', '04567-891', 'São Paulo', 'F', 'Laura Souza'),
+(10010, '2001-10-17', 'Rua da Tecnologia, 501', 'Vila Mariana', '05678-902', 'São Paulo', 'M', 'Tiago Ferreira');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cursos`
+-- Estrutura da tabela `cursos`
 --
 
 CREATE TABLE `cursos` (
@@ -60,217 +60,255 @@ CREATE TABLE `cursos` (
   `nome` varchar(100) NOT NULL,
   `turno` varchar(20) NOT NULL,
   `area` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `cursos`
+-- Extraindo dados da tabela `cursos`
 --
 
 INSERT INTO `cursos` (`id_cursos`, `nome`, `turno`, `area`) VALUES
-(1, 'Engenharia de Software', 'Manhã', 'Tecnologia'),
-(2, 'Administração', 'Noite', 'Negócios'),
-(3, 'Medicina', 'Integral', 'Saúde'),
-(4, 'Direito', 'Noite', 'Humanas'),
-(5, 'Ciência da Computação', 'Tarde', 'Tecnologia');
+(1, 'Engenharia de Computação', 'Manhã', 'Tecnologia'),
+(2, 'Gestão Empresarial', 'Noite', 'Negócios'),
+(3, 'Medicina Veterinária', 'Integral', 'Saúde'),
+(4, 'Direito Penal', 'Noite', 'Humanas'),
+(5, 'Sistemas de Informação', 'Tarde', 'Tecnologia');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `dependentes`
+-- Estrutura da tabela `dependentes`
 --
 
 CREATE TABLE `dependentes` (
-  `nome` varchar(100) NOT NULL,
-  `grau_parentesco` varchar(50) DEFAULT NULL,
   `cod_depe` int(11) NOT NULL,
-  `data_nasc` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `nome` varchar(100) NOT NULL,
+  `grau_parentesco` varchar(50) NOT NULL,
+  `data_nasc` date NOT NULL,
+  `cod_doce` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `dependentes`
+-- Extraindo dados da tabela `dependentes`
 --
 
-INSERT INTO `dependentes` (`nome`, `grau_parentesco`, `cod_depe`, `data_nasc`) VALUES
-('Miguel Silva', 'Filho', 501, '2015-03-12'),
-('Beatriz Oliveira', 'Filha', 502, '2017-07-25'),
-('Lucas Santos', 'Filho', 503, '2010-11-30'),
-('Sophia Pereira', 'Filha', 504, '2016-05-18'),
-('Pedro Lima', 'Filho', 505, '2014-09-22');
+INSERT INTO `dependentes` (`cod_depe`, `nome`, `grau_parentesco`, `data_nasc`, `cod_doce`) VALUES
+(1, 'Ana Silva', 'Filha', '2016-03-12', 1),
+(2, 'Carlos Oliveira', 'Filho', '2018-07-25', 2),
+(3, 'Beatriz Santos', 'Filha', '2011-11-30', 3),
+(4, 'Lucas Pereira', 'Filho', '2017-05-18', 4),
+(5, 'Renato Lima', 'Filho', '2015-09-22', 5);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `disciplina`
+-- Estrutura da tabela `disciplina`
 --
 
 CREATE TABLE `disciplina` (
   `cod_disc` int(11) NOT NULL,
   `descricao` varchar(200) NOT NULL,
   `codigo_sala` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `disciplina`
+-- Extraindo dados da tabela `disciplina`
 --
 
 INSERT INTO `disciplina` (`cod_disc`, `descricao`, `codigo_sala`) VALUES
-(2001, 'Programação Orientada a Objetos', 101),
-(2002, 'Gestão Empresarial', 102),
-(2003, 'Anatomia Humana', 103),
-(2004, 'Direito Constitucional', 104),
-(2005, 'Estrutura de Dados', 105);
+(11, 'Programação Orientada a Objetos', 1),
+(12, 'Gestão Empresarial', 2),
+(13, 'Anatomia Humana', 3),
+(14, 'Direito Constitucional', 4),
+(15, 'Estrutura de Dados', 5);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `docente`
+-- Estrutura da tabela `docente`
 --
 
 CREATE TABLE `docente` (
   `cod_doce` int(11) NOT NULL,
   `endereco` varchar(200) NOT NULL,
   `telefone` bigint(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `codigo_dependente` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `nome` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `docente`
+-- Extraindo dados da tabela `docente`
 --
 
-INSERT INTO `docente` (`cod_doce`, `endereco`, `telefone`, `nome`, `codigo_dependente`) VALUES
-(1001, 'Rua das Flores, 123 - Centro', 0, 'Ana Silva', 501),
-(1002, 'Av. Principal, 456 - Jardins', 0, 'Carlos Oliveira', 501),
-(1003, 'Rua do Comércio, 789 - Vila Nova', 0, 'Maria Santos', 501),
-(1004, 'Av. Brasil, 321 - Centro', 0, 'João Pereira', 501),
-(1005, 'Rua das Palmeiras, 654 - Parque Verde', 0, 'Fernanda Lima', 501);
+INSERT INTO `docente` (`cod_doce`, `endereco`, `telefone`, `nome`) VALUES
+(1, 'Rua das Flores, 123', 1122334455, 'Ana Silva'),
+(2, 'Av. Principal, 456', 2233445566, 'Carlos Oliveira'),
+(3, 'Rua do Comércio, 789', 3344556677, 'Maria Santos'),
+(4, 'Av. Brasil, 321', 4455667788, 'João Pereira'),
+(5, 'Rua das Palmeiras, 654', 5566778899, 'Fernanda Lima'),
+(6, 'Rua das Flores, 123', 1122334455, 'Ana Silva'),
+(7, 'Av. Principal, 456', 2233445566, 'Carlos Oliveira'),
+(8, 'Rua do Comércio, 789', 3344556677, 'Maria Santos'),
+(9, 'Av. Brasil, 321', 4455667788, 'João Pereira'),
+(10, 'Rua das Palmeiras, 654', 5566778899, 'Fernanda Lima');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `matricula`
+-- Estrutura da tabela `matricula`
 --
 
 CREATE TABLE `matricula` (
-  `id` int(11) NOT NULL,
+  `id_matricula` int(11) NOT NULL,
   `data_matri` date NOT NULL,
-  `numero_matricula` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `numero_matricula` int(11) NOT NULL,
+  `id_curso` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `matricula`
+-- Extraindo dados da tabela `matricula`
 --
 
-INSERT INTO `matricula` (`id`, `data_matri`, `numero_matricula`) VALUES
-(1, '2022-02-10', 10001),
-(2, '2022-02-11', 10002),
-(3, '2022-02-09', 10003),
-(4, '2022-02-12', 10004),
-(5, '2022-02-08', 10005);
+INSERT INTO `matricula` (`id_matricula`, `data_matri`, `numero_matricula`, `id_curso`) VALUES
+(16, '2022-03-10', 10006, 1),
+(17, '2022-03-11', 10007, 2),
+(18, '2022-03-09', 10008, 3),
+(19, '2022-03-12', 10009, 4),
+(20, '2022-03-08', 10010, 5);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `sala`
+-- Estrutura da tabela `sala`
 --
 
 CREATE TABLE `sala` (
   `cod_sala` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `localizacao` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `sala`
+-- Extraindo dados da tabela `sala`
 --
 
 INSERT INTO `sala` (`cod_sala`, `nome`, `localizacao`) VALUES
-(101, 'Laboratório de Informática', 'Bloco A - Térreo'),
-(102, 'Sala de Aula 1', 'Bloco B - 1º Andar'),
-(103, 'Auditório', 'Bloco C - Térreo'),
-(104, 'Laboratório de Anatomia', 'Bloco D - 2º Andar'),
-(105, 'Sala de Estudos', 'Biblioteca - 3º Andar');
+(1, 'Laboratório de Engenharia de Software', 'Bloco A - Térreo'),
+(2, 'Sala de Aula 2', 'Bloco B - 1º Andar'),
+(3, 'Auditório Principal', 'Bloco C - Térreo'),
+(4, 'Laboratório de Ciências', 'Bloco D - 2º Andar'),
+(5, 'Sala de Estudos Avançados', 'Biblioteca - 3º Andar');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `aluno`
+-- Índices para tabela `aluno`
 --
 ALTER TABLE `aluno`
   ADD PRIMARY KEY (`num_matri`);
 
 --
--- Índices de tabela `cursos`
+-- Índices para tabela `cursos`
 --
 ALTER TABLE `cursos`
   ADD PRIMARY KEY (`id_cursos`);
 
 --
--- Índices de tabela `dependentes`
+-- Índices para tabela `dependentes`
 --
 ALTER TABLE `dependentes`
-  ADD PRIMARY KEY (`cod_depe`);
+  ADD PRIMARY KEY (`cod_depe`),
+  ADD KEY `cod_doce` (`cod_doce`);
 
 --
--- Índices de tabela `disciplina`
+-- Índices para tabela `disciplina`
 --
 ALTER TABLE `disciplina`
   ADD PRIMARY KEY (`cod_disc`),
   ADD KEY `codigo_sala` (`codigo_sala`);
 
 --
--- Índices de tabela `docente`
+-- Índices para tabela `docente`
 --
 ALTER TABLE `docente`
-  ADD PRIMARY KEY (`cod_doce`),
-  ADD KEY `codigo_dependente` (`codigo_dependente`);
+  ADD PRIMARY KEY (`cod_doce`);
 
 --
--- Índices de tabela `matricula`
+-- Índices para tabela `matricula`
 --
 ALTER TABLE `matricula`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `numero_matricula` (`numero_matricula`);
+  ADD PRIMARY KEY (`id_matricula`),
+  ADD KEY `numero_matricula` (`numero_matricula`),
+  ADD KEY `id_curso` (`id_curso`);
 
 --
--- Índices de tabela `sala`
+-- Índices para tabela `sala`
 --
 ALTER TABLE `sala`
   ADD PRIMARY KEY (`cod_sala`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `cursos`
+--
+ALTER TABLE `cursos`
+  MODIFY `id_cursos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `dependentes`
+--
+ALTER TABLE `dependentes`
+  MODIFY `cod_depe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `disciplina`
+--
+ALTER TABLE `disciplina`
+  MODIFY `cod_disc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de tabela `docente`
+--
+ALTER TABLE `docente`
+  MODIFY `cod_doce` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `matricula`
 --
 ALTER TABLE `matricula`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- Restrições para tabelas despejadas
+-- AUTO_INCREMENT de tabela `sala`
+--
+ALTER TABLE `sala`
+  MODIFY `cod_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `disciplina`
+-- Limitadores para a tabela `dependentes`
+--
+ALTER TABLE `dependentes`
+  ADD CONSTRAINT `dependentes_ibfk_1` FOREIGN KEY (`cod_doce`) REFERENCES `docente` (`cod_doce`);
+
+--
+-- Limitadores para a tabela `disciplina`
 --
 ALTER TABLE `disciplina`
   ADD CONSTRAINT `disciplina_ibfk_1` FOREIGN KEY (`codigo_sala`) REFERENCES `sala` (`cod_sala`);
 
 --
--- Restrições para tabelas `docente`
---
-ALTER TABLE `docente`
-  ADD CONSTRAINT `docente_ibfk_1` FOREIGN KEY (`codigo_dependente`) REFERENCES `dependentes` (`cod_depe`);
-
---
--- Restrições para tabelas `matricula`
+-- Limitadores para a tabela `matricula`
 --
 ALTER TABLE `matricula`
-  ADD CONSTRAINT `matricula_ibfk_1` FOREIGN KEY (`numero_matricula`) REFERENCES `aluno` (`num_matri`);
+  ADD CONSTRAINT `matricula_ibfk_1` FOREIGN KEY (`numero_matricula`) REFERENCES `aluno` (`num_matri`),
+  ADD CONSTRAINT `matricula_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_cursos`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
