@@ -14,15 +14,6 @@ https://drive.google.com/drive/folders/1RE9CtYNremMWGHCzeqHWmN87vmxDvIib
 
 	Maratona:
 
-https://auth.netacad.com/auth/realms/skillsforall/login-actions/authenticate?client_id=b2e-marketplace&tab_id=ghPequfjRu4&client_data=eyJydSI6Imh0dHBzOi8vd3d3Lm5ldGFjYWQuY29tL2NhdGFsb2dzL2xlYXJuIiwicnQiOiJjb2RlIiwicm0iOiJmcmFnbWVudCIsInN0IjoiMWEyYWViZWItNWYzYi00ZTQwLWEwMmYtODVmNTA4NTdhOGZiIn0&execution=544c98b5-6b03-41d5-b104-b625ecff8ce5&kc_locale=en
-
-https://forms.office.com/r/jyBG7eWBzD
-
-📌 17/03/2025 – Início da Maratona
 📌 06/04/2025 – Fim da Maratona
 📌 28/04/2025 – Anúncio das academias e instrutores vencedores
 📌 08/05/2025 – Envio do relatório dos alunos pelos instrutores
-
-	Inglês: 
-
-https://www.netacad.com/courses/english-for-it1?courseLang=en-US&instance_id=b62748cf-9ec6-485d-806f-1f3b69e075f2
