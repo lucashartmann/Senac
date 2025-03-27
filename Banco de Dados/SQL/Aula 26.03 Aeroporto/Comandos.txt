@@ -240,3 +240,36 @@ SELECT tecnico.nome_completo, modelo.nome
 FROM tecnico_modelo 
 JOIN tecnico ON tecnico.id_tecnico = tecnico_modelo.cod_tecnico 
 JOIN modelo ON modelo.id_modelo = tecnico_modelo.cod_modelo;
+
+SELECT tecnico.nome_completo AS Tecnico
+FROM tecnico_modelo 
+JOIN tecnico ON tecnico.id_tecnico = tecnico_modelo.cod_tecnico 
+JOIN modelo ON modelo.id_modelo = tecnico_modelo.cod_modelo
+WHERE modelo.nome = '777';
+
+SELECT aviao.prefixo AS Aviao,
+	voo.horario_partida AS Partida,
+	voo.horario_chegada AS Chegada,
+	modelo.nome AS Modelo,
+	empresa.nome AS Empresa
+FROM voo
+JOIN aviao ON aviao.id_aviao = voo.cod_aviao,
+JOIN modelo ON modelo.id_modelo = aviao.cod_modelo,
+JOIN empresa ON empresa.id_empresa = aviao.cod_empresa;
+
+SELECT aviao.prefixo AS Aviao,
+	voo.horario_partida AS Partida,
+	voo.horario_chegada AS Chegada,
+	modelo.nome AS Modelo,
+	empresa.nome AS Empresa
+FROM voo
+JOIN aviao ON aviao.id_aviao = voo.cod_aviao,
+JOIN modelo ON modelo.id_modelo = aviao.cod_modelo,
+JOIN empresa ON empresa.id_empresa = aviao.cod_empresa
+WHERE empresa.nome = 'Gol'
+ORDER BY aviao.prefixo;
+
+SELECT empregados.nome AS Nome, empregados.endereco AS Endereco, empregados.email AS Email, cidade.nome || ',' || estado.uf AS Localização
+FROM empregados
+JOIN cidade ON cidade.id_cidade = empregados.cod_cidade,
+JOIN estado ON estado.id_estado = empregados.cod_estado;
