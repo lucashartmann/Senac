@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26/03/2025 às 16:02
+-- Tempo de geração: 27/03/2025 às 15:13
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `aeroporto` (
   `id_aeroporto` int(11) NOT NULL,
   `capacidade` int(200) NOT NULL,
-  `peso_max` float(5,5) NOT NULL
+  `peso_max` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -38,11 +38,11 @@ CREATE TABLE `aeroporto` (
 --
 
 INSERT INTO `aeroporto` (`id_aeroporto`, `capacidade`, `peso_max`) VALUES
-(1, 200, 0.99999),
-(2, 100, 0.99999),
-(3, 50, 0.99999),
-(4, 20, 0.99999),
-(5, 10, 0.99999);
+(1, 200, 1000),
+(2, 100, 1000),
+(3, 50, 1000.1),
+(4, 20, 2000),
+(5, 10, 30000);
 
 -- --------------------------------------------------------
 
@@ -54,19 +54,20 @@ CREATE TABLE `aviao` (
   `id_aviao` int(11) NOT NULL,
   `prefixo` varchar(10) NOT NULL,
   `cod_modelo` int(11) NOT NULL,
-  `cod_empresa` int(11) NOT NULL
+  `cod_empresa` int(11) NOT NULL,
+  `obs` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Despejando dados para a tabela `aviao`
 --
 
-INSERT INTO `aviao` (`id_aviao`, `prefixo`, `cod_modelo`, `cod_empresa`) VALUES
-(1, 'ADSDS22', 1, 1),
-(2, 'FSFSF21', 2, 1),
-(3, 'FSFS1', 3, 2),
-(4, 'FSDGFD', 4, 4),
-(5, 'ASASEW3', 5, 3);
+INSERT INTO `aviao` (`id_aviao`, `prefixo`, `cod_modelo`, `cod_empresa`, `obs`) VALUES
+(1, 'ADSDS22', 1, 1, NULL),
+(2, 'FSFSF21', 2, 1, NULL),
+(3, 'FSFS1', 3, 2, NULL),
+(4, 'FSDGFD', 4, 4, NULL),
+(5, 'ASASEW3', 5, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -172,8 +173,8 @@ CREATE TABLE `modelo` (
   `id_modelo` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `capacidade` int(250) NOT NULL,
-  `combustivel` float(5,5) NOT NULL,
-  `peso` float(5,5) NOT NULL
+  `combustivel` float NOT NULL,
+  `peso` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -181,11 +182,11 @@ CREATE TABLE `modelo` (
 --
 
 INSERT INTO `modelo` (`id_modelo`, `nome`, `capacidade`, `combustivel`, `peso`) VALUES
-(1, 'ASD-3423', 250, 0.99999, 0.99999),
-(2, 'ASD-3421', 100, 0.99999, 0.99999),
-(3, 'DSDS-34E323', 50, 0.99999, 0.99999),
-(4, 'BTREAVEE', 130, 0.99999, 0.99999),
-(5, 'GFE-34232', 110, 0.99999, 0.99999);
+(1, 'ASD-3423', 250, 1000, 1000),
+(2, 'ASD-3421', 100, 1000, 1000),
+(3, 'DSDS-34E323', 50, 1000.1, 1000.1),
+(4, 'BTREAVEE', 130, 2000, 2000),
+(5, 'GFE-34232', 110, 30000, 30000);
 
 -- --------------------------------------------------------
 
