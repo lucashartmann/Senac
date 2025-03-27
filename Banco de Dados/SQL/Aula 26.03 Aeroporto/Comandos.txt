@@ -157,3 +157,86 @@ VALUES (6, 1),
 (7, 1),
 (8, 3),
 (9, 4);
+
+ALTER TABLE aeroporto 
+CHANGE peso_max peso_max float(10) NOT NULL;
+
+// Tive problema com float(5,5) então decidi mudar
+
+UPDATE aeroporto
+SET peso_max = 1000
+WHERE id_aeroporto = 1;
+UPDATE aeroporto
+SET peso_max = 1000
+WHERE id_aeroporto = 2;
+UPDATE aeroporto
+SET peso_max = 1000.10
+WHERE id_aeroporto = 3;
+UPDATE aeroporto
+SET peso_max = 2000
+WHERE id_aeroporto = 4;
+UPDATE aeroporto
+SET peso_max = 30000
+WHERE id_aeroporto = 5;
+
+ALTER TABLE modelo 
+CHANGE combustivel combustivel float(10) NOT NULL;
+ALTER TABLE modelo 
+CHANGE peso peso float(10) NOT NULL;
+
+UPDATE modelo
+SET peso = 1000
+WHERE id_modelo = 1;
+UPDATE modelo
+SET peso = 1000
+WHERE id_modelo = 2;
+UPDATE modelo
+SET peso = 1000.10
+WHERE id_modelo = 3;
+UPDATE modelo
+SET peso = 2000
+WHERE id_modelo = 4;
+UPDATE modelo
+SET peso = 30000
+WHERE id_modelo = 5;
+
+UPDATE modelo
+SET combustivel = 1000
+WHERE id_modelo = 1;
+UPDATE modelo
+SET combustivel = 1000
+WHERE id_modelo = 2;
+UPDATE modelo
+SET combustivel = 1000.10
+WHERE id_modelo = 3;
+UPDATE modelo
+SET combustivel = 2000
+WHERE id_modelo = 4;
+UPDATE modelo
+SET combustivel = 30000
+WHERE id_modelo = 5;
+
+ALTER TABLE aviao 
+ADD obs TEXT(140) NULL;
+
+// Tinha esquecido de adicionar o campo obs
+
+SELECT aviao.prefixo, modelo.nome, modelo.capacidade, modelo.combustivel, modelo.peso, empresa.nome 
+FROM aviao 
+JOIN modelo ON modelo.id_modelo = aviao.cod_modelo 
+JOIN empresa ON empresa.id_empresa = aviao.cod_empresa;
+
+SELECT empregados.nome_completo, empregados.endereco, cidade.nome, estado.uf 
+FROM empregados 
+JOIN cidade ON cidade.id_cidade = empregados.cod_cidade 
+JOIN estado ON estado.id_estado = empregados.cod_estado;
+
+SELECT tecnico.codigo, tecnico.nome_completo, tecnico.email, tecnico.telefone, modelo.nome, modelo.capacidade, modelo.combustivel, modelo.peso 
+FROM tecnico_modelo 
+JOIN tecnico ON tecnico.id_tecnico = tecnico_modelo.cod_tecnico 
+JOIN modelo ON modelo.id_modelo = tecnico_modelo.cod_modelo;
+
+SELECT tecnico.nome_completo, modelo.nome 
+FROM tecnico_modelo 
+JOIN tecnico ON tecnico.id_tecnico = tecnico_modelo.cod_tecnico 
+JOIN modelo ON modelo.id_modelo = tecnico_modelo.cod_modelo;
