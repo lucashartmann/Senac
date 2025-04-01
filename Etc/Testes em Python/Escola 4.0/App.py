@@ -39,10 +39,33 @@ def menu(alunos, professores, cursos):
             case 8:
                 verTurmas # Falta implementar
             case 9:
+                # return
                 quit()
             case _:
                 print('Opção errada, tente novamente')
         menu(alunos, professores, cursos)
+
+def cadastroTurma(turmas, alunos, professores, cursos):
+    nomeTurma = input("Digite o nome da turma: ")
+    turma = (nomeTurma)
+    nomeAluno = input("Digite o nome do aluno: ")
+    aluno = (nomeAluno)
+    nomeProfessor = input("Digite o nome do professor: ") 
+    professor = (nomeProfessor)
+    nomeCurso = input("Digite o nome do curso: ")
+    curso = (nomeCurso)
+    boolProfessor, boolAluno, boolCurso = False
+    for x in alunos:
+        if (alunos[x] == aluno):
+            return boolAluno==True
+    for x in professores:
+        if(professores[x] == professor):
+            return boolProfessor==True
+    for x in cursos:
+        if(cursos[x] == curso):
+            return boolCurso==True
+    # if boolProfessor == True and boolCurso != True and boolAluno != True:]
+    turma = (nomeTurma, professor, aluno, curso)
 
 def cadastroAluno(alunos):
     soma = 0
