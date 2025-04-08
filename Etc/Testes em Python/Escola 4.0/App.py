@@ -1,8 +1,8 @@
 def main():
-    alunos = {}
-    professores = {}
-    cursos = {}
-    turmas = {}
+    alunos = []
+    professores = []
+    cursos = []
+    turmas = []
     menu(alunos, professores, cursos)
 
 def menu(alunos, professores, cursos):
@@ -74,11 +74,21 @@ def cadastroAluno(alunos):
         nome = input("Digite o nome do aluno: ")
         if nome != '':
             aluno = (nome)
-            alunos[soma] = aluno
-            soma = soma + 1
-            print('Aluno cadastrado')
+            if (len(alunos) > 0):
+                for x in alunos:
+                    if(x == aluno):
+                        print("Erro. Aluno já está cadastrado")
+                        break
+                    else:
+                        alunos.append(aluno)
+                        soma = soma + 1
+                        print('Aluno cadastrado')
+            else:
+                alunos.append(aluno)
+                soma = soma + 1
+                print('Aluno cadastrado')
         else:
-            print('Nome inválido')
+            print('Erro. Nome inválido')
 
 def cadastroProfessor(professores):
     soma = 0
@@ -87,9 +97,19 @@ def cadastroProfessor(professores):
         nome = input("Digite o nome do professor: ")
         if nome != '':
             professor = (nome)
-            professores[soma] = professor
-            soma = soma + 1
-            print('Professor cadastrado')
+            if (len(professores) > 0):
+                for x in professores:
+                    if(x == nome):
+                        print("Erro. Professor já está cadastrado")
+                        break
+                    else:
+                        professores.append(professor)
+                        soma = soma + 1
+                        print('Professor cadastrado')
+            else:
+                professores.append(professor)
+                soma = soma + 1
+                print('Professor cadastrado')
         else:
             print('Nome inválido')
 
@@ -100,26 +120,45 @@ def cadastroCurso(cursos):
         nome = input("Digite o nome do curso: ")
         if nome != '':
             curso = (nome)
-            cursos[soma] = curso
-            soma = soma + 1
-            print('Cursos cadastrado')
+            if (len(cursos) > 0):
+                for x in cursos:
+                    if(x == nome):
+                        print("Erro. Cursos já está cadastrado")
+                        break
+                    else:
+                        cursos.append(curso)
+                        soma = soma + 1
+                        print('Cursos cadastrado')
+            else: 
+                cursos.append(curso)
+                soma = soma + 1
+                print('Cursos cadastrado')
         else:
             print('Nome inválido')
 
 def verAlunos(alunos):
-    print('Alunos Cadastrados: ')
-    for x in alunos:
-        print(alunos[x])    
+    if (len(alunos) > 0):
+        print('Alunos Cadastrados: ')
+        for x in alunos:
+            print(x)
+    else:
+        print("Erro. Não há alunos cadastrados")    
 
 def verProfessores(professores):
-    print('Professores Cadastrados: ')
-    for x in professores:
-        print(professores[x])    
+    if (len(professores) > 0):
+        print('Professores Cadastrados: ')
+        for x in professores:
+            print(x)    
+    else:
+        print("Erro. Não há professores cadastrados") 
 
 def verCursos(cursos):
-    print('Cursos Cadastrados: ')
-    for x in cursos:
-        print(cursos[x])    
+    if (len(cursos) > 0):
+        print('Cursos Cadastrados: ')
+        for x in cursos:
+            print(x)    
+    else:
+        print("Erro. Não há cursos cadastrados") 
 
 if __name__ == '__main__':
     main()
