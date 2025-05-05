@@ -1,0 +1,17 @@
+Name:
+Tech Experience:
+Projects:
+Interests:
+
+-- ME:
+Hello, my name is Lucas Augusto. I am a developer with experience in Java and currently studying Python in my System Development course at Senac Tech. I’ve worked on several personal projects like a system for a car dealership, a hospital management system, and a program that calculates how many years, months, days, hours, and minutes you have lived.
+
+I currently work at a real estate agency. My job is to add properties to the company's system and create sales and rental contracts.
+
+My current goal is to build projects using Python, possibly porting the ones I've created to Java. I also want to learn C++ to help with emulator development and I want to work in software development.
+
+-- My Comapany:
+
+Hello, my name is Lucas, and I’m here to talk about my company called Little Potato. Little Potato is a company specialized in AI optimization. We take the manual tasks you do every day and automate them using AI. Do you need to send an email to a coworker or a message to all your customers about a new product? No problem—Little Potato AI does it for you.
+
+Need to review resignation letters, contact HR, or file a complaint about a coworker? Little Potato does it all. You just need to click a button. Little Potato connects to your company’s database and all internal departments, bringing your employees together. It’s like ChatGPT, but private and focused in company work.
