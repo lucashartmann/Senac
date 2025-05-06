@@ -8,7 +8,7 @@ Hello, my name is Lucas Augusto. I am a developer with experience in Java and cu
 
 I currently work at a real estate agency. My job is to add properties to the company's system and create sales and rental contracts.
 
-My current goal is to build projects using Python, possibly porting the ones I've created to Java. I also want to learn C++ to help with emulator development and I want to work in software development.
+My current goal is to build projects using Python, possibly porting t0he ones I've created to Java. I also want to learn C++ to help with emulator development and I want to work in software development.
 
 -- My Comapany:
 
