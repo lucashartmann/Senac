@@ -1,0 +1,275 @@
+CREATE TABLE aeroporto (
+	id_aeroporto INT PRIMARY KEY AUTO_INCREMENT,
+	capacidade INT(200) NOT NULL,
+	peso_max FLOAT(5,5) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+
+CREATE TABLE modelo (
+	id_modelo INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(50) NOT NULL,
+	capacidade INT(250) NOT NULL,
+	combustivel FLOAT(5,5) NOT NULL,
+	peso FLOAT(5,5) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+
+CREATE TABLE tecnico (
+	id_tecnico INT PRIMARY KEY AUTO_INCREMENT,
+	codigo INT UNIQUE NOT NULL,
+	nome_completo VARCHAR(100) NOT NULL,
+	email VARCHAR(100) UNIQUE NOT NULL,
+	telefone BIGINT(11) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+
+CREATE TABLE tecnico_modelo (
+	cod_tecnico INT NOT NULL,
+	cod_modelo INT NOT NULL,
+	FOREIGN KEY (cod_tecnico) REFERENCES tecnico (id_tecnico),
+	FOREIGN KEY (cod_modelo) REFERENCES modelo (id_modelo)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+
+CREATE TABLE empresa (
+	id_empresa INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(50) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+
+CREATE TABLE cidade (
+	id_cidade INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(100) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+
+CREATE TABLE estado (
+	id_estado INT PRIMARY KEY AUTO_INCREMENT,
+	uf char(2) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE aviao (
+	id_aviao INT PRIMARY KEY AUTO_INCREMENT,
+	prefixo VARCHAR(10) UNIQUE NOT NULL,
+	cod_modelo INT NOT NULL,
+	cod_empresa INT NOT NULL,
+	FOREIGN KEY (cod_modelo) REFERENCES modelo (id_modelo), 
+	FOREIGN KEY (cod_empresa) REFERENCES empresa (id_empresa)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+
+CREATE TABLE voo (
+	id_voo INT PRIMARY KEY AUTO_INCREMENT,
+	horario_partida DATETIME NOT NULL,
+	horario_chegada DATETIME NOT NULL,
+	cod_aviao INT NOT NULL,
+	FOREIGN KEY (cod_aviao) REFERENCES aviao (id_aviao)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+
+CREATE TABLE empregados (
+	id_empregados INT PRIMARY KEY AUTO_INCREMENT,
+	codigo INT UNIQUE NOT NULL,
+	nome_completo VARCHAR(100) NOT NULL,
+	endereco VARCHAR(100) NOT NULL,
+	cod_cidade INT NOT NULL,
+	cod_estado INT NOT NULL,
+	telefone BIGINT(11) NOT NULL,
+	email VARCHAR(50) UNIQUE NOT NULL,
+	FOREIGN KEY (cod_cidade) REFERENCES cidade (id_cidade), 
+	FOREIGN KEY (cod_estado) REFERENCES estado (id_estado)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+
+INSERT INTO aeroporto (capacidade, peso_max)
+VALUES (200, 1000.2),
+ (100, 1000.2343), 
+ (50, 400.232), 
+ (20, 500.2000), 
+ (10, 2000.1);
+
+INSERT INTO cidade (nome)
+VALUES ('Porto Alegre'),
+ ('Buenos Aires'), 
+ ('Caxias'), 
+ ('Natal'), 
+ ('Lisboa');
+
+INSERT INTO estado (uf)
+VALUES ('RS'),
+ ('SC'), 
+ ('RN'), 
+ ('SP'), 
+ ('RJ');
+
+INSERT INTO empresa (nome)
+VALUES ('GOL'),
+('Avianca'),
+('AZUL'),
+('PANAM'),
+('Emirates');
+
+INSERT INTO tecnico (codigo, nome_completo, email, telefone)
+VALUES (1, 'Lucas Fernandes Oliveira', 'lucas@hotmail.com', 51999999999),
+(2, 'Marcelo Souza Vieira', 'Marcelo@hotmail.com', 51888888888),
+(3, 'Luisa Castro Alves', 'Luisa@hotmail.com', 51777777777),
+(4, 'Yuri Ribamar Monchuieve', 'Yuri@gmail.com', 51666666666),
+(5, 'William Bonner da Silva', 'William@hotmail.com', 51555555555);
+
+INSERT INTO modelo (nome, capacidade, combustivel, peso)
+VALUES ('ASD-3423', 250, 100.2,300.1),
+('ASD-3421', 100, 200.2,240.1),
+('DSDS-34E323', 50, 300.2,120.1),
+('BTREAVEE', 130, 400.2,200.1),
+('GFE-34232', 110, 500.2,100.1);
+
+INSERT INTO aviao (prefixo, cod_modelo, cod_empresa)
+VALUES ('ADSDS22', 1, 1),
+('FSFSF21', 2, 1),
+('FSFS1', 3, 2),
+('FSDGFD', 4, 4),
+('ASASEW3', 5, 3);
+
+INSERT INTO empregados (codigo, nome_completo, endereco, cod_cidade, cod_estado, telefone, email)
+VALUES (1, 'Jorge Ferreira Abreu', 'Av. Santo Agostinho 29', 1, 1, 51111111111, 'Jorge@hotmail.com'),
+(2, 'Marcielly Pereira Borges', 'Lima e Silva 400', 1, 1, 51222222222, 'Maumau@hotmail.com'),
+(3, 'Rosane Fernanda dos Santos', 'Av. Bento Gonçalves 204', 2, 2, 51333333333, 'Rosane@gmail.com'),
+(4, 'Lisangêla Thais Silva', 'Travessa Ferreira 409', 3, 3, 51444444444, 'Lisangêla@hotmail.com'),
+(5, 'Thais Augusta Fernandes', 'Zélia Maria A. Bichequer 10', 4, 5, 51555555555, 'Thais@hotmail.com');
+
+INSERT INTO voo (horario_partida, horario_chegada, cod_aviao)
+VALUES ('20240502 09.10', '20240503 10.10', 1),
+('20230402 12.10', '20240402 09.10', 2),
+('20240502 09.10', '20240503 10.10', 3),
+('20240502 09.10', '20240503 10.10', 4),
+('20240502 09.10', '20240503 10.10', 5);
+
+UPDATE voo
+SET horario_partida = '2024-05-04 09.00.00', horario_chegada = '2024-05-05 12.30.00'
+WHERE id_voo = 1;
+UPDATE voo
+SET horario_partida = '2024-05-04 09.00.00', horario_chegada = '2024-05-05 12.30.00'
+WHERE id_voo = 2;
+UPDATE voo
+SET horario_partida = '2023-03-02 01.20.00', horario_chegada = '2024-03-04 03.45.00'
+WHERE id_voo = 3;
+UPDATE voo
+SET horario_partida = '2024-05-04 03.00.00', horario_chegada = '2024-05-04 04.00.00'
+WHERE id_voo = 4;
+UPDATE voo
+SET horario_partida = '2024-05-04 09.00.00', horario_chegada = '2024-05-05 15.10.00'
+WHERE id_voo = 5;
+
+INSERT INTO tecnico_modelo (cod_tecnico, cod_modelo)
+VALUES (6, 1),
+(6, 2),
+(7, 1),
+(8, 3),
+(9, 4);
+
+ALTER TABLE aeroporto 
+CHANGE peso_max peso_max float(10) NOT NULL;
+
+// Tive problema com float(5,5) então decidi mudar
+
+UPDATE aeroporto
+SET peso_max = 1000
+WHERE id_aeroporto = 1;
+UPDATE aeroporto
+SET peso_max = 1000
+WHERE id_aeroporto = 2;
+UPDATE aeroporto
+SET peso_max = 1000.10
+WHERE id_aeroporto = 3;
+UPDATE aeroporto
+SET peso_max = 2000
+WHERE id_aeroporto = 4;
+UPDATE aeroporto
+SET peso_max = 30000
+WHERE id_aeroporto = 5;
+
+ALTER TABLE modelo 
+CHANGE combustivel combustivel float(10) NOT NULL;
+ALTER TABLE modelo 
+CHANGE peso peso float(10) NOT NULL;
+
+UPDATE modelo
+SET peso = 1000
+WHERE id_modelo = 1;
+UPDATE modelo
+SET peso = 1000
+WHERE id_modelo = 2;
+UPDATE modelo
+SET peso = 1000.10
+WHERE id_modelo = 3;
+UPDATE modelo
+SET peso = 2000
+WHERE id_modelo = 4;
+UPDATE modelo
+SET peso = 30000
+WHERE id_modelo = 5;
+
+UPDATE modelo
+SET combustivel = 1000
+WHERE id_modelo = 1;
+UPDATE modelo
+SET combustivel = 1000
+WHERE id_modelo = 2;
+UPDATE modelo
+SET combustivel = 1000.10
+WHERE id_modelo = 3;
+UPDATE modelo
+SET combustivel = 2000
+WHERE id_modelo = 4;
+UPDATE modelo
+SET combustivel = 30000
+WHERE id_modelo = 5;
+
+ALTER TABLE aviao 
+ADD obs TEXT(140) NULL;
+
+// Tinha esquecido de adicionar o campo obs
+
+SELECT aviao.prefixo, modelo.nome, modelo.capacidade, modelo.combustivel, modelo.peso, empresa.nome 
+FROM aviao 
+JOIN modelo ON modelo.id_modelo = aviao.cod_modelo 
+JOIN empresa ON empresa.id_empresa = aviao.cod_empresa;
+
+SELECT empregados.nome_completo, empregados.endereco, cidade.nome, estado.uf 
+FROM empregados 
+JOIN cidade ON cidade.id_cidade = empregados.cod_cidade 
+JOIN estado ON estado.id_estado = empregados.cod_estado;
+
+SELECT tecnico.codigo, tecnico.nome_completo, tecnico.email, tecnico.telefone, modelo.nome, modelo.capacidade, modelo.combustivel, modelo.peso 
+FROM tecnico_modelo 
+JOIN tecnico ON tecnico.id_tecnico = tecnico_modelo.cod_tecnico 
+JOIN modelo ON modelo.id_modelo = tecnico_modelo.cod_modelo;
+
+SELECT tecnico.nome_completo, modelo.nome 
+FROM tecnico_modelo 
+JOIN tecnico ON tecnico.id_tecnico = tecnico_modelo.cod_tecnico 
+JOIN modelo ON modelo.id_modelo = tecnico_modelo.cod_modelo;
+
+SELECT tecnico.nome_completo AS Tecnico
+FROM tecnico_modelo 
+JOIN tecnico ON tecnico.id_tecnico = tecnico_modelo.cod_tecnico 
+JOIN modelo ON modelo.id_modelo = tecnico_modelo.cod_modelo
+WHERE modelo.nome = '777';
+
+SELECT aviao.prefixo AS Aviao,
+	voo.horario_partida AS Partida,
+	voo.horario_chegada AS Chegada,
+	modelo.nome AS Modelo,
+	empresa.nome AS Empresa
+FROM voo
+JOIN aviao ON aviao.id_aviao = voo.cod_aviao,
+JOIN modelo ON modelo.id_modelo = aviao.cod_modelo,
+JOIN empresa ON empresa.id_empresa = aviao.cod_empresa;
+
+SELECT aviao.prefixo AS Aviao,
+	voo.horario_partida AS Partida,
+	voo.horario_chegada AS Chegada,
+	modelo.nome AS Modelo,
+	empresa.nome AS Empresa
+FROM voo
+JOIN aviao ON aviao.id_aviao = voo.cod_aviao,
+JOIN modelo ON modelo.id_modelo = aviao.cod_modelo,
+JOIN empresa ON empresa.id_empresa = aviao.cod_empresa
+WHERE empresa.nome = 'Gol'
+ORDER BY aviao.prefixo;
+
+SELECT empregados.nome AS Nome, empregados.endereco AS Endereco, empregados.email AS Email, cidade.nome || ',' || estado.uf AS Localização
+FROM empregados
+JOIN cidade ON cidade.id_cidade = empregados.cod_cidade,
+JOIN estado ON estado.id_estado = empregados.cod_estado;
