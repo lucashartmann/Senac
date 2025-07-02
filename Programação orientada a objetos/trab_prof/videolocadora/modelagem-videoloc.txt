@@ -1,0 +1,25 @@
+ALUGAR UM FILME
+
+o filme
+	estar alugado: 
+	estar no acervo
+	está danificado
+	valor 
+	classificação etária
+	gênero
+	categoria
+
+categoria
+	nome
+	multa por dano
+	
+o cliente
+	quem está alugando
+
+o aluguel
+	data de retirada
+	data de devolução
+	valor do aluguel
+	juros cobrado por atraso
+
+se o filme for danificado, paga multa

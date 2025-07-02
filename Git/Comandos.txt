@@ -1,0 +1,9 @@
+git clone ....
+git branch mapa
+git checkout mapa
+git pull origin main
+git add .
+git commit -m "Mapa criado"
+git push --set-upstream origin mapa
+
+abre o GitHub e faz o pull request

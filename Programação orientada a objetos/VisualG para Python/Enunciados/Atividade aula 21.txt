@@ -1,0 +1,29 @@
+Atividade aula 21
+
+1 - Crie um programa para uma loja de venda de brinquedos antigos.
+O sistema deve ter um menu com os itens para venda.
+1 - Carrinho a controle remoto super máquina - R$ 500,00
+2 - Boneca Barbie R$ 450,00
+3 - Boneco cobra comandos em ação R$ 300,00
+4 - Boneco fofão R$ 480,00
+5 - Vídeo game Atari R$ 820,00
+6 - Jogo super mário R$ 100,00
+7 - Bicicleta caloi cross extra R$ 5.000,00
+
+O Sistema deve permitir para o cliente comprar mais de um produto.
+
+Apresentar o menu de opções para pagamento:
+
+Menu
+
+1 - A vista em dinheiro ou PIX, 5% de desconto
+2 - No cartão de débito, mesmo preço
+3 - No cartão de crédito em 1x, acréscimo de 5%
+4 - No cartão de crédito em 2x, acréscimo de 5%
+5 - No cartão de crédito em 3x, acréscimo de 8%
+6 - No cartão de crédito em 4x, acréscimo de 8%
+7 - No cartão de crédito em 5x, acréscimo de 10%
+
+Ao final, ele deve mostrar o nome dos produtos comprados o valor individual de cada produto, o preço total da compra, o modo de pagamento, e caso seja parcelado, o valor de cada parcela
+
+* Utilizar função

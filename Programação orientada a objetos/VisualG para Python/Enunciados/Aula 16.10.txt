@@ -1,0 +1,68 @@
+Algoritmo Um (Imprimir 10 vezes nome):
+
+Variáveis:
+nome = "Roberto"
+count = 0
+
+Inicio:
+Enquanto count < 10
+	Escrever "Nome: " nome
+	count = count + 1
+Fim
+
+Algoritmo Dois (Imprimir numero de 1 a 1000):
+
+Variáveis:
+numeroInicial = 1
+
+Inicio:
+Enquanto numeroInicial <= 1000
+	Escrever numeroInicial
+	numeroInicial = numeroInicial + 1
+Fim
+
+Algoritmo Tres (Tabuada do 9):
+
+Variáveis:
+count = 1
+
+Inicio:
+Enquanto count <= 10
+	Imprima count + " * 9 = " + (count * 9)
+	count++
+Fim
+
+Algoritmo Quatro (Tabuada do Número Digitado):
+
+Variáveis:
+numero 
+count = 1
+
+Inicio:
+Escrever "Digite um valor"
+numero = ler numero
+Enquanto count <= 10
+	Escrever count + " * " + numero + " = " + (count * numero) 
+	count++
+Fim
+
+Algoritmo Cinco (Soma):
+
+Variáveis:
+n 
+count = 0
+soma = 0
+
+Inicio:
+Escrever "Digite um valor"
+n = ler numero
+
+Enquanto count <= n
+	soma = soma + count
+	count = count + 1;
+
+Escrever soma
+
+Fim
+
+

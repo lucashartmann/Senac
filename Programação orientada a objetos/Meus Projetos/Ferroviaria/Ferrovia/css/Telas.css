@@ -1,0 +1,82 @@
+/* TELA INICIAL */
+TelaInicial {
+    margin: 8 0 0 40;
+    height: 100%;
+    width: 70%;
+
+}
+
+.tela_inicial Button {
+    margin: 2 0 0 0;
+    height: 6;
+    width: 90%;
+    min-width: 20w;
+    border: none;
+}
+
+/* TELA VAGÃO */
+#input_peso_vagao, #input_combustivel_locomotiva, #input_peso_locomotiva {
+    width: 70%;
+    min-width: 20w;
+    height: 3;
+    margin: 1 0 1 0;
+    border: solid;
+}
+
+#label_peso_vagao, #label_combustivel_locomotiva, #label_peso_locomotiva {
+    margin: 1 0 1 0;
+    text-style: bold;
+}
+
+TelaCadastroVagao, TelaCadastroTrem, TelaCadastroLocomotiva {
+    margin: 3 0 0 0;
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 2 2;
+}
+
+#mensagem, #resultado {
+    margin: 2 0 2 0;
+    height: 18;
+    width: 96%;
+    padding: 1;
+}
+
+#textArea_Trem {
+    height: 30;
+    width: 90%;
+}
+
+/* TELA LOCOMOTIVA */
+Checkboxes {
+    margin: 1 0 1 0;
+    layout: horizontal;
+}
+
+.checkboxes_container {
+    margin: 0 2 0 2;
+}
+
+/* TELA TREM */
+
+#textArea_trem_trens, #textArea_trem_locomotivas, #textArea_trem_vagoes, #textArea_engatar{
+    height: 12;
+    width: 69;
+    margin: 0 0 0 0;
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+#input_trem_veiculo, #input_trem {
+    height: 3;
+    width: 14;
+    text-align: center;
+    align: center middle;
+}
+
+/* FOOTER E HEADER */
+Header, Footer {
+    margin: 1 0 1 0;
+    padding: 1 2;
+    text-style: bold;
+}

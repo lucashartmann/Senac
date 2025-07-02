@@ -1,0 +1,223 @@
+/* Tudo */
+
+TextArea {
+    color: rgb(255, 255, 255);
+    text-style: bold;
+}
+
+/* TELA INICIAL */
+TelaApp Button {
+    margin: 8 0 0 10;
+    height: 6;
+    border: none;
+    width: 60;
+    text-align: center;
+} 
+
+TelaApp #container_inicial {
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+TelaApp #sair {
+    margin: 0 0 0 50;
+}
+
+TelaApp #theme {
+    width: 1;
+    height: 2;
+    margin: 0 10 0 0;
+    /* cima, direita, baixo, esquerda */
+    text-align: center;
+}
+
+/* TELA VAGAO */
+
+#input_peso_vagao, #input_combustivel_locomotiva, #input_peso_locomotiva {
+    width: 30%;
+    height: 3;
+    margin: 10 0 1 0;
+    border: solid;
+}
+
+#label_peso_vagao, #label_combustivel_locomotiva, #label_peso_locomotiva {
+    margin: 11 3 0 0;
+    align-horizontal: center;
+    align-vertical: middle;
+    text-style: bold;
+}
+
+TelaVagao, TelaTrem, TelaLocomotiva {
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 2 2;
+}
+
+#mensagem, #resultado {
+    margin: 2 0 2 4;
+    height: 18;
+    width: 96%;
+    padding: 1;
+}
+
+TelaVagao #container_inicial{
+    margin: 0 0 0 2;
+}
+
+TelaVagao Button {
+    margin: 10 0 0 10;
+    width: 16%;
+    height: 25%;
+    background:rgb(4, 45, 4);
+}
+
+#textArea_Trem {
+    height: 30;
+    width: 90%;
+}
+
+/* TELA LOCOMOTIVA */
+
+TelaLocomotiva Label {
+    margin: 5 0 12 0;
+}
+
+Checkboxes {
+    margin: 1 0 1 0;
+    layout: horizontal;
+}
+
+#label_combustivel_locomotiva{
+    margin: 0 0 0 0;
+    /* cima, direita, baixo, esquerda */
+
+}
+
+#label_peso_locomotiva {
+    margin: 3 0 0 0;
+    /* cima, direita, baixo, esquerda */
+
+}
+
+#input_combustivel_locomotiva, #input_peso_locomotiva {
+    margin: 0 0 0 0;
+    width: 40%;
+}
+
+.checkboxes_container {
+    margin: 0 2 0 2;
+}
+
+TelaLocomotiva Button {
+    width: 15%;
+    height: 4;
+    text-align: center;
+    background:rgb(4, 45, 4);
+    margin: 0 3 0 0;
+}
+
+#container_TelaLocomotiva {
+    text-align: center;
+    margin: 10 0 0 0;
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+TelaLocomotiva {
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+
+/* TELA TREM */
+
+#textArea_trem_trens, #textArea_trem_locomotivas, #textArea_trem_vagoes{
+    height: 12;
+    width: 69;
+    align: center middle;
+}
+
+#input_trem_veiculo, #input_trem {
+    height: 3;
+    width: 14;
+    text-align: center;
+    align: center middle;
+}
+
+#textArea_engatar{
+    height: 12;
+    margin: 2 0 2 65;
+    width: 58%;
+    text-align: center;
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+#container_engatar{
+    margin: 0 0 5 0;
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+ #container_engatar2 {
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+#engatar {
+    margin: 0 0 0 0;
+}
+
+TelaTrem {
+    align-horizontal: center;
+    align-vertical: middle;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+TelaTrem Button {
+    width: 15%;
+    height: 4;
+    text-align: center;
+    background:rgb(4, 45, 4);
+}
+
+TelaTrem Input {
+    margin: 0 0 0 2;
+    border: solid;
+}
+
+TelaTrem Label {
+    margin: 1 0 0 0;
+}
+
+#desengatar, #engatar {
+    margin: 0 0 0 2;
+    /* cima, direita, baixo, esquerda */
+}
+
+/* TELA DADOS */
+
+TelaDados Button {
+    width: 15%;
+    background:rgb(4, 45, 4);
+    color:rgb(111, 217, 255);
+    text-style: blink;
+    border: thick rgb(111, 217, 255);   
+}
+
+TelaDados TextArea {
+    background:rgb(1, 0, 46);
+}
+
+TelaDados {
+    background: rgb(33, 11, 3);
+}
+
+/* FOOTER E HEADER */
+Header, Footer {
+    margin: 1 0 1 0;
+    padding: 1 2;
+    text-style: bold;
+}
