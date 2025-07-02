@@ -1,0 +1,5 @@
+salario_bruto = float(input("Digite o salário bruto: "))
+bonus = salario_bruto + (salario_bruto * (20/100))
+reajuste = (bonus - (bonus * (7/100)))
+print(f"O valor do salário com bonus é: {bonus}")
+print(f"O valor do salário com o desconto é: {reajuste}")

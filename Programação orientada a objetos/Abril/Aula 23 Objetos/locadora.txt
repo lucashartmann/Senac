@@ -1,0 +1,33 @@
+Midia 
+	Nome
+	Genero
+	Valor
+	Classificação Etária
+	Esta danificado
+	Categoria
+	
+- Esta no acervo
+
+Acervo
+	Midias[]
+
+- Esta no acervo (possui livro)
+
+Cliente
+	Nome
+	RG
+	CPF
+
+Aluguel
+	Midias[]
+	Data Retirada	
+	Data  que deve ser devolvido
+	prazo
+
+Devolução
+	Midias[]
+	Multa
+	Data que foi devolvido
+	Juros
+
+- Esta danificado

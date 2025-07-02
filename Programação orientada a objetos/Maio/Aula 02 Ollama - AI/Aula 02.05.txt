@@ -1,0 +1,8 @@
+ollama pull deepseek-r1:1.5b
+ollama run deepseek-r1:1.5b
+
+ollama pull codellama:7b-instruct
+ollama run codellama:7b-instruct
+
+Copilot
+Cody

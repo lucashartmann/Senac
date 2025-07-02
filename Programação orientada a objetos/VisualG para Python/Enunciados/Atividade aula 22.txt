@@ -1,0 +1,29 @@
+Atividade aula 22
+
+Melhorar o sistema de folha de pagamento
+
+Criar um sistema para calcular a folha de pagamento de um funcionário.
+
+O Sistema deve Receber:
+
+-- o nome
+-- a quantidade de horas que o funcionário trabalhou no mês 
+-- o valor que ele recebe por hora trabalhada
+-- o valor do vale alimetação 
+-- o valor do vale transporte
+
+O sistema deve calcular: 
+
+-- desconto de INSS, conforme alícota (ver na internet), 
+-- o desconto de 6% do salário bruto do vale alimentação, 
+-- e 6% de desconto sobre o salário bruto do vale trasporte (o valor do desconto não pode ser maior que o valor que o funcionário recebeu de vale transporte). 
+
+Ao final: 
+
+-- mostrar o nome do funcionário 
+-- o valor do vale alimentação 
+-- vale trasporte
+-- salário líquido 
+-- salário bruto 
+-- valor do desconto do INSS
+-- desconto de vale trasporte e alimentação.
