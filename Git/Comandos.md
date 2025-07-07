@@ -1,6 +1,6 @@
 ### Atalhos
 
-- **q** -> sair do arquivo
+- **q** -> sair do vi ou do les
 - **control + l** -> limpar a tela
 
 ### Comandos git
@@ -16,34 +16,40 @@
     - **git config --global**
         - **git config --global user.email** "lucas@email.com"
         - **git conig --global user.name** "lucas"
-        - **git config --global init.defaultBranch** main -> git define as branchs default como master. Esse comando altera para main
+        - **git config --global init.defaultBranch** main -> git define as branchs default como "master". Esse comando altera para "main"
 - **git add**
-    - **git add** . -> Prepara todos os arquivos para o commit. Salva as alterações
-    - **git add** -u -> adiciona só os arquivos modificados
+    - **git add .** -> Prepara todos os arquivos para o commit. Salva as alterações
+    - **git add -u** -> adiciona só os arquivos modificados
 - **git commit**
     - **git commit -m** "nome do commit"
     - tecla i --> digita o nome do commit --> ESC -> :wq (salva e sai) (write and quit)
-- **git pull**
+- **git pull** -> Traz as alterações do remoto para o local
     - **git pull origin main**
     - **git pull upstream main**
-- **git push**
+    - **git pull** github
+- **git push** -> manda tuas mudanças locais para o remoto (Github)
+    - **git push --set-upstream** github main -> Criou (ou usou) a branch main no remoto e mandou as mudanças do local para ela
+    - **git push** github
 - **git branch** -> lista todos as branchs
 - **git merge**
-    - - **git merge** ver1 -> (estando na main) traz as alterações da branch ver1 para a branch main
+    - **git merge** ver1 -> (estando na main) traz as alterações da branch ver1 para a branch main
 - **git rm --cached** -> Tira os arquivos do git add. Remove as mudanças staged to commit
-- **git revert** hashCommit
+- **git revert** hashCommit -> Reverte o commit
 - **git checkout**
     - **git checkout** hashCommit
-    - **git checkout** -b main -> Cria a branch main e te leva até ela
-    - **git checkout** -b ver1 -> Cria a branch ver1 e te leva até ela
+    - **git checkout -b** main -> Cria a branch main e te leva até ela
+    - **git checkout -b** ver1 -> Cria a branch ver1 e te leva até ela
     - **git checkout** main -> Te leva até a branch main
     - **git checkout** README.md -> Pega o README.md do remoto (do último commit) e trás pro local
-    -- **git checkout** main -- README.md
+    - **git checkout** main -- README.md
 - **git diff** -> Vê todas as diferenças da branch local com a remota
-- **git remote -v** -> exibe todos os repositorios remotos e locais
+- **git remote**
+    - **git remote -v** -> exibe todos os repositorios remotos e locais
+    - **git remote add** github https://github.com/proj01.git
 
 ### Comandos gerais:
 
+- **pwd** 
 - **cd** trabgit/ -> Vai para o diretorio "trabgit"
 - **mkdir** trabgit -> Cria diretorio (pasta) "trabgit"
 - **cp** arquivo.txt a -> Copia "arquivo.txt" para diretorio "a"
