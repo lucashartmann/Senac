@@ -11,6 +11,8 @@ git clone [link_do_repositório]
 
 ```bash 
 git init # Inicializa o repositório
+
+git init --bare # Inicia a ideia do teu próprio servidor git ao invés de usar github e etc
 ``` 
 
 ```bash 
@@ -19,6 +21,10 @@ git status
 
 ```bash 
 git log # Mostra todos os commits
+``` 
+
+```bash 
+git fetch # Informa tua branch local das mudanças que existem na remoto
 ``` 
 
 ```bash 
@@ -121,7 +127,7 @@ git remote add [apelido_do_repositório] [link_do_repositório]
 
 ### Comandos gerais:
 ```bash 
-pwd
+pwd # Imprime o diretório que a pessoa está
 ```
 
 ```bash 
@@ -129,7 +135,11 @@ cd [nome_da_pasta/] # Vai para o diretorio "trabgit"
 ```
 
 ```bash 
-mkdir [nome_da_nova_pasta] # Cria diretorio (pasta) "trabgit"
+mkdir [nome_da_nova_pasta] # Cria diretorio (pasta) 
+```
+
+```bash 
+rmdir [nome_da_nova_pasta] # Remove diretorio (pasta) 
 ```
 
 ```bash 
