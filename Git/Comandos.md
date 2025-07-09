@@ -26,11 +26,11 @@ git config
 
 git config --local
 git config --local user.email [email]
-git conig --local user.name [nome_do_usuário]
+git config --local user.name [nome_do_usuário]
 
 git config --global
 git config --global user.email [email]
-git conig --global user.name [nome_do_usuário]
+git config --global user.name [nome_do_usuário]
 git config --global init.defaultBranch [nome_da_branch] # git define as branchs default como "master". Esse comando altera para "main"
 ``` 
 
