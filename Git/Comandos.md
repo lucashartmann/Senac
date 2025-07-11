@@ -37,7 +37,7 @@ git config --local user.name [nome_do_usuário]
 git config --global
 git config --global user.email [email]
 git config --global user.name [nome_do_usuário]
-git config --global init.defaultBranch [nome_da_branch] # git define as branchs default como "master". Esse comando altera para "main"
+git config --global init.defaultBranch [nome_da_branch] # git define as branchs default como "master". Esse comando altera para "main" ou outra desejada
 ``` 
 
 ```bash 
@@ -85,7 +85,7 @@ git branch # lista todos as branchs
 ```bash 
 git merge
 
-git merge [nome_da_branch] # (estando na main) traz as alterações da branch ver1 para a branch main
+git merge [nome_da_branch] # (estando na main) traz as alterações da branch desejada para a branch main
 ``` 
 
 ```bash 
@@ -120,6 +120,7 @@ git remote
 git remote -v # exibe todos os repositorios remotos e locais
 
 git remote add [apelido_do_repositório] [link_do_repositório]
+
 ``` 
 
 ### VS Code
@@ -131,7 +132,13 @@ pwd # Imprime o diretório que a pessoa está
 ```
 
 ```bash 
-cd [nome_da_pasta/] # Vai para o diretorio "trabgit"
+rm [nome_do_arquivo] # Apaga arquivo
+
+rm -r [nome_do_diretorio] # Apaga diretório
+```
+
+```bash 
+cd [nome_da_pasta/] # Vai para o diretorio 
 ```
 
 ```bash 
@@ -143,7 +150,7 @@ rmdir [nome_da_nova_pasta] # Remove diretorio (pasta)
 ```
 
 ```bash 
-cp [nome_do_arquivo] a # Copia "arquivo.txt" para diretorio "a"
+cp [nome_do_arquivo] a # Copia arquivo para diretorio "a"
 ```
 
 ```bash 
@@ -157,11 +164,11 @@ ls -la
 ```
 
 ```bash 
-mv [nome_do_arquivo] [novo_nome_do_arquivo] # Renomeia o "arquivo.txt" para "arquivo.md"
+mv [nome_do_arquivo] [novo_nome_do_arquivo] # Renomeia o arquivo 
 
-mv a temp # Renomeia o diretorio "a" para "temp"
+mv [nome_do_diretorio] [novo_nome_do_diretorio] # Renomeia o arquivo 
 
-mv [nome_do_arquivo] a # Move o "arquivo.md" para dentro do diretorio "a"
+mv [nome_do_arquivo] [nome_diretorio] # Move o arquivo para dentro do diretorio 
 ```
 
 ```bash 
