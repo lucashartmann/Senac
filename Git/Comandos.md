@@ -119,8 +119,9 @@ git remote
 
 git remote -v # exibe todos os repositorios remotos e locais
 
-git remote add [apelido_do_repositório] [link_do_repositório]
+git remote add [apelido_do_repositório] [link_do_repositório] # Adiciona uma referencia a um repositório remoto
 
+git remote rm [apelido_do_repositório] # Remove a referencia a o repositório remoto
 ``` 
 
 ### VS Code
@@ -219,4 +220,9 @@ vi [nome_do_arquivo] # abre o arquivo para editar
 ```
 ```bash 
 :w [nome_do_arquivo] # cria arquivo e salva (write)
+```
+
+```bash 
+python -m venv .venv
+. .venv/Scripts/activate
 ```
