@@ -1,0 +1,21 @@
+Screen {
+    layout: grid;
+    grid-size: 3;
+    grid-gutter: 1;
+}
+
+Button {
+    color: black;
+    background: rgb(58, 163, 58);
+}
+
+Label {
+    color: magenta;
+    border: green;
+}
+
+#texto {
+    column-span: 3;
+    color: green;
+    text-style: blink;
+}
