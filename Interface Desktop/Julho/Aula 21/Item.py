@@ -36,6 +36,39 @@ complementos = [
             "m": "Usado pelo Rei de Minas", "dano": 0, "protecao": 0}
     ]
 
+icone_objeto = {
+    "espada" : "🗡️",
+    "machado" : "🪓",
+    "picareta" : "⛏️",
+    #"foice" : "",
+    "escudo" : "🛡️",
+    "calça" : "👖",
+    "capacete" : "🪖",
+    # "capa" : "",
+    #"peitoral" : "",
+    "rocha" : "🪨",
+    "cenoura" : "🥕",
+    "gema" : "💎",
+    "moeda" : "🪙",
+    #"lira" : "",
+}
+
+icone_adjetivo = {
+    #"feroz" : "",
+    "fulminante" : "💥",
+    #"vingativo" : "",
+    "belo como a lua" : "🌙",
+    "reluzente" : "🌟",
+}
+
+icone_complemento = {
+    "forjada na lua" : "🌙",
+    #"do minotauro" : "",
+    #"dos confins do inferno" : "🔥",
+    #"enferrujada" : "",
+    #"perfeita" : "",
+}
+
 import random
 
 class Item:
@@ -54,7 +87,8 @@ class Item:
         self.protecao = self.objeto["protecao"] + self.adjetivo["protecao"] + self.complemento["protecao"]
         
         self.genero_objeto = self.objeto["genero"]
-
+        
+        
         self.nome = f"{self.objeto["nome"]} {self.adjetivo[self.genero_objeto]} {self.complemento[self.genero_objeto]}"
 
     def get_nome(self):

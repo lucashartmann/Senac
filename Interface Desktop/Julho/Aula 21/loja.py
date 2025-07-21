@@ -7,21 +7,23 @@ from textual import on
 class AppZero(App):
 
     TITLE = "Loja"
-
-    items = list()
-
-    for i in range(12):
-        items.append(Item())
-
+    
+  
+    @on(Load)
+    def inicializaçao(self):
+        self.lista_items = list()
+        for i in range(12):
+            self.lista_items.append(Item())
+            
+    def on_mount(self):
+        list_view = self.query_one("#lst_item", ListView)
+        for item in self.lista_items:
+            list_view.append(ListItem(Label(item.nome)))
+        
+        
     def compose(self) -> ComposeResult:
         yield Header()
-        # yield ListView()
-        # for i in range(len(self.lista_items)):
-        #     self.query_one(ListView)._add_child(ListItem(Label(self.lista_items[i].nome)))
-        yield ListView(
-            ListItem(Label(Item().nome)),
-            ListItem(Label(Item().nome)),
-                     id="lst_item")
+        yield ListView(id="lst_item")
         yield Label("item", id="tx_info")
         yield Footer()
 
@@ -29,7 +31,7 @@ class AppZero(App):
     def item_selecionado(self) -> None:
         lista = self.query_one("#lst_item", ListView)
         info = self.query_one("#tx_info", Label)
-        info.update(self.items[lista.index].nome)
+        info.update(self.lista_items[lista.index].nome)
 
 if __name__ == "__main__":
     app = AppZero()
