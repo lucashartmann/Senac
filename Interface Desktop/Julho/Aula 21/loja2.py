@@ -5,8 +5,9 @@ from textual.events import Load
 from textual import on
 from textual.containers import HorizontalGroup
 
+
 class AppZero2(App):
-    
+
     descricoes = {
         "Rocha": "Uma simples rocha, útil para arremessar ou bloquear caminhos.",
         "Espada": "Uma espada afiada, perfeita para combates corpo a corpo.",
@@ -24,7 +25,7 @@ class AppZero2(App):
     }
 
     TITLE = "🧝 Loja do Elfo"
-    
+
     CSS = """
     ListView {
         layout: grid;
@@ -40,6 +41,7 @@ class AppZero2(App):
         align: center middle;
         margin: 1;
         margin-left: 11;
+        color: green;
     }
     
     .item{
@@ -72,25 +74,26 @@ class AppZero2(App):
         max-height: 1;
     }
     """
-  
+
     @on(Load)
     def inicializaçao(self):
         self.lista_items = list()
         for i in range(12):
             self.lista_items.append(Item())
-            
+
     def on_mount(self):
         list_view = self.query_one("#lst_item", ListView)
         for item in self.lista_items:
-            list_view.append(ListItem(Label(item.nome.capitalize(), classes="item")))
-        
+            list_view.append(
+                ListItem(Label(item.nome.capitalize(), classes="item")))
+
     def compose(self) -> ComposeResult:
         yield Header()
         with HorizontalGroup(id="ctn_bemvindo"):
             yield Label("🧝")
             yield Label(id="tx_dot1")
             yield Label(id="tx_dot2")
-            yield Label("Bem vindo!",id="tx_bemvindo")
+            yield Label("Bem vindo!", id="tx_bemvindo")
         yield ListView(id="lst_item")
         yield Label("item", id="tx_info")
         yield Footer()
@@ -101,9 +104,11 @@ class AppZero2(App):
         info = self.query_one("#tx_info", Label)
         nome_item = self.lista_items[lista.index].nome.capitalize()
         if nome_item.split()[0] in self.descricoes.keys():
-            info.update(f"{nome_item}: {self.descricoes[nome_item.split()[0]]}")
+            info.update(
+                f"{nome_item}: {self.descricoes[nome_item.split()[0]]}")
         else:
             info.update(f"{nome_item}")
+
 
 if __name__ == "__main__":
     app = AppZero2()

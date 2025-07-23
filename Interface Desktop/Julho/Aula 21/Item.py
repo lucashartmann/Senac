@@ -43,13 +43,13 @@ icone_objeto = {
     #"foice" : "",
     "escudo" : "🛡️",
     "calça" : "👖",
-    "capacete" : "🪖",
+    # "capacete" : "🪖",
     # "capa" : "",
     #"peitoral" : "",
-    "rocha" : "🪨",
+    # "rocha" : "🪨",
     "cenoura" : "🥕",
     "gema" : "💎",
-    "moeda" : "🪙",
+    # "moeda" : "🪙",
     #"lira" : "",
 }
 
@@ -88,8 +88,11 @@ class Item:
         
         self.genero_objeto = self.objeto["genero"]
         
-        
-        self.nome = f"{self.objeto["nome"]} {self.adjetivo[self.genero_objeto]} {self.complemento[self.genero_objeto]}"
+        try:
+            self.icon = icone_objeto[self.objeto["nome"].lower()]
+            self.nome = f"{self.icon} {self.objeto["nome"]} {self.adjetivo[self.genero_objeto]} {self.complemento[self.genero_objeto]}"
+        except:
+            self.nome = f"{self.objeto["nome"]} {self.adjetivo[self.genero_objeto]} {self.complemento[self.genero_objeto]}"
 
     def get_nome(self):
         return self.nome
