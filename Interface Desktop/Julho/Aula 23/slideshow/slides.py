@@ -23,7 +23,8 @@ class Slides(App):
             self.push_screen(self.sequencia_slides[self.slide_atual])
             self.slide_atual += 1
         else:
-            self.slide_atual = 0
+            self.push_screen(self.sequencia_slides[0])
+            self.slide_atual += 1
 
     def on_mount(self) -> None:
         self.install_screen(Slide01(), name="slide01")
