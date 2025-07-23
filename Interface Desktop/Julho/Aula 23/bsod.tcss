@@ -1,0 +1,10 @@
+BSOD {
+    align: center middle;
+    background: blue;
+    color: white;
+}
+
+BSOD>Static {
+    width: auto;
+}
+

@@ -34,7 +34,6 @@ class CenaTela(Screen):
 
 
 class CenaApp(App):
-
     def on_mount(self):
         self.install_screen(CenaTela(), name="Tela da Cena")
 
