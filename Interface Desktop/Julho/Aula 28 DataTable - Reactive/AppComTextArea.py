@@ -1,6 +1,5 @@
 from textual.app import App
 from textual.widgets import Label, Input, TextArea, Button
-from textual.screen import Screen
 from textual.containers import HorizontalGroup
 
 class Agenda(App):
