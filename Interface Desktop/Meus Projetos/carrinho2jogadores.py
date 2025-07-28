@@ -51,6 +51,7 @@ class Teste(App):
     cont_carrinho2_right = 0
 
     pode_andar = True
+    mostrou_bandeira = False
 
     def resultado(self):
         if self.cont_carrinho_right == 66:
@@ -64,7 +65,8 @@ class Teste(App):
 
         if self.cont_carrinho2_right > right_antigo or self.cont_carrinho_right > right_antigo:
             right_antigo += 1
-            if self.cont_carrinho_right == 15 or self.cont_carrinho2_right == 15:
+            if self.cont_carrinho_right == 15 or self.cont_carrinho2_right == 15 and not self.mostrou_bandeira:
+                self.mostrou_bandeira = True
                 self.caminho += "🏁"
             if self.cont_carrinho_right == 66 or self.cont_carrinho2_right == 66:
                 self.pode_andar = False
