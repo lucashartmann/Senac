@@ -1,39 +1,27 @@
 Screen {
     background: rgba(87, 213, 186, 1);
 }
- 
-TextArea {
-    margin-top: 3;
-    height: 15;
-    width: 120;
-    margin-left: 25;
-    border: round thick  rgba(72, 179, 155, 1);
-    align-horizontal: center;
-    color: red;
+
+Static {
     background: black;
+    width: 25;
+    height: 12;
+    align: center middle;
+    margin: 4 0 0 16;
+    content-align: center middle;
 }
 
-#static1 {
-    width: 10%;
-    margin-top: 1;
-    color: black;
-    text-style: bold;
-    background: white;
-    align-horizontal: center;
-}
-
-Input {
-    width: 20%;
-    margin-left: 3;
-    margin-right: 3;
-    background: black;
+Button {
+    margin: 1 0 0 20;
 }
 
 #container {
-    margin-top: 2;
     align: center middle;
 }
 
-#btn_cadastro {
-    background: black;
+Input {
+    width: 27;
+    margin-left: 15;
+    margin-top: 1;
+    height: 2;
 }
