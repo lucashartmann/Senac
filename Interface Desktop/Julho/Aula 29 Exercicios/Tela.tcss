@@ -1,27 +1,17 @@
-Screen {
-    background: rgba(87, 213, 186, 1);
+#hg_container1 {
+    background: white;
+    height: 15;
+    width: 100%;
+    color: black;
 }
 
-Static {
-    background: black;
-    width: 25;
-    height: 12;
-    align: center middle;
-    margin: 4 0 0 16;
-    content-align: center middle;
-}
 
 Button {
-    margin: 1 0 0 20;
+    color: green;
+    width: 20;
+    background: black;
 }
 
-#container {
-    align: center middle;
-}
-
-Input {
-    width: 27;
-    margin-left: 15;
-    margin-top: 1;
-    height: 2;
+TextArea {
+    width: 20%
 }

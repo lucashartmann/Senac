@@ -76,7 +76,7 @@ class Agenda(App):
                 horizontal = self.query_one("#resultado", HorizontalGroup)
                 horizontal.mount(TextArea(id="conteudo"))
                 dados = self.lista_nomes[evento.widget.name]
-                mensagem = f'''📧 {dados[0]}
+                mensagem = f'''📧 {evento.widget.name}
                 
 📞 {dados[1]}
 
