@@ -5,6 +5,12 @@
     color: black;
 }
 
+VerticalGroup {
+    layout: grid;
+    grid-size: 2 0;
+    grid-gutter: 3 0;  
+}
+
 
 Button {
     color: green;
@@ -13,5 +19,5 @@ Button {
 }
 
 TextArea {
-    width: 20%
+    width: 20%;
 }
