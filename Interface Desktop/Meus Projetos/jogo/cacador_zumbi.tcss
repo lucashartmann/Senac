@@ -1,20 +1,16 @@
 #cacador {
     # margin = (top, right, bottom, left)
-    margin: 8 0 0 10;
+    padding: 0 0 0 0;
 }
 
 #zumbi {
-    margin: 5 0 0 10;
+    padding: 5 0 0 40;
 }
 
 #porta {
-    margin: 0 0 0 10;
+    padding: 5 0 0 50;
 }
 
 #chave {
-    margin: 0 0 0 10;
-}
-
-#container {
-    margin: 2 0 0 0;
+    padding: 5 0 0 20;
 }
