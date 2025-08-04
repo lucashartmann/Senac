@@ -2,6 +2,8 @@ from textual.app import App
 from textual.widgets import Label, Static
 from textual.containers import HorizontalGroup
 from textual.events import Key
+from asyncio import sleep
+from textual import work
 
 
 class Jogo(App):
@@ -9,94 +11,108 @@ class Jogo(App):
     CSS_PATH = "cacador_zumbi.tcss"
 
     def compose(self):
-        with HorizontalGroup(id="container"):
+        # Cada sala pode ter itens diferentes
+        with HorizontalGroup():
             yield Label("🗝️", id="chave")
-            yield Label("👮", id="cacador")
             yield Label("🧟", id="zumbi")
             yield Label("🚪", id="porta")
-            
+        yield Label("👮", id="cacador")
 
     cont_cacador_left = 0
-    cont_cacador_right = 10
+    cont_cacador_right = 0
     cont_cacador_up = 0
-    cont_cacador_down = 8
+    cont_cacador_down = 0
+    zumbi_morto = False
+    pode_movimentar = True
 
-    cont_porta_left = 0
-    cont_porta_right = 10
-    cont_porta_up = 0
-    cont_porta_down = 0
+    # padding = (top (vai para baixo), right (vai para a esquerda), bottom (vai para cima), left (vai para a direita))
 
-    cont_zumbi_left = 0
-    cont_zumbi_right = 10
-    cont_zumbi_up = 0
-    cont_zumbi_down = 5
+    def movimentacao(self, evento):
+        lbl = self.query_one("#cacador")
 
-    # margin = (top (vai para baixo), right (vai para a esquerda), bottom (vai para cima), left (vai para a direita))
-
-    def _on_key(self, evento: Key):
         match evento.key:
-
             case "left":
-                lbl = self.query_one("#cacador")
-                lbl_zumbi = self.query_one("#zumbi")
-                lbl_porta = self.query_one("#porta")
-
                 if self.cont_cacador_right > 0:
                     self.cont_cacador_right -= 1
-
-                    lbl.styles.margin = (
+                    lbl.styles.padding = (
                         self.cont_cacador_down, self.cont_cacador_left, self.cont_cacador_up, self.cont_cacador_right)
                 else:
                     self.cont_zumbi_right += 1
-                    self.cont_porta_right += 1
-
-                    lbl_zumbi.styles.margin = (self.cont_zumbi_down, self.cont_zumbi_left, self.cont_zumbi_up, self.cont_zumbi_right)
-
-                    lbl_porta.styles.margin = (self.cont_porta_down, self.cont_porta_left, self.cont_porta_up, self.cont_porta_right)
-
-                    self.cont_cacador_left += 1
-
-                    lbl.styles.margin = (
+                    lbl.styles.padding = (
                         self.cont_cacador_down, self.cont_cacador_left, self.cont_cacador_up, self.cont_cacador_right)
-                    
-            case "right":
-                lbl = self.query_one("#cacador")
-                lbl_zumbi = self.query_one("#zumbi")
-                lbl_porta = self.query_one("#porta")
 
+            case "right":
                 if self.cont_cacador_left > 0:
                     self.cont_cacador_left -= 1
-                    lbl.styles.margin = (
+                    lbl.styles.padding = (
                         self.cont_cacador_down, self.cont_cacador_left, self.cont_cacador_up, self.cont_cacador_right)
                 else:
-                    self.cont_zumbi_right -= 1
-                    self.cont_porta_right -= 1
                     self.cont_cacador_right += 1
-                    lbl_zumbi.styles.margin = (self.cont_zumbi_down, self.cont_zumbi_left, self.cont_zumbi_up, self.cont_zumbi_right)
-                    lbl_porta.styles.margin = (self.cont_porta_down, self.cont_porta_left, self.cont_porta_up, self.cont_porta_right)
-                    lbl.styles.margin = (
+                    lbl.styles.padding = (
                         self.cont_cacador_down, self.cont_cacador_left, self.cont_cacador_up, self.cont_cacador_right)
-                    
+
             case "up":
-                lbl = self.query_one("#cacador")
+
                 if self.cont_cacador_down > 0:
                     self.cont_cacador_down -= 1
-                    lbl.styles.margin = (
+                    lbl.styles.padding = (
                         self.cont_cacador_down, self.cont_cacador_left, self.cont_cacador_up, self.cont_cacador_right)
                 else:
                     self.cont_cacador_up += 1
-                    lbl.styles.margin = (
+                    lbl.styles.padding = (
                         self.cont_cacador_down, self.cont_cacador_left, self.cont_cacador_up, self.cont_cacador_right)
+
             case "down":
-                lbl = self.query_one("#cacador")
                 if self.cont_cacador_up > 0:
                     self.cont_cacador_up -= 1
-                    lbl.styles.margin = (
+                    lbl.styles.padding = (
                         self.cont_cacador_down, self.cont_cacador_left, self.cont_cacador_up, self.cont_cacador_right)
                 else:
                     self.cont_cacador_down += 1
-                    lbl.styles.margin = (
+
+                    lbl.styles.padding = (
                         self.cont_cacador_down, self.cont_cacador_left, self.cont_cacador_up, self.cont_cacador_right)
+
+    @work
+    async def combate(self):
+        # Fazer a classe do personagem com vida e dano. Implementar o dano da arma equipada e etc.
+        self.notify("Dano 5 no zumbi")
+        await sleep(2)
+        self.notify("Dano 5 no caçador")
+        await sleep(2)
+        self.notify("Dano 5 no zumbi")
+        await sleep(2)
+        self.notify("Zumbi morreu")
+        await self.query("#zumbi").remove()
+        self.pode_movimentar = True
+        self.zumbi_morto = True
+
+    @work
+    async def _on_key(self, evento: Key):
+        if self.pode_movimentar:
+            self.movimentacao(evento)
+
+        if self.cont_cacador_up == 0 and self.cont_cacador_right == 62 and self.cont_cacador_down == 0 and self.cont_cacador_left == 0:
+            # self.notify("Clique Up para iniciar combate")
+            # if evento.key == "up": self.combate()
+            self.pode_movimentar = False
+            self.notify("Zumbi encontrado")
+            await sleep(2)
+            self.combate()
+
+        if self.zumbi_morto == False:
+            if self.cont_cacador_up == 0 and self.cont_cacador_right == 114 and self.cont_cacador_down == 0 and self.cont_cacador_left == 0:
+                # self.notify("Clique Up para entrar na porta")
+                # Depois que entrar na porta muda de sala (switch screen)
+                # Precisa ter a chave equipada para abrir a porta
+                self.notify("Porta encontrada")
+        else:
+            if self.cont_cacador_up == 0 and self.cont_cacador_right == 72 and self.cont_cacador_down == 0 and self.cont_cacador_left == 0:
+                self.notify("Porta encontrada")
+
+        if self.cont_cacador_up == 0 and self.cont_cacador_right == 20 and self.cont_cacador_down == 0 and self.cont_cacador_left == 0:
+            # pega a chave, adiciona ela ao personagem e remove ela da tela
+            self.notify("Chave encontrado")
 
 
 if __name__ == "__main__":
