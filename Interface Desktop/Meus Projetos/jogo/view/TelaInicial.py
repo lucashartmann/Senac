@@ -1,6 +1,6 @@
 from textual.app import App
 from textual.widgets import Label, Static, Footer, TextArea
-from textual.containers import HorizontalGroup
+from textual.containers import HorizontalGroup, Container
 from textual.events import Key
 from asyncio import sleep
 from textual import work
@@ -47,6 +47,7 @@ class TelaInicial(Screen):
 
 
     def compose(self):
+        # Mostrar vida, item equipado
         with HorizontalGroup():
             yield Label(self.chave.get_icon(), id=f"{self.chave.get_nome()}")
             yield Label("🧟", id="zumbi")
@@ -59,15 +60,21 @@ class TelaInicial(Screen):
     pode_movimentar = True
     pode_agir = False
     objeto_iteracao = ""
+    inventario_aberto = False
     
 
     # padding = (top (vai para baixo), right (vai para a esquerda), bottom (vai para cima), left (vai para a direita))
 
 
     def abrir_inventario(self):
-        inventario = "Inventário: ".join(
-            str(nome, item) for nome, item in self.cacador.inventario.items())
-        self.mount(TextArea(inventario))
+        if self.inventario_aberto:
+            self.query_one("#inventario", Container).remove()
+            self.inventario_aberto = False
+        else:
+            self.mount(Container(id="inventario"))
+            for item in self.cacador.inventario.values():
+                self.query_one("#inventario").mount(Static(f"{item.get_icon()}   - {item.get_nome().capitalize()}", classes="item_inventario"))
+            self.inventario_aberto = True
 
     @work
     async def acoes(self, evento):
@@ -110,6 +117,7 @@ class TelaInicial(Screen):
                     self.notify("Inventário vazio")
             case "c":
                 self.abrir_inventario()
+                
 
     @work
     async def combate(self):
