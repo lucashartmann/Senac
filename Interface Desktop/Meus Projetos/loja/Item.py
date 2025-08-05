@@ -90,7 +90,7 @@ class Item:
         
         try:
             self.icon = icone_objeto[self.objeto["nome"].lower()]
-            self.nome = f"{self.icon} {self.objeto["nome"]} {self.adjetivo[self.genero_objeto]} {self.complemento[self.genero_objeto]}"
+            self.nome = f"{self.icon}  {self.objeto["nome"]} {self.adjetivo[self.genero_objeto]} {self.complemento[self.genero_objeto]}"
         except:
             self.nome = f"{self.objeto["nome"]} {self.adjetivo[self.genero_objeto]} {self.complemento[self.genero_objeto]}"
 

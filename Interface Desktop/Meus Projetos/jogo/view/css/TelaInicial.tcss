@@ -14,3 +14,7 @@
 #chave {
     padding: 5 0 0 20;
 }
+
+#espada {
+    padding: 5 0 0 30;
+}
