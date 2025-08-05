@@ -109,7 +109,7 @@ class TelaInicial(Screen):
                     contador = 0
                     lista_items = list(self.cacador.inventario.keys())
                     self.cacador.equipar_item(lista_items[contador])
-                    self.notify(f"Item equipado: {self.cacador.item_equipado}")
+                    self.notify(f"Item equipado: {self.cacador.item_equipado.get_nome()}")
                     contador += 1
                     if contador == len(lista_items):
                         contador = 0
