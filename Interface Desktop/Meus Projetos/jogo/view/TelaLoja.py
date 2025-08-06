@@ -3,17 +3,18 @@ from textual.widgets import Label, ListItem, ListView, Footer, Header, TextArea
 from models.Item import Item
 from textual.events import Load
 from textual import on
-from textual.containers import HorizontalGroup
+from textual.containers import HorizontalGroup, VerticalGroup
 from textual.screen import Screen
 from textual.events import Key
+from textual.binding import Binding
 
 
 class TelaLoja(Screen):
     CSS_PATH = "css/TelaLoja.tcss"
 
-    cacador_margin = [0, 0, 0, 0]
-    
-    menu = f'''
+    cacador_padding = [0, 0, 0, 0]
+
+    casa2 = f'''
     🧱🧱🧱🧱🧱🧱🧱
     🧱🪟 🪟 🧱🪟 🪟 🧱
     🧱🪟 🪟 🧱🪟 🪟 🧱
@@ -21,31 +22,71 @@ class TelaLoja(Screen):
     🧱🧱🚪🧱🚪🧱🧱
         '''
 
-    caminho = f'''____🌳______🌳____🐓__🌳___🦃_
+    caminho = f'''🚧🚧🚧🌳🚧🚧🚧🌳🚧🚧🌳🚧🚧🚧
     '''
-    
+
+    casa = f"""
+        /\\
+      /    \\
+     /      \\
+    /________\\
+   |   Loja   |
+   |          |
+   |____🧝____| 
+    """
+
     sol = f"☀️"
-    
+
+    caminho_vertical = f"""
+  🚧
+  🚧
+  🚧
+  🌳
+  🚧
+  🚧
+  🚧
+  🌳
+  🚧
+  🚧
+  🌳
+  🚧
+  🚧
+  🚧
+  """
+
     def compose(self):
         with HorizontalGroup():
-            yield Label("🧝", id="elfo")
-            yield Label(self.menu)
-            yield Label(self.caminho, id="caminho")
+            yield Label(self.caminho, classes="caminho")
+            yield Label(self.caminho, classes="caminho")
+            yield Label(self.casa, id="casa")
+            yield Label(self.caminho, classes="caminho")
+            yield Label(self.casa2, id="casa2")
             yield Label(self.sol, id="sol")
-        yield Label("👮", id="cacador")
-
+        with VerticalGroup():
+            yield Label("👮", id="cacador")
+            with HorizontalGroup(id="caminhos_baixo"):
+                yield Label(self.caminho, classes="caminho2")
+                yield Label(self.caminho, classes="caminho2")
+                yield Label(self.caminho, classes="caminho2")
+                yield Label(self.caminho, classes="caminho2")
+                yield Label("🚧🚧🌳", classes="caminho2")
+                yield Label(self.caminho_vertical, classes="caminho_vertical")
 
     def on_key(self, evento: Key):
         lbl = self.query_one("#cacador")
-        self.screen.app.movimentacao(evento, lbl, self.cacador_margin)
-       
+        self.screen.app.movimentacao(evento, lbl, self.cacador_padding)
         if evento.key == "z":
-            self.app.switch_screen("loja")
+            if self.cacador_padding >= [0, 0, 0, 58] and self.cacador_padding <= [0, 0, 0, 68]:
+                self.app.switch_screen("loja")
 
 
 class Loja(Screen):
 
     CSS_PATH = "css/TelaLoja.tcss"
+
+    def on_key(self, evento: Key):
+        if evento.key == "z":
+            self.app.switch_screen('tela_loja')
 
     descricoes = {
         "Rocha": "Uma simples rocha, útil para arremessar ou bloquear caminhos.",

@@ -1,13 +1,8 @@
-from textual.app import App
-from textual.widgets import Header, Footer, Button, Static, Label, Input
+from textual.widgets import Header, Footer, Button, Label, Input
 from textual.screen import Screen
-from textual.binding import Binding
-from textual.app import App, ComposeResult
-from textual.widgets import Sparkline
 from textual.containers import HorizontalGroup
 from models.Vendas import Vendas
 
-from view import TelaSecundaria, TelaDashboard, TelaAjuda
 
 class TelaVendas(Screen):
     def compose(self):
@@ -51,4 +46,5 @@ class TelaVendas(Screen):
             sabado = int(self.query_one("#sabado", Input).value)
             domingo = int(self.query_one("#domingo", Input).value)
 
-            Vendas.VENDAS["semana 1"] = [segunda, terca, quarta, quinta, sexta, sabado, domingo]
+            Vendas.VENDAS["semana 1"] = [segunda, terca,
+                                         quarta, quinta, sexta, sabado, domingo]
