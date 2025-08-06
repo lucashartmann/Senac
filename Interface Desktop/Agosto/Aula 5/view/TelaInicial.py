@@ -2,7 +2,7 @@ from textual.app import App
 from textual.widgets import Header, Footer, Button, Static
 from textual.screen import Screen
 from textual.binding import Binding
-from view import TelaSecundaria, TelaDashboard, TelaAjuda, TelaCadastro
+from view import TelaSecundaria, TelaDashboard, TelaAjuda, TelaCadastro, TelaCadastroSor
 
 
 class TelaInicial(Screen):
@@ -13,6 +13,7 @@ class TelaInicial(Screen):
 
     def on_mount(self):
         self.sub_title = "Inicial"
+
 
 class AppBase(App):
 
@@ -25,7 +26,8 @@ class AppBase(App):
         Binding("right", "switch_screen('inicial')", "Ir para tela primaria"),
         Binding("down", "switch_screen('ajuda')", "Ir para tela primaria"),
         Binding("up", "switch_screen('dashboard')", "Ir para a dashboard"),
-        Binding("z", "switch_screen('vendas')", "Ir para Vendas")
+        Binding("z", "switch_screen('vendas')", "Ir para Vendas"),
+        Binding("x", "switch_screen('vendasSor')", "Ir para Vendas sor")
     ]
 
     SCREENS = {
@@ -33,7 +35,8 @@ class AppBase(App):
         "secundaria": TelaSecundaria.TelaSecundaria,
         "ajuda": TelaAjuda.TelaAjuda,
         "dashboard": TelaDashboard.TelaDashboard,
-        "vendas": TelaCadastro.TelaVendas
+        "vendas": TelaCadastro.TelaVendas,
+        "vendasSor": TelaCadastroSor.TelaVendas
     }
 
     def on_mount(self):
