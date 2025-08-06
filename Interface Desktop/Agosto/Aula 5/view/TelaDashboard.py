@@ -5,8 +5,6 @@ from models.Vendas import Vendas
 
 
 class TelaDashboard(Screen):
-    data = [1, 2, 2, 1, 1, 4, 3, 1, 1, 8, 8, 2]
-
     CSS = """
         TelaDashboard {
             align: center middle;
@@ -21,12 +19,16 @@ class TelaDashboard(Screen):
     def compose(self):
         yield Header(show_clock=True, icon='😉', time_format="%X")
         yield Static("Dados 1")
-        yield Sparkline(Vendas.VENDAS["semana 1"])
+        yield Sparkline(Vendas.VENDAS["semana 1"], id="spk_1")
         yield Static("Dados 2")
         yield Sparkline(Vendas.VENDAS["semana 2"])
         yield Static("Dados 3")
         yield Sparkline(Vendas.VENDAS["semana 3"])
         yield Footer(show_command_palette=False)
+    
+    def on_screen_resume(self):
+        self.query_one("#spk_1", Sparkline).data = Vendas.VENDAS["semana 1"]
 
+    
     def on_mount(self):
         self.sub_title = "Dashboard"
