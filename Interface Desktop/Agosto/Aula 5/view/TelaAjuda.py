@@ -1,10 +1,6 @@
-from textual.app import App
-from textual.widgets import Header, Footer, Button, Static
+from textual.widgets import Header, Footer, Static
 from textual.screen import Screen
-from textual.binding import Binding
-from textual.app import App, ComposeResult
-from textual.widgets import Sparkline
-from view import TelaSecundaria, TelaDashboard, TelaAjuda
+
 
 class TelaAjuda(Screen):
     def compose(self):

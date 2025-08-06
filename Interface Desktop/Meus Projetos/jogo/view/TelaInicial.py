@@ -43,7 +43,7 @@ class TelaInicial(Screen):
     
     sala_inicial.colocar_item(espada)
     
-    cacador_margin = [0, 0, 0, 0]  
+    cacador_padding = [0, 0, 0, 0]  
 
 
     def compose(self):
@@ -142,38 +142,38 @@ class TelaInicial(Screen):
         self.acoes(evento)
     
         if self.pode_movimentar:
-            self.screen.app.movimentacao(evento, lbl, self.cacador_margin)
+            self.screen.app.movimentacao(evento, lbl, self.cacador_padding)
         
         if "chave" not in self.cacador.inventario:
-            if self.cacador_margin == [0, 0, 0, 62]:
+            if self.cacador_padding == [0, 0, 0, 62]:
                 self.notify("Zumbi encontrado")    
                 self.pode_agir = True   
                 self.objeto_iteracao = "zumbi"
         else:
-            if self.cacador_margin == [0, 0, 0, 41]:
+            if self.cacador_padding == [0, 0, 0, 41]:
                 self.notify("Zumbi encontrado")    
                 self.pode_agir = True   
                 self.objeto_iteracao = "zumbi"
       
         if self.zumbi_morto == False and "chave" not in self.cacador.inventario:
-            if self.cacador_margin == [0, 0, 0, 114]:
+            if self.cacador_padding == [0, 0, 0, 114]:
                 self.objeto_iteracao = "porta"
                 self.pode_agir = True
                 self.notify("Porta encontrada")                   
         elif self.zumbi_morto == True:
-            if self.cacador_margin == [0, 0, 0, 72]:
+            if self.cacador_padding == [0, 0, 0, 72]:
                 self.objeto_iteracao = "porta"
                 self.pode_agir = True
                 self.notify("Porta encontrada")
         elif "chave" in self.cacador.inventario:
-            if self.cacador_margin == [0, 0, 0, 92]:
+            if self.cacador_padding == [0, 0, 0, 92]:
                 self.objeto_iteracao = "porta"
                 self.pode_agir = True
                 self.notify("Porta encontrada")
                 
         for lbl in self.query("Label"):
             if lbl.id == "chave":
-                if self.cacador_margin == [0, 0, 0, 20]:
+                if self.cacador_padding == [0, 0, 0, 20]:
                     self.objeto_iteracao = "chave"
                     self.pode_agir = True
                     self.notify("Chave encontrada")
@@ -181,12 +181,12 @@ class TelaInicial(Screen):
         for lbl in self.query("Label"):
             if lbl.id == "espada":
                 if "chave" not in self.cacador.inventario:
-                    if self.cacador_margin == [0, 0, 0, 142]:
+                    if self.cacador_padding == [0, 0, 0, 142]:
                         self.notify("Espada encontrada")
                         self.pode_agir = True
                         self.objeto_iteracao = "espada"
                 else:
-                    if self.cacador_margin == [0, 0, 0, 123]:
+                    if self.cacador_padding == [0, 0, 0, 123]:
                         self.notify("Espada encontrada")
                         self.pode_agir = True
                         self.objeto_iteracao = "espada"
@@ -204,36 +204,36 @@ class Jogo(App):
         Binding("x", "a7", "Equipar item"),
     ]
     
-    def movimentacao(self, evento, label, cacador_margin):
+    def movimentacao(self, evento, label, cacador_padding):
 
         match evento.key:
             case "left":
-                if cacador_margin[3] > 0:
-                    cacador_margin[3] -= 1
+                if cacador_padding[3] > 0:
+                    cacador_padding[3] -= 1
                 else:
-                    cacador_margin[1] += 1
+                    cacador_padding[1] += 1
             case "right":
-                if cacador_margin[1] > 0:
-                    cacador_margin[1] -= 1
+                if cacador_padding[1] > 0:
+                    cacador_padding[1] -= 1
                 else:
-                    cacador_margin[3] += 1
+                    cacador_padding[3] += 1
                 
             case "up":
-                if cacador_margin[0] > 0:
-                    cacador_margin[0] -= 1
+                if cacador_padding[0] > 0:
+                    cacador_padding[0] -= 1
                 else:
-                    cacador_margin[2] += 1
+                    cacador_padding[2] += 1
 
             case "down":
-                if cacador_margin[2] > 0:
-                    cacador_margin[2] -= 1
+                if cacador_padding[2] > 0:
+                    cacador_padding[2] -= 1
                 else:
-                    cacador_margin[0] += 1
+                    cacador_padding[0] += 1
             case _:
                return 
            
         label.styles.padding = (
-                        cacador_margin[0], cacador_margin[1], cacador_margin[2], cacador_margin[3])
+                        cacador_padding[0], cacador_padding[1], cacador_padding[2], cacador_padding[3])
     
     SCREENS = {
         "tela_inicial": TelaInicial,

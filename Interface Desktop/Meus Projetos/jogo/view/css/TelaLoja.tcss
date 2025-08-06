@@ -49,11 +49,26 @@ ListItem {
     padding: 0 0 0 0;
 }
 
-#elfo {
-    padding: 5 0 0 40;
+.caminho {
+    padding: 7 0 0 0;
 }
 
-#caminho {
-    padding: 5 0 0 0;
+#casa {
+    padding: 0 0 0 0;
 }
 
+#casa2 {
+    padding: 2 0 0 0;
+}
+
+.caminho2 {
+    padding: 2 0 0 0;
+}
+
+#caminhos_baixo {
+        height: 10;
+}
+
+.caminho_vertical {
+    padding: 1 0 0 0;
+}

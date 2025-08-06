@@ -1,4 +1,3 @@
-
 class Vendas:
     
     VENDAS = {
