@@ -30,7 +30,7 @@ class TelaVendas(Screen):
             yield Label("Domingo")
             yield Input(id="domingo")
         yield Button("Limpar")
-        yield Button("Cadastrar")
+        yield Button("Cadastrar", id="bt_cadastrar")
         yield Footer()
 
     def on_mount(self):
@@ -46,5 +46,4 @@ class TelaVendas(Screen):
             sabado = int(self.query_one("#sabado", Input).value)
             domingo = int(self.query_one("#domingo", Input).value)
 
-            Vendas.VENDAS["semana 1"] = [segunda, terca,
-                                         quarta, quinta, sexta, sabado, domingo]
+            Vendas.VENDAS["semana 1"] = [segunda, terca, quarta, quinta, sexta, sabado, domingo]

@@ -14,7 +14,6 @@ class TelaInicial(Screen):
     def on_mount(self):
         self.sub_title = "Inicial"
 
-
 class AppBase(App):
 
     TITLE = "Nano"
