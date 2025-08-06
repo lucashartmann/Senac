@@ -24,11 +24,15 @@ class TelaDashboard(Screen):
         yield Sparkline(Vendas.VENDAS["semana 2"])
         yield Static("Dados 3")
         yield Sparkline(Vendas.VENDAS["semana 3"])
+        yield Static("Dados 4")
+        yield Sparkline(Vendas.VENDAS["semana 4"])
         yield Footer(show_command_palette=False)
-    
-    def on_screen_resume(self):
-        self.query_one("#spk_1", Sparkline).data = Vendas.VENDAS["semana 1"]
 
-    
+    def on_screen_resume(self):
+        contador = 1
+        for widget in self.query(Sparkline):
+            widget.data = Vendas.VENDAS[f"semana {contador}"]
+            contador += 1
+
     def on_mount(self):
         self.sub_title = "Dashboard"
