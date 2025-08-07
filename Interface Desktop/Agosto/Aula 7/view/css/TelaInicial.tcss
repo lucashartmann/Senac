@@ -1,0 +1,9 @@
+Static {
+    content-align: center middle;
+    background: magenta;
+}
+
+VerticalGroup {
+    height: 100%;
+    align: center middle;
+}
