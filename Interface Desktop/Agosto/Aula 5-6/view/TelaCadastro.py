@@ -8,6 +8,7 @@ from textual import on
 class TelaVendas(Screen):
     def compose(self):
         yield Header(show_clock=True, icon='😉', time_format="%X")
+        
         yield Select((line, line) for line in Vendas.VENDAS.keys())
 
         with HorizontalGroup():
@@ -38,11 +39,9 @@ class TelaVendas(Screen):
     def on_mount(self):
         self.sub_title = "Cadastro de Vendas"
 
-    valor_select = ""
-
     @on(Select.Changed)
-    def select_changed(self, event: Select.Changed):
-        self.valor_select = str(event.value)
+    def select_changed(self, evento: Select.Changed):
+        self.valor_select = str(evento.value)
 
     def on_button_pressed(self, evento: Button.Pressed):
         if evento.button.id == "bt_cadastrar":
