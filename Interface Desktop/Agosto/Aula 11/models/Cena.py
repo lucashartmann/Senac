@@ -1,5 +1,4 @@
-from models.Jogador import Jogador
-from models.Item import Item
+from models import Item, Jogador
 
 
 class Cena():
@@ -17,10 +16,10 @@ hall = Cena("Hall")
 sala = Cena("Sala")
 calabouco1 = Cena("Calabouço 1")
 
-item1 = Item()
+item1 = Item.Item()
 calabouco1.itens[item1.get_nome()] = item1
 
-item2 = Item()
+item2 = Item.Item()
 calabouco1.itens[item2.get_nome()] = item2
 
 cela1 = Cena("Cela 1")
@@ -53,5 +52,5 @@ patio.oeste = cela2
 
 
 # ESTADO DO JOGO
-JOGADOR = Jogador()
+JOGADOR = Jogador.Jogador()
 CENA_ATUAL = hall

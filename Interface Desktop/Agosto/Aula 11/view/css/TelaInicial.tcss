@@ -1,4 +1,4 @@
-Static {
+TelaInicial Static {
     content-align: center middle;
     background: magenta;
 }
