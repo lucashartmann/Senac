@@ -49,4 +49,4 @@ class AppBase(App):
         yield Footer()
 
     def on_button_pressed(self):
-        self.query_one(Static).update("Você clicou no botão!")
+        self.query_one("#btn1", Static).update("Você clicou no botão!")
