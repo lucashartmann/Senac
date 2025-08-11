@@ -2,8 +2,9 @@ from textual.app import App
 from view import TelaInicial, TelaCadastro, TelaJogo
 from textual.binding import Binding
 
+
 class Dungeoun(App):
-    
+
     SCREENS = {
         "tela_inicial": TelaInicial.TelaInicial,
         "tela_cadastro": TelaCadastro.TelaCadastro,
@@ -15,7 +16,6 @@ class Dungeoun(App):
         Binding("j", "switch_screen('tela_jogo')", "Jogo"),
         Binding("escape", "switch_screen('tela_inicial')", "Tela Inicial")
     }
-
 
     TITLE = "Dungeon"
 

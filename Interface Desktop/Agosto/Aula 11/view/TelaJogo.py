@@ -10,10 +10,10 @@ class TelaJogo(Screen):
     SUB_TITLE = ""
 
     BINDINGS = [
-        Binding("up","norte", "Norte"),
-        Binding("down","sul", "Sul"),
-        Binding("right","leste", "Leste"),
-        Binding("left","oeste", "Oeste"),        
+        Binding("up", "norte", "Norte"),
+        Binding("down", "sul", "Sul"),
+        Binding("right", "leste", "Leste"),
+        Binding("left", "oeste", "Oeste"),
     ]
 
     def action_norte(self):
@@ -35,8 +35,8 @@ class TelaJogo(Screen):
         yield Footer()
 
     def on_screen_resume(self):
-        stt_nome_jogador = self.query_one("#stt_nome_jogador",Static)
-        stt_nome_cena_atual = self.query_one("#stt_nome_cena_atual",Static)
-        
+        stt_nome_jogador = self.query_one("#stt_nome_jogador", Static)
+        stt_nome_cena_atual = self.query_one("#stt_nome_cena_atual", Static)
+
         stt_nome_jogador.update(f'Jogador: {Cena.JOGADOR.nome}')
         stt_nome_cena_atual.update(f'Cena: {Cena.CENA_ATUAL.nome}')
