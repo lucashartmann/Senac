@@ -1,0 +1,11 @@
+#tx_inventario {
+    width: 50;
+    height: 13;
+    background: #534a4a19;
+    layout: grid;
+    border: solid blue;
+    color: white;
+    grid-size: 2 0;
+    grid-gutter: 1;
+    content-align: left middle;
+}
