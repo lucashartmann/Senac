@@ -23,8 +23,20 @@ class TelaJogo(Screen):
         yield Header()
         yield Static(f'Jogador: {Cena.JOGADOR.nome}', id="stt_jogador")
         yield Static(f'Cena: {Cena.CENA_ATUAL.nome}', id="stt_cena_atual")
-        yield Static(f"Items da sala: {"\n".join(item for item in Cena.CENA_ATUAL.itens.keys())}", id="stt_items_cena") # Arrumar depois, pegar do controller
+        # Arrumar depois, pegar do controller
+        yield Static(f"Items da sala:\n", id="stt_items_cena")
         yield Footer()
+
+    def criar_static_itens(self):
+        mensagem = "Items da sala:\n"
+        for chave in Cena.CENA_ATUAL.itens.keys():
+            mensagem += f"[@click=pegar('{chave}')]Pegar[/]: {chave}\n"
+        self.query_one("#stt_items_cena").update(mensagem)
+
+    def action_pegar(self, item):
+        Cena.JOGADOR.inventario[item] = Cena.CENA_ATUAL.itens[item]
+        Cena.CENA_ATUAL.pegar_item(item)
+        self.on_screen_resume()
 
     def action_anda(self, direcao):
         match direcao:
@@ -43,14 +55,14 @@ class TelaJogo(Screen):
             self.query_one("#tx_inventario", TextArea).remove()
             self.inventario_aberto = False
         else:
-            self.mount(TextArea(f"".join(item for item in Cena.JOGADOR.inventario.keys()), id="tx_inventario", disabled=True))
+            self.mount(TextArea(f"".join(item for item in Cena.JOGADOR.inventario.keys(
+            )), id="tx_inventario", disabled=True))
             self.inventario_aberto = True
 
     def on_screen_resume(self):
         stt_jogador = self.query_one("#stt_jogador", Static)
         stt_cena_atual = self.query_one("#stt_cena_atual", Static)
-        stt_items = self.query_one("#stt_items_cena", Static)
 
-        stt_items.update(f"Items da sala: {"\n".join(item for item in Cena.CENA_ATUAL.itens.keys())}")
         stt_jogador.update(f'Jogador: {Cena.JOGADOR.nome}')
         stt_cena_atual.update(f'Cena: {Cena.CENA_ATUAL.nome}')
+        self.criar_static_itens()

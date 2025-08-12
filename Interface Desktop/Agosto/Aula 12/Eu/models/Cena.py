@@ -10,6 +10,9 @@ class Cena():
         self.leste = None
         self.oeste = None
 
+    def pegar_item(self, item):
+        del Cena.CENA_ATUAL.itens[item]
+
 
 # MAPA DO JOGO
 hall = Cena("Hall")
