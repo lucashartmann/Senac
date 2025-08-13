@@ -1,0 +1,2 @@
+VAR_EXEMPLO=nome_usuario
+echo $VAR_EXEMPLO
