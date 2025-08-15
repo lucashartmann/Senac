@@ -68,4 +68,4 @@ inventario.remove_item("picareta2")
 
 cofre.read()
 
-print(inventario.get_itens())
+print(cofre.read().get_itens())
