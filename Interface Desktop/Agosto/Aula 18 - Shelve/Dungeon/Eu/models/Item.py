@@ -41,15 +41,16 @@ class Item:
     def __init__(self):
 
         self.objeto = random.choice(objetos)
-
         self.adjetivo = random.choice(adjetivos)
         self.complemento = random.choice(complementos)
+
         self.genero_objeto = self.objeto["genero"]
 
         self.nome = f"{self.objeto["nome"]} {self.adjetivo[self.genero_objeto]} {self.complemento[self.genero_objeto]}"
 
         self.dano = self.objeto["dano"] + \
             self.adjetivo["dano"] + self.complemento["dano"]
+
         self.protecao = self.objeto["protecao"] + \
             self.adjetivo["protecao"] + self.complemento["protecao"]
 
@@ -71,11 +72,8 @@ class Item:
     def __str__(self):
         if self.dano > 0:
             return f"Item [Nome: {self.get_nome()}, dano = {self.get_dano()}]"
-
         if self.protecao > 0:
             return f"Item [Nome: {self.get_nome()}, protecao = {self.protecao}]"
-
         if self.dano > 0 and self.protecao > 0:
             return f"Item [Nome: {self.get_nome()}, dano = {self.get_dano()}, protecao = {self.protecao}]"
-
         return f"Item [Nome: {self.get_nome()}"
