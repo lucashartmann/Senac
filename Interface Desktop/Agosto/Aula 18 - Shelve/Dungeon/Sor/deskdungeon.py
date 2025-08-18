@@ -1,15 +1,20 @@
-from textual.app import App
+from textual.app import App, ComposeResult
+from textual.widgets import (
+    Header, Footer, Label, Input, Static, Button
+)
+from textual.screen import Screen
 from textual.binding import Binding
-from view import (TelaInicial, TelaNovoJogador, TelaJogo)
 
+from ddscreens import (TelaInicial, TelaNovoJogador, TelaJogo)
+from ddmodel import *
 
 class DeskDungeon(App):
     TITLE = "Desk Dungeon"
     SUB_TITLE = "um dungeon crawler modo texto"
     SCREENS = {
-        "inicial": TelaInicial.TelaInicial,
-        "novo_jogador": TelaNovoJogador.TelaNovoJogador,
-        "tela_jogo": TelaJogo.TelaJogo,
+        "inicial" : TelaInicial,
+        "novo_jogador": TelaNovoJogador,
+        "tela_jogo": TelaJogo,
     }
 
     BINDINGS = [
@@ -23,9 +28,13 @@ class DeskDungeon(App):
 
     def action_tela_jogo(self):
         self.switch_screen("tela_jogo")
-
+        
     def action_tela_inicial(self):
         self.switch_screen("inicial")
 
     def action_novo_jogador(self):
         self.switch_screen("novo_jogador")
+
+if __name__ == "__main__":
+    app = DeskDungeon()
+    app.run()

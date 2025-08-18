@@ -1,0 +1,7 @@
+Static {
+    color: white;
+}
+
+TextArea {
+    color: rgba(123, 255, 0, 1);
+}
