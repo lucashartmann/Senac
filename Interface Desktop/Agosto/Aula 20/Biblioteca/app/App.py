@@ -10,16 +10,27 @@ cadastro_leitor = Controller.cadastrar_leitor(dados_leitor)
 print(cadastro_livro)
 print(cadastro_leitor)
 
-# for chave, livro in Init.biblioteca.get_lista_livros().items():
-#     print(f"Chave: {chave}, {livro}")
+leitor = Init.biblioteca.get_leitor_por_email("Leo@email.com")
 
-for chave, leitor in Init.biblioteca.get_lista_leitores().items():
-    print(f"Chave: {chave}, {leitor}")
+print("".join(str(emprestimo)
+      for emprestimo in leitor.get_lista_emprestimos()))
+print(Controller.emprestar(1, "Leo@email.com"))
+print("".join(str(emprestimo)
+      for emprestimo in leitor.get_lista_emprestimos()))
+print(Controller.devolver(1, "Leo@email.com"))
+print("".join(str(emprestimo)
+      for emprestimo in leitor.get_lista_emprestimos()))
 
-novos_dados_leitor = ["", "Jorge@email.com"]
+# # for chave, livro in Init.biblioteca.get_lista_livros().items():
+# #     print(f"Chave: {chave}, {livro}")
 
-print(Controller.editar_leitor("Leo@email.com", novos_dados_leitor))
+# for chave, leitor in Init.biblioteca.get_lista_leitores().items():
+#     print(f"Chave: {chave}, {leitor}")
+
+# novos_dados_leitor = ["", "Jorge@email.com"]
+
+# print(Controller.editar_leitor("Leo@email.com", novos_dados_leitor))
 
 
-for chave, leitor in Init.biblioteca.get_lista_leitores().items():
-    print(f"Chave: {chave}, {leitor}")
+# for chave, leitor in Init.biblioteca.get_lista_leitores().items():
+#     print(f"Chave: {chave}, {leitor}")

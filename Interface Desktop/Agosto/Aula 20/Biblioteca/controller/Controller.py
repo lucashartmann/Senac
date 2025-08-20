@@ -1,7 +1,12 @@
-from model import Leitor, Livro, Biblioteca, Init
+from model import Leitor, Livro, Init
 
 
 def emprestar(cod_livro, email):
+    try:
+        cod_livro = int(cod_livro)
+    except:
+        return f"ERRO ao converter {cod_livro}"
+
     livro = Init.biblioteca.get_livro_por_cod(cod_livro)
     leitor = Init.biblioteca.get_leitor_por_email(email)
 
@@ -14,12 +19,21 @@ def emprestar(cod_livro, email):
     emprestimo = Init.biblioteca.emprestar(livro, leitor)
 
     if emprestimo:
-        return f"Livro {livro.get_codigo()} emprestado com sucesso"
+        adicao = leitor.add_emprestimo(emprestimo)
+        if adicao:
+            return f"Livro {livro.get_codigo()} emprestado com sucesso"
+        else:
+            "Erro ao adicionar emprestimo ao leitor"
     else:
         return f"Erro ao emprestar livro {livro.get_codigo()}"
 
 
 def devolver(cod_livro, email):
+    try:
+        cod_livro = int(cod_livro)
+    except:
+        return f"ERRO ao converter {cod_livro}"
+
     livro = Init.biblioteca.get_livro_por_cod(cod_livro)
     leitor = Init.biblioteca.get_leitor_por_email(email)
 
@@ -29,7 +43,12 @@ def devolver(cod_livro, email):
     if not leitor:
         return "Erro, autor não existe"
 
-    devolucao = Init.biblioteca.devolver(livro)
+    emprestimo = leitor.get_emprestimo_por_livro(cod_livro)
+
+    if not emprestimo:
+        return f"Erro, empréstimo não existe"
+
+    devolucao = Init.biblioteca.devolver(emprestimo)
 
     if devolucao:
         return f"Livro {livro.get_codigo()} devolvido com sucesso"
@@ -42,6 +61,18 @@ def cadastrar_livro(dados):
     autor = dados[1]
     genero = dados[2]
     quant = dados[3]
+
+    if titulo == "":
+        return "Erro, titulo vazio"
+
+    if autor == "":
+        return "Erro, autor vazio"
+
+    if genero == "":
+        return "Erro, genero vazio"
+
+    if quant == "":
+        return "Erro, quant vazio"
 
     try:
         quant = int(quant)
@@ -59,9 +90,16 @@ def cadastrar_livro(dados):
         return f"Livro cadastrado com sucesso\n{livro}"
     return "ERRO ao cadastrar livro"
 
+
 def cadastrar_leitor(dados):
     nome = dados[0]
     email = dados[1]
+
+    if nome == "":
+        return "Erro, nome vazio"
+
+    if email == "":
+        return "Erro, email vazio"
 
     leitor = Leitor.Leitor(nome, email)
 
@@ -76,6 +114,11 @@ def cadastrar_leitor(dados):
 
 
 def excluir_livro(cod_livro):
+    try:
+        cod_livro = int(cod_livro)
+    except:
+        return f"ERRO ao converter {cod_livro}"
+
     livro = Init.biblioteca.get_livro_por_cod(cod_livro)
 
     if not livro:
@@ -102,7 +145,7 @@ def editar_leitor(email, dados):
 
     if not leitor:
         return "Erro, leitor não existe"
-    
+
     mensagem = ""
 
     novo_nome = dados[0]
@@ -116,13 +159,17 @@ def editar_leitor(email, dados):
             mensagem += f"Erro, email já cadastrado"
         else:
             Init.biblioteca.remove_leitor(email)
-            # Tem que apagar a chave e criar uma nova
             leitor.set_email(novo_email)
+            Init.biblioteca.add_leitor(leitor)
             mensagem += f"Email editado {novo_email}\n"
     return mensagem
 
 
 def editar_livro(cod_livro, dados):
+    try:
+        cod_livro = int(cod_livro)
+    except:
+        return f"ERRO ao converter {cod_livro}"
 
     livro = Init.biblioteca.get_livro_por_cod(cod_livro)
 
