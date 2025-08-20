@@ -13,10 +13,12 @@ class Biblioteca:
         livro.atualizar_disponivel()
         return Emprestimo.Emprestimo(livro, leitor)
 
-    def devolver(self, livro):
-        livro.set_quant(livro.get_quant() + 1)
-        livro.atualizar_disponivel()
-        pass
+    def devolver(self, emprestimo):
+        emprestimo.get_livro().set_quant(emprestimo.get_livro().get_quant() + 1)
+        emprestimo.get_livro().atualizar_disponivel()
+        emprestimo.get_leitor().remove_emprestimo(emprestimo)
+        return True
+
 
     def get_lista_livros(self):
         return self.livros
