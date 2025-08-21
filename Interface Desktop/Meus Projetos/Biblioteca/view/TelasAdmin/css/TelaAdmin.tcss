@@ -1,4 +1,5 @@
-Grid {
+TelaAdmin {
+    layout: grid;
     align: center middle;
     grid-size: 2 4;
     grid-gutter: 1 2;  

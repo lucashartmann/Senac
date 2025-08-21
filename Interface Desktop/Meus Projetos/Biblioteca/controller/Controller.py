@@ -1,8 +1,13 @@
 from model import Leitor, Livro, Init
 
 
-def ver_produtos_estoque():
+def get_livros_biblioteca():
     return Init.biblioteca.get_lista_livros()
+
+
+def get_leitores_biblioteca():
+    return Init.biblioteca.get_lista_leitores()
+
 
 def emprestar(cod_livro, email):
     try:
@@ -112,6 +117,7 @@ def cadastrar_leitor(dados):
     cadastro = Init.biblioteca.add_leitor(leitor)
 
     if cadastro:
+        Init.leitor1 = leitor
         return f"Leitor cadastrado com sucesso\n{leitor}"
     return "ERRO ao cadastrar leitor"
 

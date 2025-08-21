@@ -35,4 +35,4 @@ class Emprestimo:
         return data_formatada
 
     def __str__(self):
-        return f"Emprestimo [Livro = {self.get_livro().get_titulo()}, Leitor = {self.get_leitor().get_email()}, Data para Devolução = {self.get_data_para_devolucao()}]"
+        return f"Emprestimo [Livro = {self.get_livro()}, Leitor = {self.get_leitor()}, Data para Devolução = {self.get_data_para_devolucao()}]"
