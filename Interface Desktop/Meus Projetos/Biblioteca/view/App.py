@@ -1,7 +1,7 @@
 from textual.app import App
-from view import TelaInicial
-from view.TelasLeitor import TelaDevolucao, TelaEmprestimo, TelaLeitor
-from view.TelasAdmin import TelaAdmin, TelaCadastroLeitor, TelaCadastroLivro, TelaClientela, TelaEstoque
+from view import TelaCadastroLeitor, TelaEstoque, TelaInicial
+from view.TelasLeitor import TelaDevolucao, TelaLeitor
+from view.TelasAdmin import TelaAdmin, TelaCadastroLivro, TelaClientela
 
 
 class App(App):
@@ -11,7 +11,6 @@ class App(App):
         "tela_estoque": TelaEstoque.TelaEstoque,
         "tela_clientela": TelaClientela.TelaClientela,
         "tela_devolucao": TelaDevolucao.TelaDevolucao,
-        "tela_emprestimo": TelaEmprestimo.TelaEmprestimo,
         "tela_cadastro_leitor": TelaCadastroLeitor.TelaCadastroLeitor,
         "tela_cadastro_livro": TelaCadastroLivro.TelaCadastroLivro,
         "tela_admin": TelaAdmin.TelaAdmin,
