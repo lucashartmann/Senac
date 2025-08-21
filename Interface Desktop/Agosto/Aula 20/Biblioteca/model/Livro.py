@@ -44,8 +44,10 @@ class Livro:
         self.quant = novo_quant
 
     def atualizar_disponivel(self):
-        if self.get_quant() <= 0:
+        if self.get_quant() == 0:
             self.disponivel = False
+        else:
+            self.disponivel = True
 
     def __str__(self):
-        return f"Livro [Codigo = {self.get_codigo()}, Titulo = {self.get_titulo()}, Autor = {self.get_autor()}, Genero = {self.get_genero()}]"
+        return f"Livro [Codigo = {self.get_codigo()}, Titulo = {self.get_titulo()}, Autor = {self.get_autor()}, Genero = {self.get_genero()}, Quantidade = {self.get_quant()}, Disponivel = {self.is_disponivel()}]"

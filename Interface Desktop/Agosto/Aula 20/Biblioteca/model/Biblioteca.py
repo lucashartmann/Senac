@@ -9,16 +9,21 @@ class Biblioteca:
         self.leitores = dict()
 
     def emprestar(self, livro, leitor):
-        livro.set_quant(livro.get_quant() - 1)
-        livro.atualizar_disponivel()
-        return Emprestimo.Emprestimo(livro, leitor)
+        if livro.is_disponivel():
+            livro.set_quant(livro.get_quant() - 1)
+            livro.atualizar_disponivel()
+            return Emprestimo.Emprestimo(livro, leitor)
+        return None
 
     def devolver(self, emprestimo):
-        emprestimo.get_livro().set_quant(emprestimo.get_livro().get_quant() + 1)
-        emprestimo.get_livro().atualizar_disponivel()
-        emprestimo.get_leitor().remove_emprestimo(emprestimo)
+        leitor = emprestimo.get_leitor()
+        livro = emprestimo.get_livro()
+        livro.set_quant(emprestimo.get_livro().get_quant() + 1)
+        livro.atualizar_disponivel()
+        leitor.remove_emprestimo(emprestimo)
+        if not self.get_livro_por_cod(livro.get_codigo()):
+            self.add_livro(livro)
         return True
-
 
     def get_lista_livros(self):
         return self.livros
