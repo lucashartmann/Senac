@@ -103,6 +103,7 @@ class TelaEstoque(Screen):
             self.select_evento = evento
 
     def on_input_changed(self, evento: Input.Changed):
+        filtros = ["CODIGO:", "TITULO:", "AUTOR:", "GENERO:", "QUANTIDADE:"]
         texto = evento.value.upper()
         resultado = self.query_one(Pretty)
         palavras = texto.split()
@@ -114,33 +115,44 @@ class TelaEstoque(Screen):
             if "GENERO:" in palavras:  # TODO: Permitir multiplas generos
                 index = palavras.index("GENERO:")
                 if index + 1 < len(palavras):
-                    genero_busca = palavras[index + 1]
+                    for P in filtros:
+                        if P in palavras and P != "GENERO:":
+                            genero_busca = " ".join(
+                                palavras[index+1:palavras.index(P)])
+                    genero_busca = " ".join((palavras[index+1:]))
+
                     if len(self.livros_filtrados) > 0:
                         livros_temp = []
                         for livro in self.livros_filtrados:
-                            if livro.get_genero() == genero_busca:
+                            if livro.get_genero() in genero_busca:
                                 livros_temp.append(livro)
                         if len(livros_temp) > 0:
                             self.livros_filtrados = livros_temp
                     else:
                         for livro in self.livros:
-                            if livro.get_genero() == genero_busca:
+                            if livro.get_genero() in genero_busca:
                                 self.livros_filtrados.append(livro)
 
             if "TITULO:" in palavras:
                 index = palavras.index("TITULO:")
                 if index + 1 < len(palavras):
-                    titulo_busca = palavras[index + 1]
+                    for P in filtros:
+                        if P in palavras and P != "TITULO:":
+                            titulo_busca = " ".join(
+                                palavras[index+1:palavras.index(P)])
+                            self.notify(titulo_busca)
+
+                    titulo_busca = " ".join((palavras[index+1:]))
                     if len(self.livros_filtrados) > 0:
                         livros_temp = []
                         for livro in self.livros_filtrados:
-                            if livro.get_titulo() == titulo_busca:
+                            if titulo_busca in livro.get_titulo():
                                 livros_temp.append(livro)
                         if len(livros_temp) > 0:
                             self.livros_filtrados = livros_temp
                     else:
                         for livro in self.livros:
-                            if livro.get_titulo() == titulo_busca:
+                            if titulo_busca in livro.get_titulo():
                                 self.livros_filtrados.append(livro)
 
             if "QUANTIDADE:" in palavras:
