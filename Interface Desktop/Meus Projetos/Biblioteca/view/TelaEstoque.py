@@ -1,16 +1,14 @@
-from textual.widgets import Input, Pretty, TextArea, Button, Checkbox, Footer, Header, Select
-from textual.screen import Screen
-from textual.containers import HorizontalGroup
+from textual.widgets import Input, Pretty, TextArea, Button, Footer, Header, Select
+from textual.containers import HorizontalGroup, Container
 from controller import Controller
 from textual import on
 from model import Init
 
 
-class TelaEstoque(Screen):
+class TelaEstoque(Container):
     CSS_PATH = "css/TelaEstoque.tcss"
 
     def compose(self):
-        yield Header()
         with HorizontalGroup(id="hg_pesquisa"):
             yield Select([("genero", 'genero')])
             yield Input()
@@ -20,7 +18,6 @@ class TelaEstoque(Screen):
         yield TextArea(disabled=True)
         with HorizontalGroup(id="container"):
             pass
-        yield Footer()
 
     livros = Controller.get_livros_biblioteca().values()
     livros_filtrados = []
@@ -103,121 +100,130 @@ class TelaEstoque(Screen):
             self.select_evento = evento
 
     def on_input_changed(self, evento: Input.Changed):
-        filtros = ["CODIGO:", "TITULO:", "AUTOR:", "GENERO:", "QUANTIDADE:"]
         texto = evento.value.upper()
         resultado = self.query_one(Pretty)
         palavras = texto.split()
 
         if len(palavras) > 0:
-            if self.filtrou_select == False and self.filtrou_checkbox == False:
+            if self.filtrou_select == False:
                 self.livros_filtrados = []
 
-            if "GENERO:" in palavras:  # TODO: Permitir multiplas generos
-                index = palavras.index("GENERO:")
-                if index + 1 < len(palavras):
-                    for P in filtros:
-                        if P in palavras and P != "GENERO:":
-                            genero_busca = " ".join(
-                                palavras[index+1:palavras.index(P)])
-                    genero_busca = " ".join((palavras[index+1:]))
+            for palavra in palavras:
+                match palavra:
 
-                    if len(self.livros_filtrados) > 0:
-                        livros_temp = []
-                        for livro in self.livros_filtrados:
-                            if livro.get_genero() in genero_busca:
-                                livros_temp.append(livro)
-                        if len(livros_temp) > 0:
-                            self.livros_filtrados = livros_temp
-                    else:
-                        for livro in self.livros:
-                            if livro.get_genero() in genero_busca:
-                                self.livros_filtrados.append(livro)
+                    case "GENERO:":  # TODO: Permitir multiplas generos
+                        index = palavras.index("GENERO:")
+                        if index + 1 < len(palavras):
+                            genero_busca = " ".join((palavras[index+1:]))
+                            if "," in genero_busca:
+                                genero_busca = genero_busca[0:genero_busca.index(
+                                    ",")]
+                            if len(self.livros_filtrados) > 0:
+                                livros_temp = []
+                                for livro in self.livros_filtrados:
+                                    if genero_busca in livro.get_genero():
+                                        livros_temp.append(livro)
+                                if len(livros_temp) > 0:
+                                    self.livros_filtrados = livros_temp
+                            else:
+                                for livro in self.livros:
+                                    if genero_busca in livro.get_genero():
+                                        self.livros_filtrados.append(livro)
 
-            if "TITULO:" in palavras:
-                index = palavras.index("TITULO:")
-                if index + 1 < len(palavras):
-                    for P in filtros:
-                        if P in palavras and P != "TITULO:":
-                            titulo_busca = " ".join(
-                                palavras[index+1:palavras.index(P)])
-                            self.notify(titulo_busca)
+                    case  "TITULO:":
+                        index = palavras.index("TITULO:")
+                        if index + 1 < len(palavras):
+                            titulo_busca = " ".join((palavras[index+1:]))
+                            if "," in titulo_busca:
+                                titulo_busca = titulo_busca[0:titulo_busca.index(
+                                    ",")]
+                            if len(self.livros_filtrados) > 0:
+                                livros_temp = []
+                                for livro in self.livros_filtrados:
+                                    if titulo_busca in livro.get_titulo():
+                                        livros_temp.append(livro)
+                                if len(livros_temp) > 0:
+                                    self.livros_filtrados = livros_temp
+                            else:
+                                for livro in self.livros:
+                                    if titulo_busca in livro.get_titulo():
+                                        self.livros_filtrados.append(livro)
 
-                    titulo_busca = " ".join((palavras[index+1:]))
-                    if len(self.livros_filtrados) > 0:
-                        livros_temp = []
-                        for livro in self.livros_filtrados:
-                            if titulo_busca in livro.get_titulo():
-                                livros_temp.append(livro)
-                        if len(livros_temp) > 0:
-                            self.livros_filtrados = livros_temp
-                    else:
-                        for livro in self.livros:
-                            if titulo_busca in livro.get_titulo():
-                                self.livros_filtrados.append(livro)
+                    case  "QUANTIDADE:":
+                        index = palavras.index("QUANTIDADE:")
+                        if index + 1 < len(palavras):
+                            try:
+                                quantidade_busca = int(
+                                    " ".join((palavras[index+1:])))
+                                if "," in quantidade_busca:
+                                    quantidade_busca = quantidade_busca[0:quantidade_busca.index(
+                                        ",")]
+                                quantidade_busca = int(quantidade_busca)
+                                if len(self.livros_filtrados) > 0:
+                                    livros_temp = []
+                                    for livro in self.livros_filtrados:
+                                        if quantidade_busca == livro.get_quant():
+                                            livros_temp.append(livro)
+                                    if len(livros_temp) > 0:
+                                        self.livros_filtrados = livros_temp
+                                else:
+                                    for livro in self.livros:
+                                        if quantidade_busca == livro.get_quant():
+                                            self.livros_filtrados.append(livro)
+                            except ValueError:
+                                self.notify("Valor inválido")
 
-            if "QUANTIDADE:" in palavras:
-                index = palavras.index("QUANTIDADE:")
-                if index + 1 < len(palavras):
-                    try:
-                        quantidade_busca = int(palavras[index + 1])
-                        if len(self.livros_filtrados) > 0:
-                            livros_temp = []
-                            for livro in self.livros_filtrados:
-                                if livro.get_quant() == quantidade_busca:
-                                    livros_temp.append(livro)
-                            if len(livros_temp) > 0:
-                                self.livros_filtrados = livros_temp
-                        else:
-                            for livro in self.livros:
-                                if livro.get_quant() == quantidade_busca:
-                                    self.livros_filtrados.append(livro)
-                    except ValueError:
-                        self.notify("Valor inválido")
+                    case  "AUTOR:":
+                        index = palavras.index("AUTOR:")
+                        if index + 1 < len(palavras):
+                            autor_busca = " ".join((palavras[index+1:]))
+                            if "," in autor_busca:
+                                autor_busca = autor_busca[0:autor_busca.index(
+                                    ",")]
+                            if len(self.livros_filtrados) > 0:
+                                livros_temp = []
+                                for livro in self.livros_filtrados:
+                                    if autor_busca in livro.get_autor():
+                                        livros_temp.append(livro)
+                                if len(livros_temp) > 0:
+                                    self.livros_filtrados = livros_temp
+                            else:
+                                for livro in self.livros:
+                                    if autor_busca in livro.get_autor():
+                                        self.livros_filtrados.append(livro)
 
-            if "AUTOR:" in palavras:
-                index = palavras.index("AUTOR:")
-                if index + 1 < len(palavras):
-                    autor_busca = palavras[index + 1].upper()
-                    if len(self.livros_filtrados) > 0:
-                        livros_temp = []
-                        for livro in self.livros_filtrados:
-                            if livro.get_autor() == autor_busca:
-                                livros_temp.append(livro)
-                        if len(livros_temp) > 0:
-                            self.livros_filtrados = livros_temp
-                    else:
-                        for livro in self.livros:
-                            if livro.get_autor() == autor_busca:
-                                self.livros_filtrados.append(livro)
+                    case "CODIGO:":
+                        index = palavras.index("CODIGO:")
+                        if index + 1 < len(palavras):
+                            try:
+                                codigo_busca = " ".join((palavras[index+1:]))
+                                if "," in codigo_busca:
+                                    codigo_busca = codigo_busca[0:codigo_busca.index(
+                                        ",")]
+                                codigo_busca = int(codigo_busca)
+                                if len(self.livros_filtrados) > 0:
+                                    livros_temp = []
+                                    for livro in self.livros_filtrados:
+                                        if codigo_busca == livro.get_codigo():
+                                            livros_temp.append(livro)
+                                    if len(livros_temp) > 0:
+                                        self.livros_filtrados = livros_temp
+                                else:
+                                    for livro in self.livros:
+                                        if codigo_busca == livro.get_codigo():
+                                            self.livros_filtrados.append(livro)
+                            except ValueError:
+                                self.notify("Valor inválido")
 
-            if "CODIGO:" in palavras:
-                index = palavras.index("CODIGO:")
-                if index + 1 < len(palavras):
-                    try:
-                        codigo_busca = int(palavras[index + 1])
-                        if len(self.livros_filtrados) > 0:
-                            livros_temp = []
-                            for livro in self.livros_filtrados:
-                                if livro.get_codigo() == codigo_busca:
-                                    livros_temp.append(livro)
-                            if len(livros_temp) > 0:
-                                self.livros_filtrados = livros_temp
-                        else:
-                            for livro in self.livros:
-                                if livro.get_codigo() == codigo_busca:
-                                    self.livros_filtrados.append(livro)
-                    except ValueError:
-                        self.notify("Valor inválido")
-
-            if len(self.livros_filtrados) > 0:
-                livros_str = [str(livro)
-                              for livro in self.livros_filtrados]
-                resultado.update(livros_str)
-                self.setup_dados()
-            else:
-                livros_str = [str(livro) for livro in self.livros]
-                resultado.update(livros_str)
-                self.setup_dados()
+                if len(self.livros_filtrados) > 0:
+                    livros_str = [str(livro)
+                                  for livro in self.livros_filtrados]
+                    resultado.update(livros_str)
+                    self.setup_dados()
+                else:
+                    livros_str = [str(livro) for livro in self.livros]
+                    resultado.update(livros_str)
+                    self.setup_dados()
         else:
             if len(self.livros_filtrados) > 0 and self.filtrou_select == False:
                 livros_str = [str(livro)
