@@ -1,11 +1,10 @@
 from model import Leitor, Livro, Biblioteca
-from controller import Controller
 
 
 class Init:
     usuario_leitor = False
     leitor_cadastado = False
-    
+
     biblioteca = Biblioteca.Biblioteca()
     leitor1 = Leitor.Leitor("LUCAS", "LUCAS@EMAIL.COM")
     leitor2 = Leitor.Leitor("LEO", "LEO@EMAIL.COM")
