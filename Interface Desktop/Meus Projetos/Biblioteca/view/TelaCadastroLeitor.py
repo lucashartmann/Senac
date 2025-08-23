@@ -1,5 +1,4 @@
-from textual.widgets import Input, Label, Button, TabbedContent, TabPane, Footer, Header
-from textual.screen import Screen
+from textual.widgets import Input, Label, Button, TabbedContent, TabPane
 from textual.containers import Container
 from controller import Controller
 from model import Init
@@ -84,12 +83,11 @@ class TelaEditar(Container):
 
 
 
-class TelaCadastroLeitor(Screen):
+class TelaCadastroLeitor(Container):
 
     CSS_PATH = "css/TelaCadastroLeitor.tcss"
 
     def compose(self):
-        yield Header()
         with TabbedContent():
             with TabPane("Cadastrar"):
                 yield TelaCadastrar()
@@ -97,7 +95,6 @@ class TelaCadastroLeitor(Screen):
                 yield TelaEditar()
             with TabPane("Remover"):
                 yield TelaRemover()
-        yield Footer()
 
     def on_button_pressed(self, evento: Button.Pressed):
         match evento.button.id:

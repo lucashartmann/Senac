@@ -1,6 +1,4 @@
 from model import Leitor, Livro, Biblioteca
-from controller import Controller
-
 
 class Init:
     usuario_leitor = False

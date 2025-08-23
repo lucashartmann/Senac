@@ -1,21 +1,19 @@
-from textual.widgets import Input, Pretty, TextArea, Button, Footer, Header
-from textual.screen import Screen
+from textual.widgets import Input, Pretty, TextArea, Button
+from textual.containers import HorizontalGroup, Container
 from textual.containers import HorizontalGroup
 from controller import Controller
 
 
-class TelaClientela(Screen):
+class TelaClientela(Container):
     CSS_PATH = "css/TelaClientela.tcss"
 
-    def compose(self):
-        yield Header()
+    def compose(Container):
         with HorizontalGroup(id="hg_pesquisa"):
             yield Input()
             yield Button("Voltar", id="bt_voltar")
         yield TextArea(disabled=True)
         with HorizontalGroup(id="container"):
             pass
-        yield Footer()
 
     leitores = Controller.get_leitores_biblioteca().values()
     leitores_filtrados = []
@@ -33,7 +31,7 @@ class TelaClientela(Screen):
         self.setup_dados()
 
     def on_button_pressed(self):
-        self.screen.app.switch_screen("tela_admin")
+        self.screen.app.switch_screen("tela_inicial")
 
     def on_input_changed(self, evento: Input.Changed):
         texto = evento.value.upper()

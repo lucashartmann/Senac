@@ -1,16 +1,15 @@
-from textual.widgets import Input, Pretty, TextArea, Button, Checkbox, Footer, Header, Select
-from textual.screen import Screen
+from textual.widgets import Input, Pretty, TextArea, Button, Select
 from textual.containers import HorizontalGroup
 from controller import Controller
 from textual import on
 from model import Init
+from textual.containers import HorizontalGroup, Container
 
 
-class TelaEstoque(Screen):
+class TelaEstoque(Container):
     CSS_PATH = "css/TelaEstoque.tcss"
 
     def compose(self):
-        yield Header()
         with HorizontalGroup(id="hg_pesquisa"):
             yield Select([("genero", 'genero')])
             yield Input()
@@ -20,7 +19,6 @@ class TelaEstoque(Screen):
         yield TextArea(disabled=True)
         with HorizontalGroup(id="container"):
             pass
-        yield Footer()
 
     livros = Controller.get_livros_biblioteca().values()
     livros_filtrados = []

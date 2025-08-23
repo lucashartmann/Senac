@@ -1,17 +1,15 @@
-from textual.widgets import Input, Pretty, TextArea, Button, Checkbox, Footer, Header, Select
-from textual.screen import Screen
-from textual.containers import HorizontalGroup
+from textual.widgets import Input, Pretty, TextArea, Button
+from textual.containers import HorizontalGroup, Container
 from controller import Controller
 from textual import on
 from model import Init
 
 
-class TelaDevolucao(Screen):
+class TelaDevolucao(Container):
 
     CSS_PATH = "css/TelaDevolucao.tcss"
 
     def compose(self):
-        yield Header()
         with HorizontalGroup(id="hg_pesquisa"):
             yield Input()
             yield Button("Devolver", id="bt_devolver")
@@ -19,7 +17,6 @@ class TelaDevolucao(Screen):
         yield TextArea(disabled=True)
         with HorizontalGroup(id="container"):
             pass
-        yield Footer()
 
     emprestimos = Init.leitor1.get_lista_emprestimos()
     emprestimos_filtrados = []
