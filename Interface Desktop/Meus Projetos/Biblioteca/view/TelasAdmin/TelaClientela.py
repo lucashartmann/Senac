@@ -41,47 +41,55 @@ class TelaClientela(Container):
         if len(palavras) > 0:
             self.leitores_filtrados = []
 
-            if "NOME:" in palavras:
-                index = palavras.index("NOME:")
-                if index + 1 < len(palavras):
-                    nome_busca = palavras[index + 1]
-                    if len(self.leitores_filtrados) > 0:
-                        leitores_temp = []
-                        for leitor in self.leitores_filtrados:
-                            if leitor.get_nome() == nome_busca:
-                                leitores_temp.append(leitor)
-                        if len(leitores_temp) > 0:
-                            self.leitores_filtrados = leitores_temp
-                    else:
-                        for leitor in self.leitores:
-                            if leitor.get_nome() == nome_busca:
-                                self.leitores_filtrados.append(leitor)
+            for palavra in palavras:
+                match palavra:
+                    case "NOME:":
+                        index = palavras.index("NOME:")
+                        if index + 1 < len(palavras):
+                            nome_busca = " ".join((palavras[index+1:]))
+                            if "," in nome_busca:
+                                nome_busca = nome_busca[0:nome_busca.index(
+                                    ",")]
+                            if len(self.leitores_filtrados) > 0:
+                                leitores_temp = []
+                                for leitor in self.leitores_filtrados:
+                                    if leitor.get_nome() == nome_busca:
+                                        leitores_temp.append(leitor)
+                                if len(leitores_temp) > 0:
+                                    self.leitores_filtrados = leitores_temp
+                            else:
+                                for leitor in self.leitores:
+                                    if leitor.get_nome() == nome_busca:
+                                        self.leitores_filtrados.append(leitor)
 
-            if "EMAIL:" in palavras:
-                index = palavras.index("EMAIL:")
-                if index + 1 < len(palavras) and len(palavras[index + 1]) > 3:
-                    email_busca = palavras[index + 1]
-                    if len(self.leitores_filtrados) > 0:
-                        leitores_temp = []
-                        for leitor in self.leitores_filtrados:
-                            if leitor.get_email() == email_busca:
-                                leitores_temp.append(leitor)
-                        if len(leitores_temp) > 0:
-                            self.leitores_filtrados = leitores_temp
-                    else:
-                        for leitor in self.leitores:
-                            if leitor.get_email() == email_busca:
-                                self.leitores_filtrados.append(leitor)
+                    case "EMAIL:":
+                        index = palavras.index("EMAIL:")
+                        if index + 1 < len(palavras) and len(palavras[index + 1]) > 3:
+                            email_busca = " ".join((palavras[index+1:]))
+                            if "," in email_busca:
+                                email_busca = email_busca[0:email_busca.index(
+                                    ",")]
+                            if len(self.leitores_filtrados) > 0:
+                                leitores_temp = []
+                                for leitor in self.leitores_filtrados:
+                                    if leitor.get_email() == email_busca:
+                                        leitores_temp.append(leitor)
+                                if len(leitores_temp) > 0:
+                                    self.leitores_filtrados = leitores_temp
+                            else:
+                                for leitor in self.leitores:
+                                    if leitor.get_email() == email_busca:
+                                        self.leitores_filtrados.append(leitor)
 
-            if len(self.leitores_filtrados) > 0:
-                leitores_str = [str(leitor)
-                                for leitor in self.leitores_filtrados]
-                resultado.update(leitores_str)
-                self.setup_dados()
-            else:
-                leitores_str = [str(leitor) for leitor in self.leitores]
-                resultado.update(leitores_str)
-                self.setup_dados()
+                if len(self.leitores_filtrados) > 0:
+                    leitores_str = [str(leitor)
+                                    for leitor in self.leitores_filtrados]
+                    resultado.update(leitores_str)
+                    self.setup_dados()
+                else:
+                    leitores_str = [str(leitor) for leitor in self.leitores]
+                    resultado.update(leitores_str)
+                    self.setup_dados()
         else:
             if len(self.leitores_filtrados) > 0:
                 leitores_str = [str(leitor)

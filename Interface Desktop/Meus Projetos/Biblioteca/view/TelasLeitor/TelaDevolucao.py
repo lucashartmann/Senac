@@ -58,136 +58,168 @@ class TelaDevolucao(Container):
             if self.filtrou_select == False and self.filtrou_checkbox == False:
                 self.emprestimos_filtrados = []
 
-            if "GENERO:" in palavras:  # TODO: Permitir multiplas generos
-                index = palavras.index("GENERO:")
-                if index + 1 < len(palavras):
-                    genero_busca = palavras[index + 1]
-                    if len(self.emprestimos_filtrados) > 0:
-                        emprestimos_temp = []
-                        for emprestimo in self.emprestimos_filtrados:
-                            if emprestimo.get_livro().get_genero() == genero_busca:
-                                emprestimos_temp.append(emprestimo)
-                        if len(emprestimos_temp) > 0:
-                            self.emprestimos_filtrados = emprestimos_temp
-                    else:
-                        for emprestimo in self.emprestimos:
-                            if emprestimo.get_livro().get_genero() == genero_busca:
-                                self.emprestimos_filtrados.append(emprestimo)
+            for palavra in palavras:
+                match palavra:
 
-            if "TITULO:" in palavras:
-                index = palavras.index("TITULO:")
-                if index + 1 < len(palavras):
-                    titulo_busca = palavras[index + 1]
-                    if len(self.emprestimos_filtrados) > 0:
-                        emprestimos_temp = []
-                        for emprestimo in self.emprestimos_filtrados:
-                            if emprestimo.get_livro().get_titulo() == titulo_busca:
-                                emprestimos_temp.append(emprestimo)
-                        if len(emprestimos_temp) > 0:
-                            self.emprestimos_filtrados = emprestimos_temp
-                    else:
-                        for emprestimo in self.emprestimos:
-                            if emprestimo.get_livro().get_titulo() == titulo_busca:
-                                self.emprestimos_filtrados.append(emprestimo)
+                    case "GENERO:":  # TODO: Permitir multiplas generos
+                        index = palavras.index("GENERO:")
+                        if index + 1 < len(palavras):
+                            genero_busca = " ".join((palavras[index+1:]))
+                            if "," in genero_busca:
+                                genero_busca = genero_busca[0:genero_busca.index(
+                                    ",")]
+                            if len(self.emprestimos_filtrados) > 0:
+                                emprestimos_temp = []
+                                for emprestimo in self.emprestimos_filtrados:
+                                    if emprestimo.get_livro().get_genero() == genero_busca:
+                                        emprestimos_temp.append(emprestimo)
+                                if len(emprestimos_temp) > 0:
+                                    self.emprestimos_filtrados = emprestimos_temp
+                            else:
+                                for emprestimo in self.emprestimos:
+                                    if emprestimo.get_livro().get_genero() == genero_busca:
+                                        self.emprestimos_filtrados.append(
+                                            emprestimo)
 
-            if "QUANTIDADE:" in palavras:
-                index = palavras.index("QUANTIDADE:")
-                if index + 1 < len(palavras):
-                    try:
-                        quantidade_busca = int(palavras[index + 1])
-                        if len(self.emprestimos_filtrados) > 0:
-                            emprestimos_temp = []
-                            for emprestimo in self.emprestimos_filtrados:
-                                if emprestimo.get_livro().get_quant() == quantidade_busca:
-                                    emprestimos_temp.append(emprestimo)
-                            if len(emprestimos_temp) > 0:
-                                self.emprestimos_filtrados = emprestimos_temp
-                        else:
-                            for emprestimo in self.emprestimos:
-                                if emprestimo.get_livro().get_quant() == quantidade_busca:
-                                    self.emprestimos_filtrados.append(
-                                        emprestimo)
-                    except ValueError:
-                        self.notify("Valor inválido")
+                    case "TITULO:":
+                        index = palavras.index("TITULO:")
+                        if index + 1 < len(palavras):
+                            titulo_busca = " ".join((palavras[index+1:]))
+                            if "," in titulo_busca:
+                                titulo_busca = titulo_busca[0:titulo_busca.index(
+                                    ",")]
+                            if len(self.emprestimos_filtrados) > 0:
+                                emprestimos_temp = []
+                                for emprestimo in self.emprestimos_filtrados:
+                                    if emprestimo.get_livro().get_titulo() == titulo_busca:
+                                        emprestimos_temp.append(emprestimo)
+                                if len(emprestimos_temp) > 0:
+                                    self.emprestimos_filtrados = emprestimos_temp
+                            else:
+                                for emprestimo in self.emprestimos:
+                                    if emprestimo.get_livro().get_titulo() == titulo_busca:
+                                        self.emprestimos_filtrados.append(
+                                            emprestimo)
 
-            if "AUTOR:" in palavras:
-                index = palavras.index("AUTOR:")
-                if index + 1 < len(palavras):
-                    autor_busca = palavras[index + 1].upper()
-                    if len(self.emprestimos_filtrados) > 0:
-                        emprestimos_temp = []
-                        for emprestimo in self.emprestimos_filtrados:
-                            if emprestimo.get_livro().get_autor() == autor_busca:
-                                emprestimos_temp.append(emprestimo)
-                        if len(emprestimos_temp) > 0:
-                            self.emprestimos_filtrados = emprestimos_temp
-                    else:
-                        for emprestimo in self.emprestimos:
-                            if emprestimo.get_livro().get_autor() == autor_busca:
-                                self.emprestimos_filtrados.append(emprestimo)
+                    case "QUANTIDADE:":
+                        index = palavras.index("QUANTIDADE:")
+                        if index + 1 < len(palavras):
+                            try:
+                                quantidade_busca = int(
+                                    " ".join((palavras[index+1:])))
+                                if "," in quantidade_busca:
+                                    quantidade_busca = quantidade_busca[0:quantidade_busca.index(
+                                        ",")]
+                                quantidade_busca = int(quantidade_busca)
+                                if len(self.emprestimos_filtrados) > 0:
+                                    emprestimos_temp = []
+                                    for emprestimo in self.emprestimos_filtrados:
+                                        if emprestimo.get_livro().get_quant() == quantidade_busca:
+                                            emprestimos_temp.append(emprestimo)
+                                    if len(emprestimos_temp) > 0:
+                                        self.emprestimos_filtrados = emprestimos_temp
+                                else:
+                                    for emprestimo in self.emprestimos:
+                                        if emprestimo.get_livro().get_quant() == quantidade_busca:
+                                            self.emprestimos_filtrados.append(
+                                                emprestimo)
+                            except ValueError:
+                                self.notify("Valor inválido")
 
-            if "CODIGO:" in palavras:
-                index = palavras.index("CODIGO:")
-                if index + 1 < len(palavras):
-                    try:
-                        codigo_busca = int(palavras[index + 1])
-                        if len(self.emprestimos_filtrados) > 0:
-                            emprestimos_temp = []
-                            for emprestimo in self.emprestimos_filtrados:
-                                if emprestimo.get_livro().get_codigo() == codigo_busca:
-                                    emprestimos_temp.append(emprestimo)
-                            if len(emprestimos_temp) > 0:
-                                self.emprestimos_filtrados = emprestimos_temp
-                        else:
-                            for emprestimo in self.emprestimos:
-                                if emprestimo.get_livro().get_codigo() == codigo_busca:
-                                    self.emprestimos_filtrados.append(
-                                        emprestimo)
-                    except ValueError:
-                        self.notify("Valor inválido")
+                    case "AUTOR:":
+                        index = palavras.index("AUTOR:")
+                        if index + 1 < len(palavras):
+                            autor_busca = " ".join((palavras[index+1:]))
+                            if "," in autor_busca:
+                                autor_busca = autor_busca[0:autor_busca.index(
+                                    ",")]
+                            if len(self.emprestimos_filtrados) > 0:
+                                emprestimos_temp = []
+                                for emprestimo in self.emprestimos_filtrados:
+                                    if emprestimo.get_livro().get_autor() == autor_busca:
+                                        emprestimos_temp.append(emprestimo)
+                                if len(emprestimos_temp) > 0:
+                                    self.emprestimos_filtrados = emprestimos_temp
+                            else:
+                                for emprestimo in self.emprestimos:
+                                    if emprestimo.get_livro().get_autor() == autor_busca:
+                                        self.emprestimos_filtrados.append(
+                                            emprestimo)
 
-            if "NOME:" in palavras:
-                index = palavras.index("NOME:")
-                if index + 1 < len(palavras):
-                    nome_busca = palavras[index + 1]
-                    if len(self.emprestimos_filtrados) > 0:
-                        emprestimos_temp = []
-                        for emprestimo in self.emprestimos_filtrados:
-                            if emprestimo.get_leitor().get_nome() == nome_busca:
-                                emprestimos_temp.append(emprestimo)
-                        if len(emprestimos_temp) > 0:
-                            self.emprestimos_filtrados = emprestimos_temp
-                    else:
-                        for emprestimo in self.emprestimos:
-                            if emprestimo.get_leitor().get_nome() == nome_busca:
-                                self.emprestimos_filtrados.append(emprestimo)
+                    case "CODIGO:":
+                        index = palavras.index("CODIGO:")
+                        if index + 1 < len(palavras):
+                            try:
+                                codigo_busca = " ".join((palavras[index+1:]))
+                                if "," in codigo_busca:
+                                    codigo_busca = codigo_busca[0:codigo_busca.index(
+                                        ",")]
+                                codigo_busca = int(codigo_busca)
+                                if len(self.emprestimos_filtrados) > 0:
+                                    emprestimos_temp = []
+                                    for emprestimo in self.emprestimos_filtrados:
+                                        if emprestimo.get_livro().get_codigo() == codigo_busca:
+                                            emprestimos_temp.append(emprestimo)
+                                    if len(emprestimos_temp) > 0:
+                                        self.emprestimos_filtrados = emprestimos_temp
+                                else:
+                                    for emprestimo in self.emprestimos:
+                                        if emprestimo.get_livro().get_codigo() == codigo_busca:
+                                            self.emprestimos_filtrados.append(
+                                                emprestimo)
+                            except ValueError:
+                                self.notify("Valor inválido")
 
-            if "EMAIL:" in palavras:
-                index = palavras.index("EMAIL:")
-                if index + 1 < len(palavras) and len(palavras[index + 1]) > 3:
-                    email_busca = palavras[index + 1]
-                    if len(self.emprestimos_filtrados) > 0:
-                        emprestimos_temp = []
-                        for emprestimo in self.emprestimos_filtrados:
-                            if emprestimo.get_leitor().get_email() == email_busca:
-                                emprestimos_temp.append(emprestimo)
-                        if len(emprestimos_temp) > 0:
-                            self.emprestimos_filtrados = emprestimos_temp
-                    else:
-                        for emprestimo in self.emprestimos:
-                            if emprestimo.get_leitor().get_email() == email_busca:
-                                self.emprestimos_filtrados.append(emprestimo)
+                    case "NOME:":
+                        index = palavras.index("NOME:")
+                        if index + 1 < len(palavras):
+                            nome_busca = " ".join((palavras[index+1:]))
+                            if "," in nome_busca:
+                                nome_busca = nome_busca[0:nome_busca.index(
+                                    ",")]
+                            if len(self.emprestimos_filtrados) > 0:
+                                emprestimos_temp = []
+                                for emprestimo in self.emprestimos_filtrados:
+                                    if emprestimo.get_leitor().get_nome() == nome_busca:
+                                        emprestimos_temp.append(emprestimo)
+                                if len(emprestimos_temp) > 0:
+                                    self.emprestimos_filtrados = emprestimos_temp
+                            else:
+                                for emprestimo in self.emprestimos:
+                                    if emprestimo.get_leitor().get_nome() == nome_busca:
+                                        self.emprestimos_filtrados.append(
+                                            emprestimo)
 
-            if len(self.emprestimos_filtrados) > 0:
-                emprestimos_str = [str(emprestimo)
-                                   for emprestimo in self.emprestimos_filtrados]
-                resultado.update(emprestimos_str)
-                self.setup_dados()
-            else:
-                emprestimos_str = [str(emprestimo)
-                                   for emprestimo in self.emprestimos]
-                resultado.update(emprestimos_str)
-                self.setup_dados()
+                    case "EMAIL:":
+                        index = palavras.index("EMAIL:")
+                        if index + 1 < len(palavras) and len(palavras[index + 1]) > 3:
+                            email_busca = " ".join((palavras[index+1:]))
+                            if "," in email_busca:
+                                email_busca = email_busca[0:email_busca.index(
+                                    ",")]
+                            if len(self.emprestimos_filtrados) > 0:
+                                emprestimos_temp = []
+                                for emprestimo in self.emprestimos_filtrados:
+                                    if emprestimo.get_leitor().get_email() == email_busca:
+                                        emprestimos_temp.append(emprestimo)
+                                if len(emprestimos_temp) > 0:
+                                    self.emprestimos_filtrados = emprestimos_temp
+                            else:
+                                for emprestimo in self.emprestimos:
+                                    if emprestimo.get_leitor().get_email() == email_busca:
+                                        self.emprestimos_filtrados.append(
+                                            emprestimo)
+
+                if len(self.emprestimos_filtrados) > 0:
+                    emprestimos_str = [str(emprestimo)
+                                       for emprestimo in self.emprestimos_filtrados]
+                    resultado.update(emprestimos_str)
+                    self.setup_dados()
+                else:
+                    emprestimos_str = [str(emprestimo)
+                                       for emprestimo in self.emprestimos]
+                    resultado.update(emprestimos_str)
+                    self.setup_dados()
         else:
             if len(self.emprestimos_filtrados) > 0 and self.filtrou_select == False:
                 emprestimos_str = [str(emprestimo)

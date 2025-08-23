@@ -17,9 +17,10 @@ class Init:
                          "ANTOINE DE SAINT-EXUPÉRY", "FÁBULA", 2)
     livro3 = Livro.Livro("1984", "GEORGE ORWELL", "DISTOPIA", 3)
     livro4 = Livro.Livro("1985", "GEORGE ORWELL", "DISTOPIA", 3)
+    livro5 = Livro.Livro("1986", "GEORGE ORWELL", "AVENTURA", 3)
 
     # livro4 = Livro.Livro("O SENHOR DOS ANÉIS", "J.R.R. TOLKIEN", "FANTASIA", 4)
-    livro5 = Livro.Livro("DOM CASMURRO", "MACHADO DE ASSIS", "ROMANCE", 5)
+    # livro5 = Livro.Livro("DOM CASMURRO", "MACHADO DE ASSIS", "ROMANCE", 5)
     livro6 = Livro.Livro("A CULPA É DAS ESTRELAS", "JOHN GREEN", "DRAMA", 6)
 
     biblioteca.add_livro(livro1)
