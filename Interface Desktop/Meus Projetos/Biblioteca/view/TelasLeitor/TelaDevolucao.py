@@ -1,7 +1,6 @@
 from textual.widgets import Input, Pretty, TextArea, Button
 from textual.containers import HorizontalGroup, Container
 from controller import Controller
-from textual import on
 from model import Init
 
 

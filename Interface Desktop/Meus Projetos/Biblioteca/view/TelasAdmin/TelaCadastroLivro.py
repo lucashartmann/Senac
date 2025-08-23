@@ -1,10 +1,21 @@
-from textual.widgets import Input, Label, Button, TabbedContent, TabPane, Select
-from textual.containers import Container, HorizontalGroup
+from textual.widgets import Input, Label, Button, TabbedContent, TabPane, Select, Static
+from textual.containers import Container, HorizontalGroup, VerticalScroll
 from controller import Controller
 from textual import on
+from textual.message import Message
+
+
+class CadastroRealizado(Message):
+    def __init__(self, sender) -> None:
+        super().__init__()
+        self.sender = sender
 
 
 class TelaCadastrar(Container):
+
+    montou = False
+    valor_select = ""
+
     def compose(self):
         with HorizontalGroup():
             yield Label("Titulo:", id="lbl_titulo")
@@ -25,20 +36,21 @@ class TelaCadastrar(Container):
         dados = []
         for input in self.query(Input):
             dados.append(input.value.upper())
-        if self.screen.valor_select != "Novo Genero":
-            dados.append(self.screen.valor_select)
-        elif self.screen.montou:
+        if self.valor_select != "Novo Genero":
+            dados.append(self.query_one(Select).value)
+        elif self.montou:
             dados.append(self.query_one("#inpt_genero", Input).value)
         else:
             dados.append("")
         resultado = Controller.cadastrar_livro(dados)
         self.notify(str(resultado), markup=False)
         self.screen.on_mount()
+        self.post_message(CadastroRealizado(self))
 
     def on_button_pressed(self, evento: Button.Pressed):
         if evento.button.id == "bt_cadastrar":
-            if self.screen.montou:
-                self.screen.montou = False
+            if self.montou:
+                self.montou = False
                 self.query_one("#lbl_genero").remove()
                 self.query_one("#inpt_genero").remove()
             self.cadastro()
@@ -59,7 +71,11 @@ class TelaRemover(Container):
             self.notify(str(mensagem), markup=False)
 
 
-class TelaEditar(Container):
+class TelaEditar(VerticalScroll):
+
+    montou = False
+    valor_select = ""
+    montou_desenho = False
 
     def compose(self):
         with HorizontalGroup():
@@ -72,8 +88,14 @@ class TelaEditar(Container):
             yield Input(placeholder="Autor aqui", id="inpt_autor")
             yield Label("Quantidade:", id="lbl_quant")
             yield Input(placeholder="Quantidade aqui", id="inpt_quant")
+        with HorizontalGroup():
+            yield Label("Caminho da Capa")
+            yield Input(placeholder="Caminho aqui")
+            yield Label("Tamanho da capa")
+            yield Input(placeholder="Tamanho")
         with HorizontalGroup(id="hg_genero"):
             yield Select([("genero", 'genero')])
+        yield HorizontalGroup(id="hg_resultado")
         with HorizontalGroup():
             yield Button("Editar", id="bt_editar")
             yield Button("Limpar", id="bt_limpar")
@@ -81,24 +103,39 @@ class TelaEditar(Container):
 
     def on_button_pressed(self, evento: Button.Pressed):
         if evento.button.id == "bt_editar":
-            if self.screen.montou:
-                self.screen.montou = False
+
+            if self.montou:
+                self.montou = False
                 self.query_one("#lbl_genero").remove()
                 self.query_one("#inpt_genero").remove()
             input_id = self.query_one("#input_id", Input).value
             dados = []
             for input in self.query(Input)[1:]:
                 dados.append(input.value.upper())
-            if self.screen.valor_select != "Novo Genero":
-                dados.append(self.screen.valor_select)
-            elif self.screen.montou:
+            if self.valor_select != "Novo Genero":
+                dados.append(self.query_one(Select).value)
+            elif self.montou:
                 dados.append(self.query_one(
                     "#inpt_genero", Input).value)
             else:
                 dados.append("")
             mensagem = Controller.editar_livro(input_id, dados)
+            capa = Controller.get_capa(input_id)
+            if capa:
+                hg = self.query_one("#hg_resultado", HorizontalGroup)
+                hg.styles.height = 20
+                hg.styles.width = "50%"
+                hg.styles.background = "pink"
+                hg.styles.align = ("center", "middle")
+                hg.styles.margin = [0, 0, 1, 70]
+                if self.montou_desenho:
+                    hg.remove_children()
+                    self.montou_desenho = False
+                hg.mount(Static(capa))
+                self.montou_desenho = True
             self.notify(str(mensagem), markup=False)
             self.screen.on_mount()
+            self.post_message(self.CadastroRealizado(self))
 
 
 class TelaCadastroLivro(Container):

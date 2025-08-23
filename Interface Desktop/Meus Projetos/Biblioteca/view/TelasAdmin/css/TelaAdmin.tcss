@@ -1,11 +1,3 @@
-TelaAdmin {
-    layout: grid;
-    align: center middle;
-    grid-size: 2 4;
-    grid-gutter: 1 2;  
-}
-
-
 TelaCadastroLivro Input {
     width: 40%;
     margin: 2 0 0 0;
@@ -78,6 +70,7 @@ TelaCadastroLivro TelaCadastrar #lbl_quant {
 TelaCadastroLivro TelaEditar #lbl_quant {
     margin: 3 10 0 25; 
 }
+
 
 TelaClientela TextArea {
     height: 5;
