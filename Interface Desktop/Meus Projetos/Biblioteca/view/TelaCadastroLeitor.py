@@ -2,6 +2,12 @@ from textual.widgets import Input, Label, Button, TabbedContent, TabPane
 from textual.containers import Container
 from controller import Controller
 from model import Init
+from textual.message import Message
+
+class CadastroLeitorRealizado(Message):
+    def __init__(self, sender) -> None:
+        super().__init__()
+        self.sender = sender
 
 
 class TelaCadastrar(Container):
@@ -20,6 +26,7 @@ class TelaCadastrar(Container):
             dados.append(input.value.upper())
         resultado = Controller.cadastrar_leitor(dados)
         self.notify(str(resultado), markup=False)
+        self.post_message(CadastroLeitorRealizado(self))
 
     def on_button_pressed(self, evento: Button.Pressed):
         if evento.button.id == "bt_cadastrar":
@@ -62,15 +69,7 @@ class TelaEditar(Container):
                 dados.append(input.value.upper())
             mensagem = Controller.editar_leitor(input_email, dados)
             self.notify(str(mensagem), markup=False)
-            
-    def on_screen_resume(self):
-        input_email = self.query_one("#input_email", Input)
-        if Init.usuario_leitor:
-            input_email.value = Init.leitor1.get_email()
-            input_email.disabled = True
-        else: 
-            input_email.value = ""
-            input_email.disabled = False
+            self.post_message(CadastroLeitorRealizado(self))
             
     def on_mount(self):
         input_email = self.query_one("#input_email", Input)

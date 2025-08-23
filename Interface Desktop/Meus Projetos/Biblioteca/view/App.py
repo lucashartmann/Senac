@@ -1,8 +1,7 @@
 from textual.app import App
-from view import TelaInicial
+from view import TelaInicial, TelaEstoqueCapas
 from view.TelasLeitor import TelaLeitor
 from view.TelasAdmin import TelaAdmin
-
 
 class App(App):
 
@@ -10,6 +9,7 @@ class App(App):
         "tela_inicial": TelaInicial.TelaInicial,
         "tela_admin": TelaAdmin.TelaAdmin,
         "tela_leitor": TelaLeitor.TelaLeitor,
+        "tela_estoque": TelaEstoqueCapas.TelaEstoqueCapas
     }
 
     def on_mount(self):

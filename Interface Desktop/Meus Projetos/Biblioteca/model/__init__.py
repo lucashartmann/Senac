@@ -23,6 +23,7 @@ class Init:
     # livro5 = Livro.Livro("DOM CASMURRO", "MACHADO DE ASSIS", "ROMANCE", 5)
     livro6 = Livro.Livro("A CULPA É DAS ESTRELAS", "JOHN GREEN", "DRAMA", 6)
 
+
     biblioteca.add_livro(livro1)
     biblioteca.add_livro(livro2)
     biblioteca.add_livro(livro3)

@@ -1,4 +1,4 @@
-from model import Livro, Leitor, Emprestimo
+from model import Emprestimo
 
 
 class Biblioteca:

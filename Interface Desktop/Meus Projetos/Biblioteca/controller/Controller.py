@@ -1,4 +1,63 @@
 from model import Leitor, Livro, Init
+from rich_pixels import Pixels
+from PIL import Image
+import os
+
+
+def get_capa(cod_livro):
+    try:
+        cod_livro = int(cod_livro)
+    except:
+        return f"ERRO ao converter {cod_livro}"
+
+    livro = Init.biblioteca.get_livro_por_cod(cod_livro)
+    if livro.get_capa():
+        return livro.get_capa()
+    else:
+        return None
+
+
+def resize(caminho, tamanho):
+    size = tamanho, tamanho
+
+    if not os.path.exists(caminho):
+        print(f"Imagem não encontrada: {caminho}")
+        return False, ""
+
+    try:
+        im = Image.open(caminho)
+        im.thumbnail(size, Image.Resampling.LANCZOS)
+        novo_caminho = f"{caminho.split('.')[0]}copia.{caminho.split('.')[1]}"
+        if os.path.exists(novo_caminho):
+            os.remove(novo_caminho)
+        im.save(novo_caminho)
+    except ValueError:
+        print(caminho)
+        print(novo_caminho)
+        return False, ""
+    return True, novo_caminho
+
+
+def gerar_pixel(caminho, tamanho):
+    if tamanho:
+        bool, novo_caminho = resize(caminho, tamanho)
+    else:
+        im = Image.open(caminho)
+        novo_caminho = f"{caminho.split('.')[0]}copia.{caminho.split('.')[1]}"
+        if os.path.exists(novo_caminho):
+            os.remove(novo_caminho)
+        im.save(novo_caminho)
+        bool = True
+    if bool:
+        try:
+            pixels = Pixels.from_image_path(novo_caminho)
+            if os.path.exists(novo_caminho):
+                os.remove(novo_caminho)
+            return pixels
+        except Exception:
+            print(f"Erro ao gerar pixels")
+            return None
+    return None
 
 
 def get_livros_biblioteca():
@@ -67,8 +126,8 @@ def devolver(cod_livro, email):
 def cadastrar_livro(dados):
     titulo = dados[0]
     autor = dados[1]
-    genero = dados[2]
-    quant = dados[3]
+    quant = dados[2]
+    genero = dados[3]
 
     if titulo == "":
         return "Erro, titulo vazio"
@@ -185,8 +244,10 @@ def editar_livro(cod_livro, dados):
 
     titulo = dados[0]
     autor = dados[1]
-    genero = dados[2]
-    quant = dados[3]
+    quant = dados[2]
+    caminho_capa = dados[3]
+    tamanho_capa = dados[4]
+    genero = dados[5]
 
     if titulo != "":
         livro.set_titulo(titulo)
@@ -204,5 +265,37 @@ def editar_livro(cod_livro, dados):
             mensagem += f"Quant editado '{quant}'"
         except:
             mensagem += f"Erro ao converter '{quant}'"
+
+    if caminho_capa != "" and tamanho_capa != "":
+        try:
+            tamanho_capa = int(tamanho_capa)
+            gerar_capa = gerar_pixel(caminho_capa, tamanho_capa)
+            if gerar_capa:
+                livro.set_capa(gerar_capa)
+                mensagem += f"Capa editada\n"
+            else:
+                mensagem += "Erro ao gerar capa"
+        except:
+            mensagem += f"Erro ao converter '{tamanho_capa}'"
+
+    if caminho_capa != "" and tamanho_capa == "":
+        gerar_capa = gerar_pixel(caminho_capa, tamanho_capa)
+        if gerar_capa:
+            livro.set_capa(gerar_capa)
+            mensagem += f"Caminho editado\n"
+        else:
+            mensagem += "Erro ao gerar capa"
+
+    if caminho_capa == "" and tamanho_capa != "":
+        if livro.get_caminho_capa():
+            gerar_capa = gerar_pixel(livro.get_caminho_capa(), tamanho_capa)
+            if gerar_capa:
+                livro.set_capa(gerar_capa)
+                livro.set_tamanho_capa(tamanho_capa)
+                mensagem += f"Tamanho editado\n"
+            else:
+                mensagem += "Erro ao gerar capa"
+        else:
+            mensagem += "Capa precisa ter um caminho"
 
     return mensagem

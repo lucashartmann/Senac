@@ -2,11 +2,15 @@ from textual.screen import Screen
 from textual.widgets import TabbedContent, TabPane, Footer, Header
 from view.TelasLeitor import TelaDevolucao
 from view import TelaCadastroLeitor, TelaEstoque
-
+from textual.binding import Binding
 
 class TelaLeitor(Screen):
 
     CSS_PATH = "css/TelaLeitor.tcss"
+
+    BINDINGS = {
+        Binding("s", "app.push_screen('tela_estoque')", "Tela Estoque")
+    }
 
     def compose(self):
         yield Header()
