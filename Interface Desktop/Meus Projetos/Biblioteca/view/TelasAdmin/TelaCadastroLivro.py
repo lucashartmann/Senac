@@ -1,5 +1,4 @@
-from textual.widgets import Input, Label, Button, TabbedContent, TabPane, Footer, Header, Select
-from textual.screen import Screen
+from textual.widgets import Input, Label, Button, TabbedContent, TabPane, Select
 from textual.containers import Container, HorizontalGroup
 from controller import Controller
 from textual import on
@@ -102,11 +101,10 @@ class TelaEditar(Container):
             self.screen.on_mount()
 
 
-class TelaCadastroLivro(Screen):
+class TelaCadastroLivro(Container):
     CSS_PATH = "css/TelaCadastroLivro.tcss"
 
     def compose(self):
-        yield Header()
         with TabbedContent():
             with TabPane("Cadastrar"):
                 yield TelaCadastrar()
@@ -114,12 +112,11 @@ class TelaCadastroLivro(Screen):
                 yield TelaEditar()
             with TabPane("Remover"):
                 yield TelaRemover()
-        yield Footer()
 
     def on_button_pressed(self, evento: Button.Pressed):
         match evento.button.id:
             case "bt_voltar":
-                self.screen.app.switch_screen("tela_admin")
+                self.screen.app.switch_screen("tela_inicial")
             case "bt_limpar":
                 for input in self.query(Input):
                     input.value = ""
@@ -128,7 +125,7 @@ class TelaCadastroLivro(Screen):
     valor_select = ""
 
     def on_mount(self):
-        livros = Controller.get_livros_biblioteca()
+        livros = Controller.get_livros_biblioteca().values()
         lista_generos = []
         for livro in livros:
             if livro.get_genero() not in lista_generos:
