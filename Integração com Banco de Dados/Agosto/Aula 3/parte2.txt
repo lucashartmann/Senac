@@ -1,0 +1,99 @@
++------------------------------------+
+|               Title                |
++------------------------------------+
+| Vault: Def Leppard's Greatest Hits |
++------------------------------------+
++----------+---------------------+
+| ArtistId |        Name         |
++----------+---------------------+
+| 11       | Black Label Society |
+| 12       | Black Sabbath       |
+| 38       | Banda Black Rio     |
+| 137      | The Black Crowes    |
+| 169      | Black Eyed Peas     |
++----------+---------------------+
++----------------------------------------------------------+--------------+
+|                           Name                           | Milliseconds |
++----------------------------------------------------------+--------------+
+| Intro                                                    | 52218        |
+| Wasted Reprise                                           | 53733        |
+| Arc                                                      | 65593        |
+| Soldier Side - Intro                                     | 63764        |
+| Polícia (Vinheta)                                        | 56111        |
+| Happy Trails                                             | 65488        |
+| Cotidiano N 2                                            | 55902        |
+| Salutations                                              | 69120        |
+| Lamentations of Jeremiah, First Set \ Incipit Lamentatio | 69194        |
+| Étude 1, In C Major - Preludio (Presto) - Liszt          | 51780        |
+| L'orfeo, Act 3, Sinfonia (Orchestra)                     | 66639        |
++----------------------------------------------------------+--------------+
++----------------+
+| BillingCountry |
++----------------+
+| Germany        |
+| Norway         |
+| Belgium        |
+| Canada         |
+| USA            |
+| France         |
+| Ireland        |
+| United Kingdom |
+| Australia      |
+| Chile          |
+| India          |
+| Brazil         |
+| Portugal       |
+| Netherlands    |
+| Spain          |
+| Sweden         |
+| Czech Republic |
+| Finland        |
+| Denmark        |
+| Italy          |
+| Poland         |
+| Austria        |
+| Hungary        |
+| Argentina      |
++----------------+
++-----------------+------------+---------+
+|  NomeCompleto   | CustomerId | Country |
++-----------------+------------+---------+
+| Luís Gonçalves  | 1          | Brazil  |
+| Eduardo Martins | 10         | Brazil  |
+| Alexandre Rocha | 11         | Brazil  |
+| Roberto Almeida | 12         | Brazil  |
+| Fernanda Ramos  | 13         | Brazil  |
++-----------------+------------+---------+
++---------------------+
+|     BillingCity     |
++---------------------+
+| Rio de Janeiro      |
+| Brasília            |
+| São José dos Campos |
++---------------------+
++------------+
+| CustomerId |
++------------+
+| 13         |
++------------+
++------------+
+| CustomerId |
++------------+
+| 13         |
++------------+
++-----------------------+
+|         Name          |
++-----------------------+
+| Money                 |
+| Long Tall Sally       |
+| Bad Boy               |
+| Twist And Shout       |
+| Please Mr. Postman    |
+| C'Mon Everybody       |
+| Rock 'N' Roll Music   |
+| Slow Down             |
+| Roadrunner            |
+| Carol                 |
+| Good Golly Miss Molly |
+| 20 Flight Rock        |
++-----------------------+

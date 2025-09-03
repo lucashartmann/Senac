@@ -1,0 +1,58 @@
++---------+
+| AlbumId |
++---------+
+| 183     |
++---------+
++---------------------------------+---------------+
+|          Titulo Álbum           |    Artista    |
++---------------------------------+---------------+
+| Black Sabbath                   | Black Sabbath |
+| Black Sabbath Vol. 4 (Remaster) | Black Sabbath |
++---------------------------------+---------------+
++----------------------------------------------------------+-------------+---------------------------------------------+
+|                           Nome                           | Comprimento |                    Álbum                    |
++----------------------------------------------------------+-------------+---------------------------------------------+
+| Intro                                                    | 52218       | From The Muddy Banks Of The Wishkah [Live]  |
+| Wasted Reprise                                           | 53733       | Pearl Jam                                   |
+| Arc                                                      | 65593       | Riot Act                                    |
+| Soldier Side - Intro                                     | 63764       | Mezmerize                                   |
+| Polícia (Vinheta)                                        | 56111       | Acústico                                    |
+| Happy Trails                                             | 65488       | Diver Down                                  |
+| Cotidiano N 2                                            | 55902       | Vinicius De Moraes                          |
+| Salutations                                              | 69120       | House of Pain                               |
+| Lamentations of Jeremiah, First Set \ Incipit Lamentatio | 69194       | English Renaissance                         |
+| Étude 1, In C Major - Preludio (Presto) - Liszt          | 51780       | Liszt - 12 Études D'Execution Transcendante |
+| L'orfeo, Act 3, Sinfonia (Orchestra)                     | 66639       | Monteverdi: L'Orfeo                         |
++----------------------------------------------------------+-------------+---------------------------------------------+
++-----------------+------------+---------+
+|  Nome Completo  | CustomerId | Country |
++-----------------+------------+---------+
+| Astrid Gruber   | 7          | Austria |
+| Alexandre Rocha | 11         | Brazil  |
+| Aaron Mitchell  | 32         | Canada  |
++-----------------+------------+---------+
++-----------+-----------+
+| FirstName | LastName  |
++-----------+-----------+
+| Eduardo   | Martins   |
+| Roberto   | Almeida   |
+| Fernanda  | Ramos     |
+| Alexandre | Rocha     |
+| Luís      | Gonçalves |
++-----------+-----------+
++-----------------------+
+|         Name          |
++-----------------------+
+| Money                 |
+| Long Tall Sally       |
+| Bad Boy               |
+| Twist And Shout       |
+| Please Mr. Postman    |
+| C'Mon Everybody       |
+| Rock 'N' Roll Music   |
+| Slow Down             |
+| Roadrunner            |
+| Carol                 |
+| Good Golly Miss Molly |
+| 20 Flight Rock        |
++-----------------------+
