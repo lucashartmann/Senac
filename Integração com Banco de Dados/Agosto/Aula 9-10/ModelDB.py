@@ -2,9 +2,9 @@ import random
 import datetime
 import sqlite3
 
-sql_create_table_livros = '''
-CREATE TABLE IF NOT EXISTS livros (
-    id INTEGER PRIMARY KEY NOT NULL,
+sql_create_table_Livro = '''
+CREATE TABLE IF NOT EXISTS Livro (
+    id_livro INTEGER PRIMARY KEY NOT NULL,
     codigo TEXT,
     titulo TEXT,
     emprestado INTEGER
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS Emprestimo (
     id_livro INT NOT NULL,
     email_leitor TEXT NOT NULL,
     data_para_devolucao TEXT NOT NULL,
-    FOREIGN KEY (id_livro) REFERENCES livros(id),
+    FOREIGN KEY (id_livro) REFERENCES Livro(id_livro),
     FOREIGN KEY (email_leitor) REFERENCES Leitor(email)
 );
 '''
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS leitor_emprestimo (
 
 
 sql_inserir_dados_livro = '''
-    INSERT INTO livros (codigo, titulo, emprestado)
+    INSERT INTO Livro (codigo, titulo, emprestado)
     VALUES (?, ?, ?);
 '''
 
@@ -63,7 +63,7 @@ sql_inserir_dados_lista_emprestimo = '''
     VALUES (?, ?);
 '''
 
-dados_livros = [
+dados_Livro = [
     ("abc-001", "Dom Casmurro", 0),
     ("abc-002", "O Cortiço", 1),
     ("abc-003", "Memórias Póstumas de Brás Cubas", 0),
@@ -96,12 +96,12 @@ with sqlite3.connect("Biblioteca.db") as conexao:
 
     cursor = conexao.cursor()
 
-    cursor.execute(sql_create_table_livros)
+    cursor.execute(sql_create_table_Livro)
     cursor.execute(sql_create_table_emprestimo)
     cursor.execute(sql_create_table_leitor)
     cursor.execute(sql_create_table_lista_de_emprestimos)
 
-    cursor.executemany(sql_inserir_dados_livro, dados_livros)
+    cursor.executemany(sql_inserir_dados_livro, dados_Livro)
     cursor.executemany(sql_inserir_dados_leitor, dados_leitor)
     cursor.executemany(sql_inserir_dados_emprestimo, dados_emprestimos)
 
@@ -296,7 +296,7 @@ class Biblioteca:
                 lista.append(emprestimo)
             return lista
 
-    def get_lista_livros(self):
+    def get_lista_Livro(self):
         with sqlite3.connect("Biblioteca.db") as conexao:
             cursor = conexao.cursor()
             lista = []
@@ -480,8 +480,19 @@ class Emprestimo:
 
 
 uma_biblioteca = Biblioteca()
-um_leitor = Leitor("Lucas", "LUCAS@EMAIL")
-um_livro = Livro("Dom Quixote", "Fernando Pessoa", "Ação", 2)
-uma_biblioteca.add_leitor(um_leitor)
-uma_biblioteca.add_livro(um_livro)
-um_emprestimo = uma_biblioteca.emprestar(um_livro, um_leitor)
+# um_leitor = Leitor("Lucas", "LUCAS@EMAIL")
+# um_livro = Livro("Dom Quixote", "Fernando Pessoa", "Ação", 2)
+# uma_biblioteca.add_leitor(um_leitor)
+# uma_biblioteca.add_livro(um_livro)
+# um_emprestimo = uma_biblioteca.emprestar(um_livro, um_leitor)
+
+titulo = "Dom"
+
+with sqlite3.connect('Biblioteca.db') as conexao:
+    cursor = conexao.cursor()
+    cursor.execute(f'''
+    SELECT * FROM Livro where titulo LIKE ?;
+                   ''', (f'%{titulo}%',))
+    registros = cursor.fetchall()
+    print(registros)
+
