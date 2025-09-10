@@ -10,7 +10,7 @@ class Banco:
             try:
                 cursor = conexao.cursor()
                 cursor.execute('''
-                CREATE TABLE Inventario (
+                CREATE TABLE IF NOT EXISTS Inventario (
                 id_inventario INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome_item TEXT,
                 dano INTEGER
@@ -44,7 +44,7 @@ class Banco:
                 print("ERRO!", e)
                 return []
 
-    def consulta_por_nome(self, nome):
+    def consultar_por_nome(self, nome):
         with sqlite3.connect("Inventario.db") as conexao:
             try:
                 cursor = conexao.cursor()
@@ -68,15 +68,14 @@ class Banco:
                 print("ERRO!", e)
                 return False
 
-    def atualizar_item(self, nome):
+    def atualizar_item(self, nome, novo_dano):
         with sqlite3.connect("Inventario.db") as conexao:
             try:
                 cursor = conexao.cursor()
                 cursor.execute(
-                    'UPDATE dano from Inventario WHERE nome_item = ?;', (nome,))
+                    'UPDATE Inventario SET dano =  ? WHERE nome_item = ?;', (novo_dano, nome))
                 conexao.commit()
                 return True
             except Exception as e:
                 print("ERRO!", e)
                 return False
-
