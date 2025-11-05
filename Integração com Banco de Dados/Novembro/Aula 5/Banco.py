@@ -3,7 +3,7 @@ from mysql.connector import Error
 from tkinter import messagebox
 
 
-class ConexaoBanco:
+class Banco:
     def get_conexao(self):
         conexao = None
         try:
