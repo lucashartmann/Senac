@@ -1,5 +1,7 @@
 import tkinter as tk
 from TelaCadastroProdutos import TelaCadastroProdutos
+from TelaManutencaoProduto import TelaManutencaoProduto
+
 
 class TelaMenu(tk.Tk):
     def __init__(self):
@@ -19,27 +21,28 @@ class TelaMenu(tk.Tk):
         menu_arq.add_command(label="Colaboradores")
         menu_arq.add_command(label="Fornecedores")
         menu_arq.add_separator()
-        menu_arq.add_command(label="Produtos", command=self.abrir_cadastro_produtos)
-        
+        menu_arq.add_command(
+            label="Produtos", command=self.abrir_cadastro_produtos)
+
         menu_manutencao = tk.Menu(menu_principal)
         menu_principal.add_cascade(label="Manutenção", menu=menu_manutencao)
-        
+
         menu_manutencao.add_command(label="Clientes")
         menu_manutencao.add_command(label="Colaboradores")
         menu_manutencao.add_command(label="Fornecedores")
         menu_manutencao.add_separator()
-        menu_manutencao.add_command(label="Produtos", command=self.abrir_manutencao_produtos)
-        
-        menu_principal.add_cascade(label="Sair", command=self.destroy)
+        menu_manutencao.add_command(
+            label="Produtos", command=self.abrir_manutencao_produtos)
 
-        
+        menu_principal.add_cascade(label="Sair", command=self.destroy)
 
     def abrir_cadastro_produtos(self):
         menu_windows = tk.Toplevel(self)
         TelaCadastroProdutos(menu_windows)
 
     def abrir_manutencao_produtos(self):
-        pass
+        menu_windows = tk.Toplevel(self)
+        TelaManutencaoProduto(menu_windows)
 
 
 if __name__ == "__main__":

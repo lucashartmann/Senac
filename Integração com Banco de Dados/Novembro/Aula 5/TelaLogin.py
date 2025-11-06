@@ -55,7 +55,7 @@ class TelaLogin:
             cursor.execute(query)
             resultados = cursor.fetchall()
 
-            # Preencher o ComboBox com os perfis e garantindo que idperfil seja int
+            # Preencher o ComboBox com os perfis e garantindo que id_perfil seja int
             self.perfis = {row[1]: int(row[0]) for row in resultados}
             self.combobox_perfil['values'] = list(self.perfis.keys())
 
@@ -72,15 +72,15 @@ class TelaLogin:
         # .strip() é usado para remover os espaços no inicio ou final da string
         login = self.entry_login.get().strip()
         senha = self.entry_senha.get().strip()
-        nomeperfil = self.combobox_perfil.get().strip()
+        nome_perfil = self.combobox_perfil.get().strip()
 
         # Verificando se as variáveis Login, senha e perfil estão vazias
-        if not login or not senha or not nomeperfil:
+        if not login or not senha or not nome_perfil:
             messagebox.showerror("Erro", "Preencha todos os campos!")
             return
 
-        idperfil = self.perfis.get(nomeperfil)
-        if idperfil is None:
+        id_perfil = self.perfis.get(nome_perfil)
+        if id_perfil is None:
             messagebox.showerror("Erro", "Perfil inválido!")
             return
 
@@ -88,7 +88,7 @@ class TelaLogin:
         senha_hash = hashlib.sha256(senha.encode('utf-8')).hexdigest()
 
         # Verificação dos valores antes da consulta
-        # print(f"Login: {login}, Senha: {senha}, Perfil: {nomeperfil} (ID: {idperfil}) " )
+        # print(f"Login: {login}, Senha: {senha}, Perfil: {nome_perfil} (ID: {id_perfil}) " )
 
         try:
             # Conexão com Banco de Dados
@@ -97,7 +97,7 @@ class TelaLogin:
 
             # Consulta para verificar o login, senha e perfil
             query = "SELECT * FROM login WHERE login = %s AND senha = %s AND perfil = %s "
-            cursor.execute(query, (login, senha_hash, idperfil))
+            cursor.execute(query, (login, senha_hash, id_perfil))
             resultado = cursor.fetchone()
 
             # print(f"Resultado da consulta: {resultado}") # Adicionando depuração
