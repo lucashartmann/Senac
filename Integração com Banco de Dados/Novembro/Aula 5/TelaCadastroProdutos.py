@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from decimal import Decimal
-from Estoque import Produto
+from Estoque import Estoque
 
 class TelaCadastroProdutos():
     def __init__(self, root):
