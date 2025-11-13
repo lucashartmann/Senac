@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from decimal import Decimal
-from Estoque import Estoque
-from Produto import Produto
+from model.Estoque import Estoque
+from model.Produto import Produto
 
 
 class TelaManutencaoProduto():
@@ -31,9 +30,6 @@ class TelaManutencaoProduto():
 
         self.tree.heading('quantidade', text='Quantidade')
         self.tree.column("quantidade", width=250, anchor=tk.CENTER)
-        
-        # self.tree.heading('id', text='id')
-        # self.tree.column("id", width=250)
 
         self.tree.pack(fill=tk.BOTH, expand=True)
         self.tree.bind("<<TreeviewSelect>>", self.selecionar_produto)
@@ -114,11 +110,11 @@ class TelaManutencaoProduto():
     def selecionar_produto(self, evento):
         self.limpar_entrys()
         item_selecionado = self.tree.focus()
-        
+
         if item_selecionado:
             valores = self.tree.item(item_selecionado, "values")
             if valores:
-                
+
                 self.entry_nome.insert(0, valores[0])
                 self.entry_valor.insert(0, valores[1])
                 self.entry_quantidade.insert(0, valores[2])

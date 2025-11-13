@@ -1,6 +1,6 @@
 import tkinter as tk
-from TelaCadastroProdutos import TelaCadastroProdutos
-from TelaManutencaoProduto import TelaManutencaoProduto
+from view.TelaCadastroProduto import TelaCadastroProduto
+from view.TelaManutencaoProduto import TelaManutencaoProduto
 
 
 class TelaMenu(tk.Tk):
@@ -38,7 +38,7 @@ class TelaMenu(tk.Tk):
 
     def abrir_cadastro_produtos(self):
         menu_windows = tk.Toplevel(self)
-        TelaCadastroProdutos(menu_windows)
+        TelaCadastroProduto(menu_windows)
 
     def abrir_manutencao_produtos(self):
         menu_windows = tk.Toplevel(self)

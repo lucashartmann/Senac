@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-from Banco import Banco
-from TelaMenu import TelaMenu
+from database.Banco import Banco
+from view.TelaMenu import TelaMenu
 
 import hashlib
 

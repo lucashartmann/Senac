@@ -4,10 +4,10 @@ class Produto:
         self.nome = nome
         self.valor = valor
         self.quantidade = quantidade
-        
+
     def get_id(self):
         return self.id
-    
+
     def set_id(self, id):
         self.id = id
 
@@ -28,7 +28,6 @@ class Produto:
 
     def set_quantidade(self, value):
         self.quantidade = value
-
 
     def to_dict(self):
         return {"nome": self.nome,

@@ -1,12 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox
-from decimal import Decimal
-from Estoque import Estoque
-from Produto import Produto
-from TelaManutencaoProduto import TelaManutencaoProduto
+from model.Estoque import Estoque
+from model.Produto import Produto
 
 
-class TelaCadastroProdutos():
+class TelaCadastroProduto():
     def __init__(self, root):
         self.root = root
         self.root.title("Cadastro de Produtos")
@@ -42,7 +40,7 @@ class TelaCadastroProdutos():
         except Exception as e:
             messagebox.showerror("ERRO", f"{e}")
             return
-        
+
         produto = Produto(nome, valor, quantidade)
         adicao = self.estoque.adicionar_produto(produto)
         if adicao:
@@ -60,5 +58,5 @@ class TelaCadastroProdutos():
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = TelaCadastroProdutos(root)
+    app = TelaCadastroProduto(root)
     root.mainloop()
