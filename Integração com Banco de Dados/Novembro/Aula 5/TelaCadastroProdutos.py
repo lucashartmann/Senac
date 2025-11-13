@@ -35,9 +35,14 @@ class TelaCadastroProdutos():
         self.estoque = Estoque()
 
     def salvar_produtos(self):
-        nome = self.entry_name.get()
-        valor = float(self.entry_valor.get())
-        quantidade = int(self.entry_quantidade.get())
+        try:
+            nome = self.entry_name.get()
+            valor = float(self.entry_valor.get()).strip()
+            quantidade = int(self.entry_quantidade.get()).strip()
+        except Exception as e:
+            messagebox.showerror("ERRO", f"{e}")
+            return
+        
         produto = Produto(nome, valor, quantidade)
         adicao = self.estoque.adicionar_produto(produto)
         if adicao:

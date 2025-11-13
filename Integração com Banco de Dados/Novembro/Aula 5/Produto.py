@@ -33,5 +33,6 @@ class Produto:
     def to_dict(self):
         return {"nome": self.nome,
                 "valor": self.valor,
-                "quantidade": self.quantidade
+                "quantidade": self.quantidade,
+                "id": self.id
                 }
