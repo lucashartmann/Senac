@@ -37,8 +37,8 @@ class TelaCadastroProdutos():
     def salvar_produtos(self):
         try:
             nome = self.entry_name.get()
-            valor = float(self.entry_valor.get()).strip()
-            quantidade = int(self.entry_quantidade.get()).strip()
+            valor = float(self.entry_valor.get().strip())
+            quantidade = int(self.entry_quantidade.get().strip())
         except Exception as e:
             messagebox.showerror("ERRO", f"{e}")
             return
