@@ -103,6 +103,8 @@ class TelaManutencaoProduto():
 
         if alteracao:
             messagebox.showinfo("Sucesso", f"Produto {nome} alterado!")
+            self.atualizar_tabela()
+            self.limpar_entrys()
         else:
             messagebox.showerror(
                 "Erro!", f"Produto {nome} não pode ser alterado")
@@ -116,10 +118,9 @@ class TelaManutencaoProduto():
             if valores:
 
                 self.entry_nome.insert(0, valores[0])
-                self.entry_valor.insert(0, valores[1])
+                self.entry_valor.insert(0, f"{float(valores[1]):,.2f}")
                 self.entry_quantidade.insert(0, valores[2])
                 self.id_produto_selecionado = int(valores[3])
-                print(self.id_produto_selecionado)
 
     def preencher_tabela(self):
         try:
@@ -127,26 +128,40 @@ class TelaManutencaoProduto():
             print(produtos)
             if produtos:
                 for produto in produtos:
+                    nome = produto.nome
+                    valor = f"{produto.valor:,.2f}"
+                    quantidade = str(produto.quantidade)
+                    id = str(produto.id)
+
                     self.tree.insert("", "end", values=(
-                        produto.nome, produto.valor, produto.quantidade, produto.id))
+                        nome, valor, quantidade, id))
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao preencher a tabela: {e}")
             return
 
     def excluir_produto_selecionado(self):
-        item_selecionado = self.tree.selection()
+        item_selecionado = self.tree.focus()
 
-        if not item_selecionado:
-            messagebox.showwarning("Aviso", "Selecione o produto para excluir")
-            return
+        if item_selecionado:
+            valores = self.tree.item(item_selecionado, "values")
+            if valores:
+                nome = valores[0]
 
-        id_produto = self.tree.item(item_selecionado, 'tags')[0]
-        nome_produto = self.tree.item(item_selecionado, 'values')[0]
+            if not self.id_produto_selecionado:
+                messagebox.showwarning(
+                    "Aviso", "Selecione um produto na tabela para excluir.")
+                return
 
-        if messagebox.askyesno("Confirmação", f"Deseja realmente excluir o produto? '{nome_produto}'?"):
-            if self.estoque.excluir_produto(id_produto):
-                messagebox.showinfo("Sucesso", "Produto excluido com sucesso.")
-                self.atualizar_tabela()
+            resposta = messagebox.askyesno(
+                "Confirmação", f"Tem certeza que deseja excluir o produto {nome}?")
+            if resposta:
+                if self.estoque.excluir_produto(self.id_produto_selecionado):
+                    messagebox.showinfo(
+                        "Sucesso", f"Produto {nome} excluído com sucesso!")
+                    self.atualizar_tabela()
+                    self.limpar_entrys()
+                else:
+                    messagebox.showerror("Erro", "Falha ao excluir o produto.")
 
     def atualizar_tabela(self):
         for item in self.tree.get_children():
