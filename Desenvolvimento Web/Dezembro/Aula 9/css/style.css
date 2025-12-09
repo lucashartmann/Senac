@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+
+
+ul.quadrado {
+    list-style-type: square;
+}
+
+ul.circulo {
+    list-style-type: circle;
+}
+
+ul.nenhum {
+    list-style-type: none;
+}
+
+ul.imagem {
+    list-style-image: url(../assets/quadradoVerde.png);
+}
+
+ol.romanos {
+    list-style: upper-roman;
+}
+
+ol.decimal {
+    list-style: decimal;
+}
+
+ol.letras {
+    list-style: upper-alpha;
+}
+
+ol.nenhum {
+    list-style: none;
+}
