@@ -1,0 +1,79 @@
+@import url("htts://fonts.googleapis.com/css?family=Noto+Serif");
+
+
+nav#navMenu {
+    background-color: rgb(42, 37, 37);
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0px 1px 15px 0px black;
+}
+
+nav#navMenu ul li{
+    text-decoration: none;
+    display: inline-block;
+}
+
+nav#navMenu ul li a{
+    text-decoration: none;
+}
+
+nav#navMenu ul {
+    text-align: center;
+    font-size: 16px;
+    font-family: sans-serif;
+    margin: -10px -8px -10px;
+    background-image: url("../assets/cafe1.png");
+    background-repeat: no-repeat;
+    background-size: 70px 70px;
+    box-shadow: 0px 4px 6px 7px black;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+footer {
+    margin-top: auto;
+    background-color: rgb(42, 37, 37);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    display: inline-flex;
+    box-shadow: 0px 4px 6px 7px black;
+}
+
+
+footer img {
+    width: 90%;
+    height: 32px;
+    margin-right: 3px;
+    margin-top: 6px;
+    
+}
+
+footer a {
+    margin-left: 20px;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: rgb(215, 26, 26);
+}
+
+body {
+    background-image: url("../assets/fundo.png");
+}
