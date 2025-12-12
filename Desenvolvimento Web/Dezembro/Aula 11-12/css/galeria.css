@@ -1,0 +1,40 @@
+div#imagens {
+    display: grid;
+    grid-template-columns: repeat(3, 700px);
+    margin: auto;
+    align-self: center;
+    width: auto;
+    height: auto;
+    align-content: center;
+}
+
+.imagem_container {
+    width: 360px;
+    height: 210px;
+    margin-top: 20px;
+    margin-left: 74px;
+    box-shadow: 0px 1px 5px 2px black;
+}
+
+.imagem_container {
+    background-size: 100%;
+}
+
+span {
+    opacity: 0;
+    font-size: 13pt;
+    padding: 45px;
+    text-align: right;
+    color: white;
+}
+
+.imagem_container:hover {
+    width: 365px;
+    height: 215px;
+    -webkit-transition: all .25s ease-in;
+}
+
+.imagem_container:hover span {
+    opacity: 1;
+    -webkit-transition: all .25s ease-in;
+}

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="shortcut icon" type="imagex/png" href="../assets/icon.png">
 </head>
+
 <body>
     <header>
         <nav id="navMenu">
@@ -28,25 +31,27 @@
     </header>
     <div id="login">
         <h2>Usuário</h2>
-        <input type="text" placeholder="Usuario">
+        <input type="text" placeholder="Usuario" id="usuario">
         <h2>Senha</h2>
-        <input type="text" placeholder="Senha">
+        <input type="text" placeholder="Senha" id="senha">
         <button>Entrar</button>
-        <p>Não possui login? <a href="">se cadastrar</a></p>
+        <p>Não possui login? <a href="#" onclick="changeScreen()">se cadastrar</a></p>
         <a href="">Esqueci senha</a>
     </div>
     <div id="cadastro">
-        <h2>Usuário</h2>
+        <h2>Novo Usuário</h2>
         <input type="text" placeholder="Usuário">
-        <h2>Senha</h2>
+        <h2>Nova Senha</h2>
         <input type="text" placeholder="Senha">
         <button>Cadastrar</button>
-        <a href="">voltar</a><
+        <a href="#" onclick="changeScreen()">voltar</a>
     </div>
     <footer>
         <p>Copyright 2025 - By Lucas Hartmann</p>
         <a href="https://github.com/lucashartmann" target="_blank"><img src="../assets/github_logo.png" alt=""></a>
     </footer>
-    
+
 </body>
+<script src="../js/login.js"></script>
+
 </html>

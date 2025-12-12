@@ -1,0 +1,54 @@
+input {
+    border: round;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+    height: 50px;
+    display: block;
+}
+
+input#mensagem {
+    height: 200px;
+}
+
+button {
+    margin-top: 10px;
+    height: 14%;
+    width: 30%;
+    border: round;
+    border-radius: 10px;
+    background-color: rgb(82, 123, 82);
+}
+
+#formulario {
+    width: 30%;
+    align-self: center;
+    text-align: center;
+    margin-top: auto;
+    color: white;
+    width: 100%;
+    justify-items: center;
+    height: 380px;
+}
+
+img {
+    width: 40%;
+    margin-right: 80px;
+    height: 50%;
+    margin-top: 75px;
+}
+
+img:hover {
+    width: 42%;
+    height: 52%;
+}
+
+
+#contato {
+    display: inline-flex;
+    align-self: center;
+    text-align: center;
+    justify-items: center;
+    margin-top: auto;
+    width: 60%;
+}

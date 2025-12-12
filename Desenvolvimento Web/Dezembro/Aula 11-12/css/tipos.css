@@ -1,0 +1,32 @@
+
+table {
+    margin: 10px;
+    border-spacing: 10px;
+    height: auto;
+    width: auto;
+}
+
+tr {
+    background-color: rgb(57, 50, 50);
+}
+
+
+
+td p {
+    justify-content: center;
+    text-align: justify;
+    text-indent: 50px;
+    width: 96%;
+    justify-self: center;
+    color: rgb(249, 239, 239);
+}
+
+img {
+    height: 250px;
+    width: 390px;
+}
+
+img:hover {
+    height: 255px;
+    width: 395px;
+}

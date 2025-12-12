@@ -77,3 +77,7 @@ a:hover {
 body {
     background-image: url("../assets/fundo.png");
 }
+
+img:hover {
+    -webkit-transition: all .25s ease-in;
+}
