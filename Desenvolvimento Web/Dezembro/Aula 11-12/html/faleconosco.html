@@ -28,14 +28,35 @@
         </nav>
     </header>
     <div id="contato">
-
-        <img src="../assets/contato.png" alt="">
-        <div id="formulario">
-            <input type="text" placeholder="Nome" id="nome">
-            <input type="text" placeholder="Email" id="email">
-            <input type="text" placeholder="Mensagem" id="mensagem">
-            <button>Enviar</button>
+        <div id="imagens">
+            <img src="../assets/contato.png" alt="Imagem de Contato" id="imagem_contato">
+            <img src="../assets/contato3.png" alt="Mulher" id="mulher">
         </div>
+        <form id="formulario" action="contato.php" method="post">
+            
+            <fieldset>
+                <legend>Cont@to</legend>
+                <label for="">Nome:
+                    <input type="text" name="" placeholder="Nome" id="nome" maxlength="15">
+                </label>
+                <label for="">Email:
+                    <input type="email" placeholder="Email" name="" id="email">
+                </label>
+                <!-- <label for="">Gênero:
+                    <input type="radio" name="" id="">
+                </label> -->
+                <!-- <label for="">Grau de urgência:
+                    <input type="range" name="" id="" min="0" max="10" value="5" placeholder="5">
+                </label> -->
+                <!-- <label for="">Assunto:
+                    <input type="text" placeholder="Mensagem" id="mensagem">
+                </label> -->
+                <label for="">Mensagem:
+                    <input type="text" placeholder="Mensagem" id="mensagem">
+                </label>
+                <input type="submit" value="enviar" class="enviar">
+            </fieldset>
+        </form>
     </div>
     <footer>
         <p>Copyright 2025 - By Lucas Hartmann</p>

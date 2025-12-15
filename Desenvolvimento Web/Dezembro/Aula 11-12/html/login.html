@@ -30,21 +30,33 @@
         </nav>
     </header>
     <div id="login">
-        <h2>Usuário</h2>
-        <input type="text" placeholder="Usuario" id="usuario">
-        <h2>Senha</h2>
-        <input type="text" placeholder="Senha" id="senha">
-        <button>Entrar</button>
-        <p>Não possui login? <a href="#" onclick="changeScreen()">se cadastrar</a></p>
-        <a href="">Esqueci senha</a>
+        <form action="login.php" method="post">
+            <fieldset>
+                <legend>Login</legend>
+                <img src="../assets/icon.png" alt="">
+                <label id="email" for=""><input type="email" name="e-mail" id="" placeholder="Email"></label>
+                <label id="email" for=""><input type="password" name="senha" id="" placeholder="Senha"></label>
+                <input type="submit" value="Entrar" class="entrar">
+                <p>Não possui login? <a href="#" onclick="changeScreen()">se cadastrar</a></p>
+                <p><a href="">Esqueci senha</a></p>
+            </fieldset>
+        </form>
     </div>
     <div id="cadastro">
-        <h2>Novo Usuário</h2>
-        <input type="text" placeholder="Usuário">
-        <h2>Nova Senha</h2>
-        <input type="text" placeholder="Senha">
-        <button>Cadastrar</button>
-        <a href="#" onclick="changeScreen()">voltar</a>
+        <form action="cadastro.php" method="post">
+            <fieldset>
+                <legend>Cadastro</legend>
+                <img src="../assets/icon.png" alt="">
+                <label id="email" for="">Email: 
+                    <input type="email" name="e-mail" id="" placeholder="Email">
+                </label>
+                <label id="senha" for="">Senha: 
+                    <input type="password" name="senha" id="" placeholder="Senha">
+                </label>
+                <input type="submit" value="Cadastrar" class="entrar">
+                <p><a href="#" onclick="changeScreen()">Voltar</a></p>
+            </fieldset>
+        </form>
     </div>
     <footer>
         <p>Copyright 2025 - By Lucas Hartmann</p>

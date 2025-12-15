@@ -9,16 +9,15 @@ div#imagens {
 }
 
 .imagem_container {
+    background-size: 100% 100%;
     width: 360px;
     height: 210px;
     margin-top: 20px;
     margin-left: 74px;
     box-shadow: 0px 1px 5px 2px black;
+    background-repeat: no-repeat;
 }
 
-.imagem_container {
-    background-size: 100%;
-}
 
 span {
     opacity: 0;
@@ -32,9 +31,52 @@ span {
     width: 365px;
     height: 215px;
     -webkit-transition: all .25s ease-in;
+    -moz-transition: all .25s ease-in;
+    -o-transition: all .25s ease-in;
+    transition: all .25s ease-in;
 }
 
 .imagem_container:hover span {
     opacity: 1;
     -webkit-transition: all .25s ease-in;
+    -moz-transition: all .25s ease-in;
+    -o-transition: all .25s ease-in;
+    transition: all .25s ease-in;
+}
+
+
+div#foto1 {
+    background-image: url('../assets/cafe.png');
+}
+
+div#foto2 {
+    background-image: url('../assets/cafe1.png');
+}
+
+div#foto3 {
+    background-image: url('../assets/cafe2.png');
+}
+
+div#foto4 {
+    background-image: url('../assets/cafe3.png');
+}
+
+div#foto5 {
+    background-image: url('../assets/cafe4.png');
+}
+
+div#foto6 {
+    background-image: url('../assets/cafe5.png');
+}
+
+div#foto7 {
+    background-image: url('../assets/cafe6.png');
+}
+
+div#foto8 {
+    background-image: url('../assets/cafe7.png');
+}
+
+div#foto9 {
+    background-image: url('../assets/cafe8.png');
 }
