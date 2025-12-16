@@ -1,0 +1,55 @@
+article#imagens {
+    display: grid;
+    grid-template-columns: repeat(3, 700px);
+    margin: auto;
+    width: 98%;
+    height: auto;
+    align-content: center;
+}
+
+article#imagens img{
+    width: 333px;
+    height: 275px;
+    margin-top: 20px;
+    margin-left: 60px;
+}
+
+article#imagens a{
+  text-decoration: none;
+}
+
+figcaption {
+    opacity: 0;
+    color: black;
+    font-style: italic;
+}
+
+figure {
+    height: 350px;
+}
+
+
+article#imagens figure#unimed img{
+    height: 40%;
+    width: 40%;
+    margin-top: 80px;
+}
+
+
+article#imagens img:hover {
+    width: 339px;
+    height: 285px;
+}
+
+article#imagens figure:hover figcaption {
+    opacity: 1;
+}
+
+article#imagens figure#unimed img:hover  {
+    height: 55%;
+    width: 55%;
+    -webkit-transition: all .25s ease-in;
+    -moz-transition: all .25s ease-in;
+    -o-transition: all .25s ease-in;
+    transition: all .25s ease-in;
+}

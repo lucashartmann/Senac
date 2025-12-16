@@ -1,0 +1,126 @@
+input {
+    border: round;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+    height: 50px;
+    display: block;
+}
+
+input#mensagem {
+    height: 200px;
+}
+
+
+
+fieldset {
+    width: 500px;
+    align-self: center;
+    text-align: center;
+    justify-items: center;
+}
+
+#formulario {
+    align-self: center;
+    text-align: center;
+    margin-top: auto;
+    color: white;
+    width: 100%;
+    justify-items: center;
+    height: auto;
+    margin: 30px;
+    display: block;
+    /* float: left; */
+    /* margin-left: 200px; */
+}
+
+legend {
+    font-size: 25pt;
+    font-family: sans-serif;
+}
+
+fieldset {
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.010), rgba(255, 255, 255, 0.010)), url("../assets/contato2-removebg.png"); */
+    /* background-repeat: no-repeat;
+    background-size: 310px 200px;
+    background-position: top right; */
+    /* box-shadow: 1px 1px 4px rgb(105, 100, 100); */
+    /* border: none; */
+}
+
+img#mulher {
+    width: 65%;
+    margin-right: 20px;
+    height: 45%;
+    display: block;
+    margin-top: 20px;
+    margin-left: 76px;
+}
+
+img#imagem_contato {
+    width: 400px;
+    margin-right: 20px;
+    height: 23%;
+    display: block;
+    margin-top: 70px;
+    margin-left: 40px;
+}
+
+img {
+    /* margin-top:35px; */
+    display: block;
+}
+
+/* img#imagem_contato:hover {
+    width: 42%;
+    height: 52%;
+} */
+
+input.enviar {
+    /* background-image: url("../assets/botaoenviar2.png"); */
+    /* background-repeat: no-repeat;
+    background-size: 178px 43px; */
+    width: 35%;
+    height: 45px;
+    background-color: rgb(42, 37, 37);
+    color: white;
+    font-size: 15pt;
+}
+
+
+input.limpar {
+    /* background-image: url("../assets/botaolimpar.png"); */
+    /* background-repeat: no-repeat;
+    background-size: 100% 100%; */
+    width: 35%;
+    height: 45px;
+    background-color: rgb(42, 37, 37);
+    color: white;
+    font-size: 15pt;
+}
+
+input.limpar:hover, input.enviar:hover  {
+    background-color: rgb(117, 99, 99);
+    color: white;
+}
+
+
+#contato {
+    display: inline-flex;
+    align-self: center;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+    margin-top: auto;
+    width: auto;
+    /* height: ; */
+    background-color: rgb(42, 37, 37);
+}
+
+div#imagens {
+    display: block;
+    width: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}

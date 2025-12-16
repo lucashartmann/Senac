@@ -1,8 +1,26 @@
 input {
-    width: 50%;
-    height: 30px;
+    width: 60%;
+    height: 50px;
     display: block;
     margin: auto;
+    font-size: 12pt;
+    margin-top: 30px;
+}
+
+#email {
+    display: block;
+}
+
+input.entrar {
+    font-size: 16pt;
+}
+
+p {
+    font-size: 12pt;
+}
+
+p#primeiro_p {
+    margin-top: 30px;
 }
 
 label {
@@ -48,9 +66,9 @@ div#cadastro {
     margin-top: auto;
     background-color: rgb(42, 37, 37);
     color: white;
-    width: 30%;
+    width: 45%;
     justify-items: center;
-    height: 380px;
+    height: 65%;
 }
 
 div#cadastro {
@@ -88,6 +106,8 @@ fieldset {
 form {
     width: 90%;
     height: 90%;
+
+
     align-self: center;
     text-align: center;
     justify-items: center;
