@@ -7,15 +7,15 @@ article#imagens {
     align-content: center;
 }
 
-article#imagens img{
+article#imagens img {
     width: 333px;
     height: 275px;
     margin-top: 20px;
     margin-left: 60px;
 }
 
-article#imagens a{
-  text-decoration: none;
+article#imagens a {
+    text-decoration: none;
 }
 
 figcaption {
@@ -26,12 +26,15 @@ figcaption {
 
 figure {
     height: 350px;
+    width: 69%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 
-article#imagens figure#unimed img{
+article#imagens figure#unimed img {
     height: 40%;
-    width: 40%;
+    width: 62%;
     margin-top: 80px;
 }
 
@@ -45,7 +48,7 @@ article#imagens figure:hover figcaption {
     opacity: 1;
 }
 
-article#imagens figure#unimed img:hover  {
+article#imagens figure#unimed img:hover {
     height: 55%;
     width: 55%;
     -webkit-transition: all .25s ease-in;
