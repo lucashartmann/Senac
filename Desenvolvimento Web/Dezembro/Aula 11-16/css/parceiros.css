@@ -49,8 +49,8 @@ article#imagens figure:hover figcaption {
 }
 
 article#imagens figure#unimed img:hover {
-    height: 55%;
-    width: 55%;
+    height: 45%;
+    width: 65%;
     -webkit-transition: all .25s ease-in;
     -moz-transition: all .25s ease-in;
     -o-transition: all .25s ease-in;
