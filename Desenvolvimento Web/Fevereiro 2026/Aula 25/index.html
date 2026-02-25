@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>POO com JS</h1>
+        <p>Aprenda programação Orientada à objetos</p>
+    </header>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="">
+
+            </div>
+        </div>
+        <div class="progress-text">
+            Etapa
+            <span id="current-step">
+                1
+            </span>
+            de 4
+        </div>
+    </div>
+    <nav>
+        <div class="nav-container" id="nav-container">
+
+        </div>
+    </nav>
+    <main>
+        <section class="section-active" id="step2">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">
+                        1
+                    </div>
+                    <h2 class="lesson-title">
+                        Métodos em objetos
+                    </h2>
+                </div>
+                <p class="lesson-description">Objetos podem conter funções, chamadas de métodos.</p>
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span>script.js</span>
+                        </div>
+                        <pre>
+                            <code>
+                                const animal = {
+                                    nome: "Bob",
+                                    latir: function(){
+                                        return "au au!";
+                                    }
+                                };
+                            </code>
+                        </pre>
+                        <div class="console-area">
+                            <div class="console-header">
+                                <span>Console</span>
+                                <button class="btn-run" onclick="runExample(1)">Executar</button>
+                            </div>
+                            <div class="console-content" id="console1">
+                                <div class="console-line">
+                                    > animal.latir()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-sucess" onclick="nextStep()">
+                        Próxima Etapa
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="step1">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">
+                        2
+                    </div>
+                    <h2 class="lesson-title">
+                        O uso do "this"
+                    </h2>
+                </div>
+                <p class="lesson-description">O <code>this</code> refere-se ao próprio objeto.</p>
+                <div class="content-grid">
+                    <div class="code-area">
+                        
+                        <pre>
+                            <code>
+                                const pessoa = {
+                                    nome: "Lucas",
+                                    saudar: function(){
+                                        return "Olá " + this.nome;
+                                    }
+                                };
+                            </code>
+                        </pre>
+                        <div class="console-area">
+                            <div class="console-header">
+                                <span>Console</span>
+                                <button class="btn-run" onclick="runExample(2)">Executar</button>
+                            </div>
+                            <div class="console-content" id="console2">
+                                <!-- <div class="console-line">
+                                    > pessoa.saudar()
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        Voltar
+                    </button>
+                    <button class="btn btn-sucess" onclick="nextStep()">
+                        Próxima Etapa
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+</body>
+<script src="js/script.js"></script>
+
+</html>

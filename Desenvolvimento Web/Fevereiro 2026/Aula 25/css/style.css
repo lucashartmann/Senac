@@ -1,0 +1,67 @@
+:root {
+    --primary: rgb(190, 168, 225);
+    --secondary: #ec4899;
+    --dark: #1e293a;
+    --darker: #0f172a;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --success: #10b981;
+}
+
+html, body {
+    margin: 0;
+    padding: 0%;
+}
+
+html {
+    background-color: var(--primary);
+    /* display: flex; */
+}
+
+body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    /* background: var(--darker); */
+    color: var(--light);
+    line-height: 1.6;
+}
+
+#step2 {
+    display: none;
+}
+
+header {
+    background-color: #0f172a;
+    width: 100%;
+    margin: 0;
+    height: auto;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 1rem;
+    text-align: center;
+}
+
+.progress-container {
+    background: var(--dark);
+    padding: 0.2rem;
+    height: auto;
+    text-align: center;
+    align-items: center; 
+    justify-content: center;
+}
+
+.progress-bar {
+    width: 80%;
+    height: 10px;
+    background-color: #334155;
+    margin: 0% auto;
+    border-radius: 10px;
+    box-shadow: 11px 1px 30px var(--darker);
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #10b981;
+    border-radius: inherit;
+    /* width: 0%; */
+    transition: width 0.3s;
+}
