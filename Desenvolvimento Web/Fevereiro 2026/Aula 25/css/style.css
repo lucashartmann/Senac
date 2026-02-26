@@ -1,67 +1,199 @@
 :root {
-    --primary: rgb(190, 168, 225);
-    --secondary: #ec4899;
-    --dark: #1e293a;
+    --primary: #6366f1;
+    --secondary: #EC4899;
+    --dark: #1E293B;
     --darker: #0f172a;
     --light: #f8fafc;
     --gray: #64748b;
-    --success: #10b981;
+    --sucess: #10b981;
 }
 
-html, body {
-    margin: 0;
-    padding: 0%;
-}
-
-html {
-    background-color: var(--primary);
-    /* display: flex; */
-}
-
+/* Estilização do corpo da página */
 body {
-    font-family: "Segoe UI", system-ui, sans-serif;
-    /* background: var(--darker); */
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--darker);
     color: var(--light);
+    margin: 0;
     line-height: 1.6;
 }
 
-#step2 {
-    display: none;
+/*Estilização do topo */
+header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 2rem;
+    text-align: center;
 }
 
-header {
-    background-color: #0f172a;
-    width: 100%;
-    margin: 0;
-    height: auto;
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+/* Estiliza a barra de progresso */
+
+.progress-container {
+    background: var(--dark);
     padding: 1rem;
     text-align: center;
 }
 
-.progress-container {
-    background: var(--dark);
-    padding: 0.2rem;
-    height: auto;
-    text-align: center;
-    align-items: center; 
-    justify-content: center;
-}
-
+/* Estiliza o trilho da barra */
 .progress-bar {
     width: 80%;
     height: 10px;
-    background-color: #334155;
-    margin: 0% auto;
+    background: #334155;
+    margin: 0 auto;
     border-radius: 10px;
-    box-shadow: 11px 1px 30px var(--darker);
 }
 
+/* Estiliza a parte que "enche" a barra */
 .progress-fill {
     height: 100%;
-    background-color: #10b981;
-    border-radius: inherit;
-    /* width: 0%; */
+    background: var(--sucess);
+    width: 0%;
     transition: width 0.3s;
+}
+
+/* Estilização dos botões numéricos */
+nav {
+    background: var(--dark);
+    padding: 1rem;
+    overflow: auto;
+    /*permite rolar horizontalmente se houver muitos botões*/
+    white-space: nowrap;
+    /*impede que os botões quebrem a linha*/
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /*cria um espaço de 10 pixels entre cada botão*/
+}
+
+.nav-btn {
+    background: none;
+    border: 1px solid var(--primary);
+    color: var(--light);
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.nav-btn.active {
+    background: var(--primary);
+}
+
+/* Estilização do conteúdo principal */
+.container {
+    max-width: 1000px;
+    /*impede que o site fique largo demais em telas grandes*/
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Estiliza as sections */
+.section {
+    display: none;
+}
+
+/* Esconde as seções */
+
+/*Mostra apenas a seção que estiver a classs "active" com um efeito de surgimento*/
+.section.active {
+    display: block;
+    animation: fadeIn 0.4s;
+}
+
+/* Estilização do cartão da aula */
+.lesson-card {
+    background: var(--dark);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+/* Organizando o código e o console lado a lado */
+.content-grid {
+    display: grid;
+    /*atyiva modo de grade*/
+    grid-template-columns: 1fr 1fr;
+    /*divide em duas colunas de tamanhos iguais*/
+    gap: 1rem;
+    /*espaçamento entre as colunas*/
+    margin-top: 1rem;
+}
+
+/*estilos comuns para as caixas de texto técnico*/
+.code-area,
+.console-area {
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    /*garante que o conteúdo não saia para fora dos cantos arredondados*/
+}
+
+/*estilização das faixas de topo do código/console*/
+.code-header,
+.console-header {
+    background: #334155;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+/*Estilização do texto do código e permissão para rolar se a linha for longa*/
+pre {
+    padding: 1rem;
+    color: #a5f3fc;
+    overflow-x: auto;
+}
+
+/* Estilização do interior do console */
+.console-content {
+    padding: 1rem;
+    color: #4ade80;
+    font-family: monospace;
+    min-height: 100px;
+}
+
+.btn-run {
+    background: var(--sucess);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.action-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-success {
+    background: var(--sucess);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--gray);
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
 }

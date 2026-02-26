@@ -28,47 +28,41 @@
         </div>
     </div>
     <nav>
-        <div class="nav-container" id="nav-container">
-
+        <div class="nav-container" id="navContainer">
+            <button class="nav-btn active" onclick="goToStep(1)">1. Métodos</button>
+            <button class="nav-btn" onclick="goToStep(2)">2. This</button>
+            <button class="nav-btn" onclick="goToStep(3)">3. Prototype</button>
+            <button class="nav-btn" onclick="goToStep(4)">4. Prototype II</button>
+            <button class="nav-btn" onclick="goToStep(5)">5. Classes Básicas</button>
         </div>
     </nav>
-    <main>
-        <section class="section-active" id="step2">
+    <main class="container" id="mainContainer">
+        <section class="section active" id="step1">
             <div class="lesson-card">
                 <div class="lesson-header">
-                    <div class="lesson-number">
-                        1
-                    </div>
-                    <h2 class="lesson-title">
-                        Métodos em objetos
-                    </h2>
+                    <div class="lesson-number"> 1 </div>
+                    <h2 class="lesson-title">Métodos em Objetos</h2>
                 </div>
-                <p class="lesson-description">Objetos podem conter funções, chamadas de métodos.</p>
+                <p class="lesson-description"> Objetos podem conter funções, chamadas de métodos.</p>
+
                 <div class="content-grid">
                     <div class="code-area">
-                        <div class="code-header">
-                            <span>script.js</span>
+                        <div class="code-header"> <span>script.js</span> </div>
+                        <pre><code>const animal = {
+    nome: "Bob",
+    latir: function(){
+        return "au au!";
+    }
+};
+</code></pre>
+                    </div>
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span>Console</span>
+                            <button class="btn-run" onclick="runExample(1)">Executar</button>
                         </div>
-                        <pre>
-                            <code>
-                                const animal = {
-                                    nome: "Bob",
-                                    latir: function(){
-                                        return "au au!";
-                                    }
-                                };
-                            </code>
-                        </pre>
-                        <div class="console-area">
-                            <div class="console-header">
-                                <span>Console</span>
-                                <button class="btn-run" onclick="runExample(1)">Executar</button>
-                            </div>
-                            <div class="console-content" id="console1">
-                                <div class="console-line">
-                                    > animal.latir()
-                                </div>
-                            </div>
+                        <div class="console-content" id="console1">
+                            <div class="console-line">> animal.latir()</div>
                         </div>
                     </div>
                 </div>
@@ -79,7 +73,7 @@
                 </div>
             </div>
         </section>
-        <section class="section" id="step1">
+        <section class="section" id="step2">
             <div class="lesson-card">
                 <div class="lesson-header">
                     <div class="lesson-number">
@@ -92,26 +86,17 @@
                 <p class="lesson-description">O <code>this</code> refere-se ao próprio objeto.</p>
                 <div class="content-grid">
                     <div class="code-area">
-                        
-                        <pre>
-                            <code>
-                                const pessoa = {
-                                    nome: "Lucas",
-                                    saudar: function(){
-                                        return "Olá " + this.nome;
-                                    }
-                                };
-                            </code>
-                        </pre>
+                        <pre><code>const pessoa = {nome: "Lucas",saudar: function(){return "Olá " + this.nome;}
+};</code></pre>
                         <div class="console-area">
                             <div class="console-header">
                                 <span>Console</span>
                                 <button class="btn-run" onclick="runExample(2)">Executar</button>
                             </div>
                             <div class="console-content" id="console2">
-                                <!-- <div class="console-line">
+                                <div class="console-line">
                                     > pessoa.saudar()
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -126,8 +111,6 @@
                 </div>
             </div>
         </section>
-
-
     </main>
 </body>
 <script src="js/script.js"></script>
