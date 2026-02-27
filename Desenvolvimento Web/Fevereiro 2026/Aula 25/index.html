@@ -1,118 +1,1216 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>POO com JavaScript - Aprenda Passo a Passo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <header>
-        <h1>POO com JS</h1>
-        <p>Aprenda programação Orientada à objetos</p>
+        <h1>🚀 POO com JavaScript</h1>
+        <p>Aprenda Programação Orientada a Objetos passo a passo, do básico ao avançado</p>
     </header>
+
     <div class="progress-container">
         <div class="progress-bar">
-            <div class="progress-fill" id="">
-
-            </div>
+            <div class="progress-fill" id="progressFill" style="width: 6.67%"></div>
         </div>
-        <div class="progress-text">
-            Etapa
-            <span id="current-step">
-                1
-            </span>
-            de 4
-        </div>
+        <div class="progress-text">Etapa <span id="currentStep"></span></div>
     </div>
+
     <nav>
-        <div class="nav-container" id="navContainer">
+        <div class="nav-container">
             <button class="nav-btn active" onclick="goToStep(1)">1. Métodos</button>
             <button class="nav-btn" onclick="goToStep(2)">2. This</button>
             <button class="nav-btn" onclick="goToStep(3)">3. Prototype</button>
             <button class="nav-btn" onclick="goToStep(4)">4. Prototype II</button>
             <button class="nav-btn" onclick="goToStep(5)">5. Classes Básicas</button>
+            <button class="nav-btn" onclick="goToStep(6)">6. Funções como Classes</button>
+            <button class="nav-btn" onclick="goToStep(7)">7. Construtoras</button>
+            <button class="nav-btn" onclick="goToStep(8)">8. Métodos Prototype</button>
+            <button class="nav-btn" onclick="goToStep(9)">9. ES6 Classes</button>
+            <button class="nav-btn" onclick="goToStep(10)">10. Mais Classes</button>
+            <button class="nav-btn" onclick="goToStep(11)">11. Override</button>
+            <button class="nav-btn" onclick="goToStep(12)">12. Symbol</button>
+            <button class="nav-btn" onclick="goToStep(13)">13. Getter/Setter</button>
+            <button class="nav-btn" onclick="goToStep(14)">14. Herança</button>
+            <button class="nav-btn" onclick="goToStep(15)">15. Instanceof</button>
         </div>
     </nav>
-    <main class="container" id="mainContainer">
-        <section class="section active" id="step1">
+
+    <div class="container">
+        <!-- ETAPA 1: Métodos -->
+        <div class="section active" id="step1">
             <div class="lesson-card">
                 <div class="lesson-header">
-                    <div class="lesson-number"> 1 </div>
+                    <div class="lesson-number">1</div>
                     <h2 class="lesson-title">Métodos em Objetos</h2>
                 </div>
-                <p class="lesson-description"> Objetos podem conter funções, chamadas de métodos.</p>
+                <p class="lesson-description">
+                    Tudo começa com objetos! Em JavaScript, objetos podem conter <span class="tooltip"
+                        data-tip="Funções dentro de objetos">métodos</span> - funções que pertencem ao objeto. Vamos
+                    criar nosso primeiro objeto com um método.
+                </p>
 
                 <div class="content-grid">
                     <div class="code-area">
-                        <div class="code-header"> <span>script.js</span> </div>
-                        <pre><code>const animal = {
-    nome: "Bob",
-    latir: function(){
-        return "au au!";
-    }
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 1 - métodos
+const animal = {
+  nome: "Bob",
+  latir: function () {
+    console.log("Au au");
+  },
 };
-</code></pre>
+
+animal.latir();</code></pre>
                     </div>
+
                     <div class="console-area">
                         <div class="console-header">
-                            <span>Console</span>
-                            <button class="btn-run" onclick="runExample(1)">Executar</button>
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(1)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
                         </div>
                         <div class="console-content" id="console1">
-                            <div class="console-line">> animal.latir()</div>
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="visualization">
+                    <h4>🎯 Visualização do Objeto</h4>
+                    <div class="object-box">
+                        <div class="object-header">animal {Object}</div>
+                        <div class="property">nome: "Bob"</div>
+                        <div class="method">latir: function()</div>
+                    </div>
+                </div>
+
                 <div class="action-buttons">
-                    <button class="btn btn-sucess" onclick="nextStep()">
-                        Próxima Etapa
-                    </button>
+                    <button class="btn btn-secondary" onclick="goToStep(15)" disabled>⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(1); goToStep(2)">Marcar como Concluído
+                        ➡</button>
                 </div>
             </div>
-        </section>
-        <section class="section" id="step2">
+        </div>
+
+        <!-- ETAPA 2: This -->
+        <div class="section" id="step2">
             <div class="lesson-card">
                 <div class="lesson-header">
-                    <div class="lesson-number">
-                        2
-                    </div>
-                    <h2 class="lesson-title">
-                        O uso do "this"
-                    </h2>
+                    <div class="lesson-number">2</div>
+                    <h2 class="lesson-title">Aprofundando em Métodos: <code>this</code></h2>
                 </div>
-                <p class="lesson-description">O <code>this</code> refere-se ao próprio objeto.</p>
+                <p class="lesson-description">
+                    A palavra-chave <span class="tooltip" data-tip="Referência ao próprio objeto">this</span> permite
+                    que um método acesse as propriedades do próprio objeto. Vamos criar getters e setters!
+                </p>
+
                 <div class="content-grid">
                     <div class="code-area">
-                        <pre><code>const pessoa = {nome: "Lucas",saudar: function(){return "Olá " + this.nome;}
-};</code></pre>
-                        <div class="console-area">
-                            <div class="console-header">
-                                <span>Console</span>
-                                <button class="btn-run" onclick="runExample(2)">Executar</button>
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
                             </div>
-                            <div class="console-content" id="console2">
-                                <div class="console-line">
-                                    > pessoa.saudar()
-                                </div>
+                        </div>
+                        <pre><code class="language-javascript">// 2 - aprofundando em métodos
+const pessoa = {
+  nome: "Roberto",
+
+  getNome: function () {
+    return this.nome;
+  },
+
+  setNome: function (novoNome) {
+    this.nome = novoNome;
+  },
+};
+
+console.log(pessoa.nome);
+console.log(pessoa.getNome());
+
+pessoa.setNome("Roberto Alves");
+console.log(pessoa.getNome());</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(2)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console2">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="visualization">
+                    <h4>🎯 Como funciona o this</h4>
+                    <p>O <code>this</code> dentro de <code>getNome()</code> refere-se ao objeto <code>pessoa</code>,
+                        permitindo acessar <code>pessoa.nome</code>.</p>
+                </div>
+
                 <div class="action-buttons">
-                    <button class="btn btn-secondary" onclick="prevStep()">
-                        Voltar
-                    </button>
-                    <button class="btn btn-sucess" onclick="nextStep()">
-                        Próxima Etapa
-                    </button>
+                    <button class="btn btn-secondary" onclick="goToStep(1)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(2); goToStep(3)">Marcar como Concluído
+                        ➡</button>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+
+        <!-- ETAPA 3: Prototype -->
+        <div class="section" id="step3">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">3</div>
+                    <h2 class="lesson-title">Prototype - A Base de Tudo</h2>
+                </div>
+                <p class="lesson-description">
+                    Em JavaScript, tudo tem um <span class="tooltip"
+                        data-tip="Mecanismo de herança do JS">prototype</span>! Strings, números, arrays - todos herdam
+                    de prototypes. Vamos inspecionar o prototype de diferentes tipos.
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 3 - prototype
+const text = "asd";
+
+console.log(Object.getPrototypeOf(text));
+
+const bool = true;
+
+console.log(Object.getPrototypeOf(bool));
+
+const arr = [];
+
+console.log(arr.length);
+
+console.log(Object.getPrototypeOf(arr) === Array.prototype);</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(3)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console3">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Cadeia de Prototypes</h4>
+                    <div class="inheritance-diagram">
+                        <div class="class-box">String.prototype</div>
+                        <div class="arrow-down">⬇</div>
+                        <div class="class-box">text ("asd")</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(2)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(3); goToStep(4)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 4: Prototype II -->
+        <div class="section" id="step4">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">4</div>
+                    <h2 class="lesson-title">Mais sobre Prototype</h2>
+                </div>
+                <p class="lesson-description">
+                    Podemos criar objetos herdando de outros objetos usando <code>Object.create()</code>. Isso
+                    estabelece uma cadeia de protótipos!
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 4 - mais sobre prototype
+const myObject = {
+  a: "b",
+};
+
+console.log(Object.getPrototypeOf(myObject));
+
+console.log(Object.getPrototypeOf(myObject) === Object.prototype);
+
+const mySecondObject = Object.create(myObject);
+
+console.log(mySecondObject);
+
+console.log(Object.getPrototypeOf(mySecondObject) === myObject);</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(4)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console4">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Cadeia Criada</h4>
+                    <div class="inheritance-diagram">
+                        <div class="class-box">Object.prototype</div>
+                        <div class="arrow-down">⬇</div>
+                        <div class="class-box">myObject {a: "b"}</div>
+                        <div class="arrow-down">⬇</div>
+                        <div class="class-box">mySecondObject {}</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(3)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(4); goToStep(5)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 5: Classes Básicas -->
+        <div class="section" id="step5">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">5</div>
+                    <h2 class="lesson-title">Classes Básicas com Prototype</h2>
+                </div>
+                <p class="lesson-description">
+                    Vamos simular classes usando prototypes! Criamos um objeto "classe" e instâncias que herdam dele.
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 5 - classes básicas
+const cachorro = {
+  raca: null,
+};
+
+const pastorAlemao = Object.create(cachorro);
+
+pastorAlemao.raca = "Pastor Alemão";
+
+const bulldog = Object.create(cachorro);
+
+bulldog.raca = "Bulldog";
+
+console.log(pastorAlemao.raca);
+console.log(bulldog.raca);</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(5)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console5">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Instâncias da "Classe"</h4>
+                    <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                        <div class="object-box">
+                            <div class="object-header">cachorro (Classe)</div>
+                            <div class="property">raca: null</div>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <div class="object-box">
+                                <div class="object-header">pastorAlemao</div>
+                                <div class="property">raca: "Pastor Alemão"</div>
+                            </div>
+                            <div class="object-box">
+                                <div class="object-header">bulldog</div>
+                                <div class="property">raca: "Bulldog"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(4)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(5); goToStep(6)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 6: Funções como Classes -->
+        <div class="section" id="step6">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">6</div>
+                    <h2 class="lesson-title">Funções como Classes</h2>
+                </div>
+                <p class="lesson-description">
+                    Antes do ES6, usávamos funções factory para criar objetos. Elas retornam novos objetos configurados!
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 6 - funcoes como classes
+function criarCachorro(nome, raca) {
+  const cachorro = Object.create({});
+  cachorro.raca = raca;
+  cachorro.nome = nome;
+  return cachorro;
+}
+
+const bob = criarCachorro("Bob", "Vira lata");
+
+console.log(bob);
+
+const jack = criarCachorro("Jack", "Poodle");
+
+console.log(jack);
+
+console.log(Object.getPrototypeOf(jack));</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(6)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console6">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Factory Function</h4>
+                    <p>A função <code>criarCachorro</code> é uma "fábrica" que cria e retorna novos objetos
+                        configurados.</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(5)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(6); goToStep(7)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 7: Construtoras -->
+        <div class="section" id="step7">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">7</div>
+                    <h2 class="lesson-title">Funções Construtoras</h2>
+                </div>
+                <p class="lesson-description">
+                    Com <code>new</code>, funções se tornam construtoras! O <code>this</code> refere-se à nova instância
+                    sendo criada.
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 7 - funcoes construtoras
+function Cachorro(nome, raca) {
+  this.nome = nome;
+  this.raca = raca;
+}
+
+const husky = new Cachorro("Ozzy", "Husky");
+
+console.log(husky);
+console.log(husky.nome);
+console.log(husky.raca);</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(7)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console7">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 O operador new faz:</h4>
+                    <ol style="margin-left: 1.5rem; color: var(--gray);">
+                        <li>Cria um novo objeto vazio</li>
+                        <li>Define o prototype para Cachorro.prototype</li>
+                        <li>Executa a função com this = novo objeto</li>
+                        <li>Retorna o novo objeto</li>
+                    </ol>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(6)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(7); goToStep(8)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 8: Métodos Prototype -->
+        <div class="section" id="step8">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">8</div>
+                    <h2 class="lesson-title">Métodos na Função Construtora</h2>
+                </div>
+                <p class="lesson-description">
+                    Adicionamos métodos ao <code>prototype</code> para que todas as instâncias compartilhem a mesma
+                    função, economizando memória!
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 8 - métodos na função construtora
+function Cachorro(nome, raca) {
+  this.nome = nome;
+  this.raca = raca;
+}
+
+const husky = new Cachorro("Ozzy", "Husky");
+
+Cachorro.prototype.uivar = function () {
+  console.log("Auuu");
+};
+
+husky.uivar();
+
+const pastor = new Cachorro("Rex", "Pastor");
+pastor.uivar(); // Também funciona!</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(8)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console8">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Prototype Compartilhado</h4>
+                    <div class="inheritance-diagram">
+                        <div class="class-box">Cachorro.prototype<br><small>uivar: function()</small></div>
+                        <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+                            <div class="class-box" style="background: var(--secondary);">husky</div>
+                            <div class="class-box" style="background: var(--secondary);">pastor</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(7)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(8); goToStep(9)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 9: ES6 Classes -->
+        <div class="section" id="step9">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">9</div>
+                    <h2 class="lesson-title">Classes ES6 - Açúcar Sintático</h2>
+                </div>
+                <p class="lesson-description">
+                    ES6 introduziu a palavra-chave <code>class</code> - é "açúcar sintático" sobre prototypes, mas deixa
+                    o código mais limpo!
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 9 - classes es6
+class CachorroClasse {
+  constructor(nome, raca) {
+    this.nome = nome;
+    this.raca = raca;
+  }
+}
+
+const jeff = new CachorroClasse("Jeff", "Labrador");
+
+console.log(jeff);
+
+console.log(Object.getPrototypeOf(jeff));</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(9)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console9">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Sintaxe Mais Limpa</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="object-box">
+                            <div class="object-header">Antigo (ES5)</div>
+                            <code
+                                style="color: #888;">function Cachorro(n, r) {<br>&nbsp;&nbsp;this.nome = n;<br>}</code>
+                        </div>
+                        <div class="object-box">
+                            <div class="object-header">Novo (ES6)</div>
+                            <code
+                                style="color: var(--success);">class Cachorro {<br>&nbsp;&nbsp;constructor(n) {<br>&nbsp;&nbsp;&nbsp;&nbsp;this.nome = n;<br>&nbsp;&nbsp;}<br>}</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(8)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(9); goToStep(10)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 10: Mais Classes -->
+        <div class="section" id="step10">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">10</div>
+                    <h2 class="lesson-title">Mais sobre Classes</h2>
+                </div>
+                <p class="lesson-description">
+                    Métodos são definidos automaticamente no prototype. Propriedades estáticas precisam ser adicionadas
+                    ao prototype manualmente.
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 10 - mais sobre classes
+class Caminhao {
+  constructor(eixos, cor) {
+    this.eixos = eixos;
+    this.cor = cor;
+  }
+
+  descreverCaminhao() {
+    console.log(
+      `Este caminhão tem ${this.eixos} eixos e é da cor ${this.cor}.`
+    );
+  }
+}
+
+const scania = new Caminhao(6, "Vermelha");
+
+scania.descreverCaminhao();
+
+Caminhao.motor = 4.0;
+
+const c2 = new Caminhao(4, "Preta");
+
+console.log("Motor:", c2.motor); // undefined
+
+Caminhao.prototype.motor = 4.0;
+
+const c3 = new Caminhao(6, "Azul");
+
+console.log("Motor:", c3.motor); // 4.0</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(10)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console10">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Diferença: Classe vs Prototype</h4>
+                    <p><code>Caminhao.motor</code> = propriedade estática da classe (não herdada)</p>
+                    <p><code>Caminhao.prototype.motor</code> = herdada por todas as instâncias</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(9)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(10); goToStep(11)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 11: Override -->
+        <div class="section" id="step11">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">11</div>
+                    <h2 class="lesson-title">Override por Prototype</h2>
+                </div>
+                <p class="lesson-description">
+                    Podemos definir valores padrão no prototype que serão usados se a instância não tiver o valor
+                    próprio.
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 11 - override por prototype
+class Humano {
+  constructor(nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+  }
+}
+
+const roberto = new Humano("Roberto", 60);
+
+console.log(roberto);
+console.log("Idade:", roberto.idade);
+
+Humano.prototype.idade = "Não definida";
+
+const joao = new Humano("João");
+console.log("João idade:", joao.idade);
+
+console.log("Roberto idade:", roberto.idade);
+console.log("Prototype idade:", Humano.prototype.idade);</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(11)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console11">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Ordem de Busca</h4>
+                    <p>1. Propriedade da instância → 2. Prototype → 3. Prototype do prototype...</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(10)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(11); goToStep(12)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 12: Symbol -->
+        <div class="section" id="step12">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">12</div>
+                    <h2 class="lesson-title">Symbol - Propriedades Únicas</h2>
+                </div>
+                <p class="lesson-description">
+                    <code>Symbol</code> cria identificadores únicos. Útil para propriedades "privadas" ou metadados que
+                    não devem ser acessados diretamente.
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 12 - symbol
+class Aviao {
+  constructor(marca, turbinas) {
+    this.marca = marca;
+    this.turbinas = turbinas;
+  }
+}
+
+const asas = Symbol();
+const prefixo = Symbol();
+
+Aviao.prototype[asas] = 2;
+Aviao.prototype[prefixo] = "PR-";
+
+const boeing = new Aviao("Boeing", 10);
+
+console.log(boeing);
+console.log("Asas:", boeing[asas]);
+console.log("Prefixo:", boeing[prefixo]);
+console.log("Prototype asas:", Aviao.prototype[asas]);</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(12)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console12">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Symbols são únicos</h4>
+                    <p>Cada Symbol é diferente, mesmo com a mesma descrição. Não aparecem em <code>for...in</code> ou
+                        <code>Object.keys()</code>.</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(11)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(12); goToStep(13)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 13: Getter/Setter -->
+        <div class="section" id="step13">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">13</div>
+                    <h2 class="lesson-title">Getter e Setter</h2>
+                </div>
+                <p class="lesson-description">
+                    <code>get</code> e <code>set</code> permitem criar propriedades computadas. Acessamos como
+                    propriedades, mas executam funções!
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 13 - getter e setter
+class Post {
+  constructor(titulo, descricao, tags) {
+    this.titulo = titulo;
+    this.descricao = descricao;
+    this.tags = tags;
+  }
+
+  get exibirTitulo() {
+    return `Você está lendo: ${this.titulo}`;
+  }
+
+  set adicionarTags(tags) {
+    const tagsArray = tags.split(", ");
+    this.tags = tagsArray;
+  }
+}
+
+const myPost = new Post("Algum post", "É um post sobre programação");
+
+console.log(myPost.exibirTitulo);
+
+myPost.adicionarTags = "programacao, javascript, js";
+
+console.log(myPost.tags);</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(13)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console13">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Sintaxe de propriedade</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <p style="color: var(--gray);">Getter: parece propriedade</p>
+                            <code style="color: var(--success);">post.exibirTitulo</code>
+                        </div>
+                        <div>
+                            <p style="color: var(--gray);">Setter: atribuição</p>
+                            <code style="color: var(--success);">post.tags = "a, b"</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(12)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(13); goToStep(14)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 14: Herança -->
+        <div class="section" id="step14">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">14</div>
+                    <h2 class="lesson-title">Herança com extends e super</h2>
+                </div>
+                <p class="lesson-description">
+                    <code>extends</code> cria uma subclasse. <code>super()</code> chama o construtor da classe pai. É a
+                    base da reutilização de código!
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 14 - Herança
+class Mamifero {
+  constructor(patas) {
+    this.patas = patas;
+  }
+}
+
+class Lobo extends Mamifero {
+  constructor(patas, nome) {
+    super(patas);
+    this.nome = nome;
+  }
+
+  uivar() {
+    console.log("Auuuu!");
+  }
+}
+
+const shark = new Lobo(4, "Shark");
+
+console.log(shark);
+console.log("Patas:", shark.patas);
+console.log("Nome:", shark.nome);
+shark.uivar();</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(14)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console14">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Diagrama de Herança</h4>
+                    <div class="inheritance-diagram">
+                        <div class="class-box">Mamifero<br><small>patas</small></div>
+                        <div class="arrow-down">⬇ extends</div>
+                        <div class="class-box">Lobo<br><small>patas (herdado) + nome</small></div>
+                        <div class="arrow-down">⬇ new</div>
+                        <div class="class-box" style="background: var(--secondary);">shark<br><small>{ patas: 4, nome:
+                                "Shark" }</small></div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(13)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="markComplete(14); goToStep(15)">Marcar como Concluído
+                        ➡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 15: Instanceof -->
+        <div class="section" id="step15">
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <div class="lesson-number">15</div>
+                    <h2 class="lesson-title">Instanceof - Verificando Tipos</h2>
+                </div>
+                <p class="lesson-description">
+                    <code>instanceof</code> verifica se um objeto é instância de uma classe, considerando toda a cadeia
+                    de herança!
+                </p>
+
+                <div class="content-grid">
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span class="code-title">📄 scripts.js</span>
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                        </div>
+                        <pre><code class="language-javascript">// 15 - instanceof
+class Mamifero {
+  constructor(patas) {
+    this.patas = patas;
+  }
+}
+
+class Lobo extends Mamifero {
+  constructor(patas, nome) {
+    super(patas);
+    this.nome = nome;
+  }
+}
+
+const shark = new Lobo(4, "Shark");
+
+console.log("shark instanceof Lobo:", shark instanceof Lobo);
+
+console.log("Lobo instanceof Mamifero:", Lobo instanceof Mamifero);
+
+console.log("new Lobo() instanceof Mamifero:", 
+  new Lobo(4, "teste") instanceof Mamifero);
+
+class Cachorro {}
+class Post {}
+
+console.log("new Post() instanceof Cachorro:", 
+  new Post("a", "b") instanceof Cachorro);</code></pre>
+                    </div>
+
+                    <div class="console-area">
+                        <div class="console-header">
+                            <span class="console-title">⌨️ Console</span>
+                            <button class="btn btn-primary" onclick="runCode(15)"
+                                style="padding: 0.25rem 0.75rem; font-size: 0.85rem;">
+                                ▶ Executar
+                            </button>
+                        </div>
+                        <div class="console-content" id="console15">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span>
+                                <span class="console-input">node scripts.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>🎯 Parabéns! Você completou o curso!</h4>
+                    <p style="color: var(--success); font-size: 1.1rem;">
+                        ✅ Métodos e this<br>
+                        ✅ Prototypes e cadeia de protótipos<br>
+                        ✅ Funções construtoras<br>
+                        ✅ Classes ES6<br>
+                        ✅ Herança e polimorfismo<br>
+                        ✅ Getters, Setters e Symbols<br>
+                        ✅ Verificação de tipos
+                    </p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="goToStep(14)">⬅ Anterior</button>
+                    <button class="btn btn-success" onclick="celebrateCompletion()">🎉 Completar Curso!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-indicator" id="stepIndicator">1</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 </body>
+
 <script src="js/script.js"></script>
 
 </html>
