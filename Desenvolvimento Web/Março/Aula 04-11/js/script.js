@@ -16,16 +16,16 @@ function draw() {
     bg.draw();
     bg2.draw();
 
-    if (play) {
-        bee.draw();
-        spider.draw();
-        flower.draw();
-
-        text_points.draw(bee.pts, 240, 100, "white");
-        text_lifes.draw(bee.lifes, 40, 100, "red");
-    } else {
-        gameover.draw("Game Over", 150, 450, "white");
+    if (!play) {
+        gameover.draw("Game Over", 150, 450, "red");
+        return;
     }
+
+    bee.draw();
+    spider.draw();
+    flower.draw();
+    text_points.draw(bee.pts, 240, 100, "white");
+    text_lifes.draw(bee.lifes, 40, 100, "red");
 };
 
 document.addEventListener("keydown", function (event) {
@@ -51,18 +51,16 @@ document.addEventListener("keyup", function (event) {
 function update() {
     bg.move(3, 900, 0);
     bg2.move(3, 0, -900);
-
-    if (play) {
-        bee.move();
-        bee.animation("bee", 4);
-        spider.move();
-        spider.animation("spider", 4);
-        flower.move();
-        flower.animation("flower", 2);
-        collides();
-        gameOver();
+    if (!play) {
+        return;
     }
-
+    bee.move();
+    bee.animation("bee", 4);
+    spider.move();
+    spider.animation("spider", 4);
+    flower.move();
+    flower.animation("flower", 2);
+    collides();
 };
 
 function gameOver() {
@@ -73,15 +71,25 @@ function gameOver() {
     return false;
 }
 
+var contador = 0;
+
 function collides() {
     if (bee.collide(spider)) {
         spider.respawn();
         bee.lifes -= 1;
-        text_lifes.text = bee.lifes;
+        gameOver();
     } else if (bee.collide(flower)) {
         flower.respawn();
         bee.pts += 1;
-        text_points.text = bee.pts;
+        contador += 1;
+        if (contador >= 1) {
+            contador = 0;
+            bee.lifes += 1;
+            spider.velocidade += 5;
+        } 
+        if (bee.lifes >= 10 || bee.pts >= 10) {
+            gameOver();
+        }
     }
 }
 

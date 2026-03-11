@@ -41,14 +41,17 @@ class Bee extends Obj {
     pts = 0;
 
     move() {
+        var canvas = document.getElementById("canvas");
+
         this.x += this.dir;
-        
+
         if (this.x < 0) {
             this.x = 0;
         }
 
-        if (this.x > 500  - this.width) {
-            this.x = 500 - this.width;
+
+        if (this.x > canvas.width  - this.width) {
+            this.x = canvas.width - this.width;
         }
 
     };
@@ -65,8 +68,9 @@ class Bee extends Obj {
 }
 
 class Spider extends Obj {
+    velocidade = 4;
     move() {
-        this.y += 4;
+        this.y += this.velocidade;
         if (this.y > 900) {
             this.y = -50;
             this.x = Math.random() * (400 - 0);
