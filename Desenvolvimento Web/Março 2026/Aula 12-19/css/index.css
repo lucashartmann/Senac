@@ -1,4 +1,5 @@
-.fa-star, .fa-star-half-alt {
+.fa-star,
+.fa-star-half-alt {
     color: #ffcc00;
     cursor: pointer;
 }
@@ -77,18 +78,19 @@
     gap: 1.5rem;
 }
 
-.dishes .box-container .box{
-   padding: 2.5rem;
-   background: #fff;
-   border-radius:  .5rem;
-   border: .1rem solid rgba(0, 0, 0, 0.1);
-   box-shadow: var(--box-shadow);
-   position: relative;
-   overflow: hidden;
-   text-align: center;
+.dishes .box-container .box {
+    padding: 2.5rem;
+    background: #fff;
+    border-radius: .5rem;
+    border: .1rem solid rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
 }
 
-.dishes .box-container .box .fa-heart, .dishes .box-container .box .fa-eye {
+.dishes .box-container .box .fa-heart,
+.dishes .box-container .box .fa-eye {
     position: absolute;
     top: 1.5rem;
     background: #eee;
@@ -117,7 +119,8 @@
 }
 
 
-.dishes .box-container .box .fa-heart:hover, .dishes .box-container .box .fa-eye:hover {
+.dishes .box-container .box .fa-heart:hover,
+.dishes .box-container .box .fa-eye:hover {
     background: var(--green);
     color: #fff;
 }
@@ -138,7 +141,7 @@
     padding: 1rem 0;
 }
 
-.dishes .box-container .box .stars i{
+.dishes .box-container .box .stars i {
     font-size: 1.7rem;
     color: var(--green);
 }
@@ -155,4 +158,162 @@
 
 .fadeOut {
     animation: fadeOut 1s ease-in-out;
+}
+
+.about .row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.about .row .image,
+.about .row .content {
+    flex: 1 1 45rem;
+}
+
+.about .row .image img {
+    width: 100%;
+}
+
+.about .row .content h3 {
+    color: var(--black);
+    font-size: 4rem;
+    padding: 5rem 0;
+}
+
+.about .row .content p {
+    color: var(--light-color);
+    font-size: 1.5rem;
+    padding: 5rem 0;
+    line-height: 2;
+}
+
+.about .row .content .icons-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+}
+
+
+.about .row .content .icons-container .icons {
+    display: flex;
+    align-items: center;
+    border: .1rem solid rgba(0, 0, 0, .2);
+    background: #eee;
+    justify-content: center;
+    border-radius: .5rem;
+    gap: 1rem;
+    flex: 1 1 17rem;
+    padding: 1.5rem 1rem;
+}
+
+.about .row .content .icons-container .icons i {
+    font-size: 2.5rem;
+    color: var(--green);
+}
+
+.about .row .content .icons-container .icons span {
+    color: var(--black);
+    font-size: 1.5rem;
+}
+
+.menu .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+}
+
+.menu .box-container .box {
+    background: #fff;
+    border-radius: .5rem;
+    border: .1rem solid rgba(0, 0, 0, .2);
+    box-shadow: var(--box-shadow);
+    /* padding: 2.5rem; */
+    /* text-align: center; */
+}
+
+.menu .box-container .box .image {
+    height: 25rem;
+    overflow: hidden;
+    width: 100%;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.menu .box-container .box .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: .5rem
+}
+
+.menu .box-container .box .image .fa-heart {
+    top: 2.5rem;
+    position: absolute;
+    right: 2.5rem;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 5rem;
+    width: 5rem;
+    height: 5rem;
+    background: #fff;
+    border-radius: 50%;
+    color: var(--black);
+}
+
+.menu .box-container .box .image .fa-heart:hover {
+    background: var(--green);
+    color: #fff;
+    transform: rotate(360deg);
+}
+
+.menu .box-container .box .content {
+    padding: 1.5rem;
+    padding-top: 0;
+}
+
+.menu .box-container .box .content .stars {
+    padding-bottom: 1rem;
+}
+
+.menu .box-container .box .content .stars i {
+    font-size: 1.7rem;
+    color: var(--green);
+}
+
+.menu .box-container .box .content h3 {
+    color: var(--black);
+    font-size: 2.5rem;
+}
+
+.menu .box-container .box .content p {
+    color: var(--light-color);
+    font-size: 1.6rem;
+    padding: .5rem 0;
+    line-height: 1.5rem;
+}
+
+.menu .box-container .box .content .price {
+    color: var(--green);
+    font-size: 2.5rem;
+    margin-left: 1rem;
+}
+
+.review .slide {
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border: .1rem solid rgba(0, 0, 0, .2);
+    border-radius: .5rem;
+    background: #fff;
+    position: relative;
+}
+
+.review .slide .fa-quote-left {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 6rem;
+    color: var(--light-color);
 }
