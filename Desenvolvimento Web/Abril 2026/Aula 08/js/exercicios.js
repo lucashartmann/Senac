@@ -7,9 +7,9 @@ function pesquisa() {
     console.log(divs_boxes);
     divs_boxes.forEach(element => {
         const h3 = element.querySelector("h3");
-        console.log(h3.innerText)
-        if (valor.contains(h3.innerText)) {
+        if (h3.innerText.includes(valor)) {
             element.style.display = "block";
+            console.log("pedro")
         }else {
             element.style.display = "none";
         }
