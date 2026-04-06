@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante da Dev3M242</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/index.css">
@@ -19,7 +19,7 @@
             <a href="#dishes">Pratos</a>
             <a href="#about">Sobre</a>
             <a href="#menu">Menu</a>
-            <a href="#reviews">Avaliações dos Clientes</a>
+            <a href="#review">Avaliações dos Clientes</a>
             <a href="#order">Pedir</a>
         </nav>
 
@@ -29,7 +29,7 @@
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
         </div>
-    </header>
+    </header>-
 
     <form action="" id="search-form">
         <input type="search" placeholder="pesquise aqui..." name="" id="search-box">
@@ -39,40 +39,45 @@
 
     <section class="home" id="home">
         <div class="swiper-container home-slider">
-            <div class="swiper-slide slide">
-                <div class="content">
-                    <span>Nosso Prato Especial</span>
-                    <h3>Macarrão picante</h3>
-                    <p>O macarrão picante é uma deliciosa variação do prato tradicional, apreciada mundialmente por seu
-                        sabor intenso e calor proporcionado por ingredientes como pimentas e molhos picantes.</p>
-                    <a href="#" class="btn">Pedir agora</a>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>Nosso Prato Especial</span>
+                        <h3>Macarrão picante</h3>
+                        <p>O macarrão picante é uma deliciosa variação do prato tradicional, apreciada mundialmente por
+                            seu
+                            sabor intenso e calor proporcionado por ingredientes como pimentas e molhos picantes.</p>
+                        <a href="#" class="btn">Pedir agora</a>
+                    </div>
+                    <div class="image">
+                        <img src="images/home-img-1.png" alt="Macarrão picante">
+                    </div>
                 </div>
-                <div class="image">
-                    <img src="images/home-img-1.png" alt="Macarrão picante">
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>Nosso Prato Especial</span>
+                        <h3>Frango frito</h3>
+                        <p>O frango frito é um prato crocante e suculento, amado globalmente por sua textura
+                            irresistível e
+                            sabor rico, muitas vezes temperado com uma variedade de especiarias.</p>
+                        <a href="#" class="btn">Pedir agora</a>
+                    </div>
+                    <div class="image">
+                        <img src="images/home-img-2.png" alt="Frango frito">
+                    </div>
                 </div>
-            </div>
-            <div class="swiper-slide slide">
-                <div class="content">
-                    <span>Nosso Prato Especial</span>
-                    <h3>Frango frito</h3>
-                    <p>O frango frito é um prato crocante e suculento, amado globalmente por sua textura irresistível e
-                        sabor rico, muitas vezes temperado com uma variedade de especiarias.</p>
-                    <a href="#" class="btn">Pedir agora</a>
-                </div>
-                <div class="image">
-                    <img src="images/home-img-2.png" alt="Frango frito">
-                </div>
-            </div>
-            <div class="swiper-slide slide">
-                <div class="content">
-                    <span>Nosso Prato Especial</span>
-                    <h3>Pizza</h3>
-                    <p>A pizza é uma iguaria versátil e mundialmente amada, combinando uma base crocante com uma
-                        infinidade de coberturas, oferecendo uma experiência culinária rica em sabores e texturas.</p>
-                    <a href="#" class="btn">Pedir agora</a>
-                </div>
-                <div class="image">
-                    <img src="images/home-img-3.png" alt="Pizza">
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <span>Nosso Prato Especial</span>
+                        <h3>Pizza</h3>
+                        <p>A pizza é uma iguaria versátil e mundialmente amada, combinando uma base crocante com uma
+                            infinidade de coberturas, oferecendo uma experiência culinária rica em sabores e texturas.
+                        </p>
+                        <a href="#" class="btn">Pedir agora</a>
+                    </div>
+                    <div class="image">
+                        <img src="images/home-img-3.png" alt="Pizza">
+                    </div>
                 </div>
             </div>
 
@@ -217,13 +222,15 @@
         </div>
     </section>
     <section class="menu" id="menu">
-        <h3 class="sub-heading">Nosso Cardápio</h3>
-        <h1 class="heading">Especialidade de hoje</h1>
+
+        <h3 class="sub-heading"> Nosso cardápio</h3>
+        <h1 class="heading"> Especialidade de hoje </h1>
 
         <div class="box-container">
+
             <div class="box">
                 <div class="image">
-                    <img src="" alt="">
+                    <img src="images/menu-1.jpg" alt="">
                     <a href="#" class="fas fa-heart"></a>
                 </div>
                 <div class="content">
@@ -234,15 +241,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>Pizza Calabresa</h3>
+                    <p>A pizza calabresa é uma clássica e saborosa opção, conhecida por sua combinação de queijo
+                        derretido, fatias de linguiça calabresa levemente picante e cebolas, proporcionando uma
+                        experiência culinária rica e irresistível.</p>
                     <a href="#" class="btn">Adicionar ao carrinho</a>
-                    <span class="price">R$ 27,00</span>
+                    <span class="price">R$23,00</span>
                 </div>
             </div>
+
             <div class="box">
                 <div class="image">
-                    <img src="" alt="">
+                    <img src="images/menu-2.jpg" alt="">
                     <a href="#" class="fas fa-heart"></a>
                 </div>
                 <div class="content">
@@ -253,15 +263,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>Hamburger</h3>
+                    <p>O hambúrguer é um clássico global, apreciado por sua versatilidade e sabor suculento, combinando
+                        um suculento disco de carne grelhada com uma variedade de ingredientes frescos e molhos, tudo
+                        isso em um pão macio e tostado.</p>
                     <a href="#" class="btn">Adicionar ao carrinho</a>
-                    <span class="price">R$ 27,00</span>
+                    <span class="price">R$23,00</span>
                 </div>
             </div>
+
             <div class="box">
                 <div class="image">
-                    <img src="" alt="">
+                    <img src="images/menu-3.jpg" alt="">
                     <a href="#" class="fas fa-heart"></a>
                 </div>
                 <div class="content">
@@ -272,15 +285,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>Panqueca</h3>
+                    <p>As panquecas são um prato versátil e reconfortante, oferecendo uma textura macia e saborosa que
+                        combina perfeitamente com uma ampla gama de coberturas, desde frutas frescas e xarope até
+                        ingredientes salgados como bacon e queijo.</p>
                     <a href="#" class="btn">Adicionar ao carrinho</a>
-                    <span class="price">R$ 27,00</span>
+                    <span class="price">R$23,00</span>
                 </div>
             </div>
+
             <div class="box">
                 <div class="image">
-                    <img src="" alt="">
+                    <img src="images/menu-4.jpg" alt="">
                     <a href="#" class="fas fa-heart"></a>
                 </div>
                 <div class="content">
@@ -291,15 +307,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>Waffles com sorvete</h3>
+                    <p>Waffles com sorvete são uma indulgência deliciosa que combina a crocância dos waffles
+                        recém-feitos com a suavidade e o frescor do sorvete, criando uma sobremesa irresistível e
+                        perfeita para qualquer ocasião.</p>
                     <a href="#" class="btn">Adicionar ao carrinho</a>
-                    <span class="price">R$ 27,00</span>
+                    <span class="price">R$23,00</span>
                 </div>
             </div>
+
             <div class="box">
                 <div class="image">
-                    <img src="" alt="">
+                    <img src="images/menu-5.jpg" alt="">
                     <a href="#" class="fas fa-heart"></a>
                 </div>
                 <div class="content">
@@ -310,15 +329,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>Doce do amor</h3>
+                    <p>A receita de bolo de chocolate com recheio e cobertura de doce de leite e frutas é uma sobremesa
+                        deliciosa, que combina a intensidade do chocolate com a doçura cremosa do doce de leite e a
+                        frescura das frutas, criando uma experiência culinária rica e irresistível..</p>
                     <a href="#" class="btn">Adicionar ao carrinho</a>
-                    <span class="price">R$ 27,00</span>
+                    <span class="price">R$23,00</span>
                 </div>
             </div>
+
             <div class="box">
                 <div class="image">
-                    <img src="" alt="">
+                    <img src="images/menu-6.jpg" alt="">
                     <a href="#" class="fas fa-heart"></a>
                 </div>
                 <div class="content">
@@ -329,15 +351,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>CupCakes</h3>
+                    <p>Os cupcakes são pequenas delícias individuais que oferecem a combinação perfeita de massa macia e
+                        cobertura doce, permitindo uma infinidade de variações de sabores e decorações, tornando-os uma
+                        opção divertida e personalizável para qualquer celebração ou lanche.</p>
                     <a href="#" class="btn">Adicionar ao carrinho</a>
-                    <span class="price">R$ 27,00</span>
+                    <span class="price">R$23,00</span>
                 </div>
             </div>
+
             <div class="box">
                 <div class="image">
-                    <img src="" alt="">
+                    <img src="images/menu-7.jpg" alt="">
                     <a href="#" class="fas fa-heart"></a>
                 </div>
                 <div class="content">
@@ -348,15 +373,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>Coquetel</h3>
+                    <p>O coquetel de frutas é uma refrescante e colorida mistura de frutas variadas, que oferece uma
+                        explosão de sabores naturais e uma apresentação vibrante, ideal para ocasiões festivas ou como
+                        um lanche saudável e delicioso.</p>
                     <a href="#" class="btn">Adicionar ao carrinho</a>
-                    <span class="price">R$ 27,00</span>
+                    <span class="price">R$23,00</span>
                 </div>
             </div>
+
             <div class="box">
                 <div class="image">
-                    <img src="" alt="">
+                    <img src="images/menu-8.jpg" alt="">
                     <a href="#" class="fas fa-heart"></a>
                 </div>
                 <div class="content">
@@ -367,15 +395,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>Açaí</h3>
+                    <p>O sorvete de açaí é uma sobremesa refrescante e nutritiva que combina o sabor característico do
+                        açaí com uma textura cremosa, proporcionando uma opção deliciosa e saudável para se refrescar e
+                        satisfazer o desejo por doces.</p>
                     <a href="#" class="btn">Adicionar ao carrinho</a>
-                    <span class="price">R$ 27,00</span>
+                    <span class="price">R$23,00</span>
                 </div>
             </div>
+
             <div class="box">
                 <div class="image">
-                    <img src="" alt="">
+                    <img src="images/menu-9.jpg" alt="">
                     <a href="#" class="fas fa-heart"></a>
                 </div>
                 <div class="content">
@@ -386,10 +417,12 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>Suco de limão siciliano</h3>
+                    <p>O suco de limão siciliano é uma bebida refrescante e vibrante, conhecida por seu sabor cítrico
+                        intenso e aroma aromático, ideal para revitalizar o paladar e adicionar um toque de frescor a
+                        coquetéis, marinadas e pratos variados.</p>
                     <a href="#" class="btn">Adicionar ao carrinho</a>
-                    <span class="price">R$ 27,00</span>
+                    <span class="price">R$23,00</span>
                 </div>
             </div>
         </div>
@@ -482,10 +515,10 @@
             </div>
         </div>
     </section>
-    <section class="order">
+    <section class="order" id="order">
         <h3 class="sub-heading">Peça Agora!</h3>
         <h1 class="heading">Grátis e rápido!</h1>
-        <form action="">
+        <form action="" class="form">
             <div class="inputBox">
                 <div class="input">
                     <span>Nome</span>
@@ -568,11 +601,14 @@
                 <a href="#">LinkdIn</a>
             </div>
         </div>
-        <div class="credit">Criado por <span>Lucas Hartmann</span> <a href="https://github.com/lucashartmann" target="_blank"><i class="fab fa-github"></i></a> | Todos os direitos reservados!</div>
+        <div class="credit">Criado por <span>Lucas Hartmann</span> <a href="https://github.com/lucashartmann"
+                target="_blank"><i class="fab fa-github"></i></a> | Todos os direitos reservados!</div>
     </section>
-    <div class="loader-container">
+    <!-- <div class="loader-container" >
         <img src="images/carregador.gif" alt="">
-    </div>
+    </div> -->
 </body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/index.js"></script>
 
 </html>
