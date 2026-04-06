@@ -29,6 +29,7 @@ function draw() {
 };
 
 document.addEventListener("keydown", function (event) {
+    console.log(event.key);
     switch (event.key) {
         case "a":
             bee.dir = -5;
