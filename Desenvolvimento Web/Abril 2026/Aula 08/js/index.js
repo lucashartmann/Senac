@@ -24,7 +24,10 @@ window.onscroll = () =>{
         if(top >= offset && top < offset + height){
             navLinks.forEach(links =>{
                 links.classList.remove('active');
-                document.querySelector('header .navbar a[href*='+id+']').classList.add('active');
+                elemento = document.querySelector('header .navbar a[href*='+id+']');
+                if (elemento) {
+                    document.querySelector('header .navbar a[href*='+id+']').classList.add('active');
+                }
             });
         };
     });
@@ -78,11 +81,16 @@ var swiper = new Swiper(".review-slider", {
 });
 
 function loader(){
-    document.querySelector('.loader-container').classList.add('fade-out');
+    elemento = document.querySelector('.loader-container');
+    if (elemento) {
+        document.querySelector('.loader-container').classList.add('fade-out');
+    }
 }
 
 function fadeOut(){
     setInterval(loader, 3000);
 }
 
-windows.onload = fadeOut;
+if (window) {
+    window.onload = fadeOut;
+}
