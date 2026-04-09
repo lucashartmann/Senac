@@ -33,18 +33,22 @@
     text-decoration: none;
 }
 
+.home-slider{
+    width: 100%;
+    /* background-color: #0077b5; */
+}
 
 .home .home-slider .slide {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
-
 }
 
 .home .home-slider .slide .content,
 .home .home-slider .slide .image {
     flex: 1 1 45rem;
+    
 }
 
 .home .home-slider .slide .image img {
@@ -270,6 +274,14 @@
 .menu .box-container .box .content {
     padding: 1.5rem;
     padding-top: 0;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    p {
+        text-align: left;
+    }
 }
 
 .menu .box-container .box .content .stars {
@@ -284,6 +296,11 @@
 .menu .box-container .box .content h3 {
     color: var(--black);
     font-size: 2.5rem;
+    margin: 10px 0;
+}
+
+.menu .box-container .box .content a {
+    margin: 20px 0px 20px 0px;
 }
 
 .menu .box-container .box .content p {
@@ -297,6 +314,15 @@
     color: var(--green);
     font-size: 2.5rem;
     margin-left: 1rem;
+    margin-top: 2px;
+}
+
+.swiper-slide-hidden {
+    display: none;
+}
+
+.review-slider {
+    width: 100%;
 }
 
 .review .slide {
@@ -306,45 +332,7 @@
     border-radius: .5rem;
     background: #fff;
     position: relative;
-}
-
-.review .slide .fa-quote-right {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    font-size: 6rem;
-    color: var(--light-color);
-}
-
-.review .slide .user {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    padding-bottom: 1.5rem;
-}
-
-.review .slide .user img {
-    height: 7rem;
-    width: 7rem;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.review .slide .user h3 {
-    color: var(--black);
-    font-size: 2rem;
-    padding-bottom: 1.5rem;
-}
-
-.review .slide .user i {
-    font-size: 1.3rem;
-    color: var(--green);
-}
-
-.review .slide p {
-    color: var(--light-color);
-    font-size: 1.5rem;
-    line-height: 1.8;
+    /* width: 60% !important; */
 }
 
 .order .form {
@@ -400,10 +388,20 @@
     margin-top: 0;
 }
 
+.footer {
+    align-items: center;
+    /* justify-content: center; */
+    justify-items: center;
+}
+
 .footer .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 1.5rem;
+    width: 100%;
+     align-items: center;
+    /* justify-content: center; */
+    justify-items: center;
 }
 
 .footer .box-container .box h3 {
@@ -531,4 +529,21 @@
     .order .form .inputBox .input {
         width: 100%;    
     }
+}
+
+#about {
+        .content{
+            text-align: center;
+            p {
+                text-align: left;
+            }
+        }
+    }
+
+
+#menu .box {
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
 }

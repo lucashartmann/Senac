@@ -1,8 +1,7 @@
 Desfio: A Inteligência do Restaurante
 
 1 - Enunciado:
-"O layout do nosso restaurante está impecável, mas ele ainda é uma 'vitrine estática'. O cliente agora exige que o site seja funcional. Seu objetivo é transformar a barra de busca e os bot~]oes de de compra em ferramentas reais, usando apenas o que o navegador nos oferece."
-
+"O layout do nosso restaurante está impecável, mas ele ainda é uma 'vitrine estática'. O cliente agora exige que o site seja funcional. Seu objetivo é transformar a barra de busca e os botões de de compra em ferramentas reais, usando apenas o que o navegador nos oferece."
 
 
 2 - As Missões

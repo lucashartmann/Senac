@@ -15,7 +15,9 @@
     text-decoration: none;
     outline: none;
     border: none;
-    text-transform: capitalize;
+    &::first-letter {
+        text-transform: uppercase;
+    }
     transition: all .2s linear;
 }
 
@@ -34,13 +36,23 @@ nav {
     padding: 20px;
 } */
 
+
+
 section {
     padding: 2rem 9%;
+    width: 100%;
+
+    &:nth-child(even) {
+        background: #eee;   
+    }
+
+    &:nth-child(3) {
+        padding: 2rem 3%;
+    }
+    
 }
 
-section:nth-child(even) {
-    background: #eee;
-}
+
 
 .sub-heading {
     text-align: center;
@@ -189,3 +201,4 @@ header .icons #menu-bars {
     right: 3rem;
     color: #fff;
 }
+

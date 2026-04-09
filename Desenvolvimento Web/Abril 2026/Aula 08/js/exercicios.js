@@ -43,7 +43,7 @@ if (dados) {
 
 function inicializar() {
     adicionar_evento();
-    console.log(objetos_clicados);
+    console.log("carrinho:", objetos_clicados);
 }
 
 function adicionar_evento() {
@@ -65,7 +65,7 @@ function carrinho(event) {
     var prato = new Prato(nome, preco);
     objetos_clicados.push(prato);
     localStorage.setItem("pratos", JSON.stringify(objetos_clicados));
-    console.log(objetos_clicados);
+    console.log("carrinho:", objetos_clicados);
 }
 
 document.addEventListener("submit", () => {
