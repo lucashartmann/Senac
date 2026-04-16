@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="receber.php" method="post">
+        <label for="">Nome:</label>
+        <input type="text" name="nome" id="" max="50" required><br><br>
+        <label for="">Email:</label>
+        <input type="email" name="email" id="" required><br><br>
+        <label for="">Assunto:</label>
+        <select name="assunto" id="" required><br><br>
+            <option>Dúvida</option>
+            <option>Sugestão</option>
+            <option>Suporte</option>
+        </select><br><br>
+        <Label>Idade:</Label>
+        <input type="number" name="idade" id="" min="1" max="120"><br><br>
+        <label for="">Aceita Newsletter:</label>
+        <input type="checkbox" name="newsletter" value="1"><br><br>
+        <button type="submit">Enviar para PHP</button>
+    </form>
+</body>
+
+</html>
