@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/login.css">
+
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+</head>
+
+<body>
+    <div>
+        <form action="../php/form_controller.php" method="POST">
+            <input type="hidden" name="acao" value="verificar_login">
+            <h1>Login</h1>
+            <h3>Email</h3>
+            <input type="text" name="email" id="usuario">
+            <h3>Senha</h3>
+            <input type="password" name="senha" id="senha">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <footer>
+        <p>Copyright 2025 - By Lucas Hartmann</p>
+        <a href="https://github.com/lucashartmann" target="_blank"><i class="fab fa-github"></i></a>
+    </footer>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+</body>
+
+<script type="text/javascript">
+    fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+            const inicio = data.lastIndexOf("<div class=");
+            const fim = data.lastIndexOf("</div>");
+            const substring = data.substring(inicio + 20, fim);
+            console.log(substring);
+            const hmtl = `
+            <li><a href="cadastro-imovel.html">Admin</a></li>
+        `;
+            data = data.replace(substring, hmtl);
+            console.log(data.substring(inicio, fim));
+            console.log(data);
+            document.body.insertAdjacentHTML('afterbegin', data);
+        });
+
+</script>
+
+<script src="../js/login.js"></script>
+
+</html>

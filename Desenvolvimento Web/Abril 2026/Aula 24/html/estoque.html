@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/estoque.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+</head>
+
+<body>
+    <div id="dados-div">
+        <div>
+            <h3>Imóveis: 10</h3>
+            <!-- (para aluguel ou venda, depende do selecionado) -->
+        </div>
+    </div>
+    <input placeholder="pesquise aqui" id="input_pesquisa">
+    <div id="container_filtragem">
+        <label>Categoria</label>
+        <select prompt="Selecionar"></select>
+        <label>Status</label>
+        <select prompt="Selecionar"></select>
+        <label>CEP</label>
+        <input suggester=SuggestFromList(self.ceps, case_sensitive=False)>
+        <label>Número</label>
+        <input>
+    </div>
+    <div id="h_filtro">
+        <select id="select_filtro" onchange="filtrar()"></select>
+        <button id="seta" flat=True onclick="mudarOrdem()">⬇️</button>
+    </div>
+    <section id="container_resultado">
+        <div class="resultado" onclick="abrirCadastro(0)">
+            <img src="../assets/apartament.jpg" alt="">
+            <div class="dados">
+                <label for="">REF: 001</label>
+                <label>Apartamento 2 dormitórios</label>
+                <label for="">Avenida Bento Gonçalves</label>
+                <label for="">Apartamento</label>
+                <label for="">Venda</label>
+            </div>
+        </div>
+        <div class="resultado" onclick="abrirCadastro(1)">
+            <img src="../assets/campo.jpg" alt="">
+            <div class="dados">
+                <label for="">REF: 002</label>
+                <label>Casa no Campo com Jardim</label>
+                <label for="">Rua Joaquim Nabuco</label>
+                <label for="">Casa</label>
+                <label for="">Venda e Aluguel</label>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright 2025 - By Lucas Hartmann</p>
+        <a href="https://github.com/lucashartmann" target="_blank"><i class="fab fa-github"></i></a>
+    </footer>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+</body>
+
+<script type="text/javascript">
+    fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+            document.body.insertAdjacentHTML('afterbegin', data);
+            var script = document.createElement('script');
+            script.src = '../js/base.js';
+            script.type = 'text/javascript';
+            script.async = false;
+            document.body.appendChild(script);
+        });
+
+</script>
+
+</html>

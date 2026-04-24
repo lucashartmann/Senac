@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados do Imóvel</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dados-imovel.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+</head>
+
+<body>
+    <div id="dados_imovel">
+        <div id="div_pai">
+            <div id="div_titulo">
+                <h3>Casa no Campo com Jardim</h3>
+                <p>Rua Joaquim Nabuco, 123, Cidade Baixa</p>
+                <img src="../assets/campo.jpg" alt="Imagem do imóvel" />
+                <ul id="ul_imagens">
+                    <li><img src="../assets/campo.jpg" alt="Imagem do imóvel" onclick="abrirImagem(this.src)" /></li>
+                    <li><img src="../assets/campo.jpg" alt="Imagem do imóvel" onclick="abrirImagem(this.src)" /></li>
+                    <li><img src="../assets/campo.jpg" alt="Imagem do imóvel" onclick="abrirImagem(this.src)" /></li>
+                    <li><img src="../assets/campo.jpg" alt="Imagem do imóvel" onclick="abrirImagem(this.src)" /></li>
+                    <li><img src="../assets/campo.jpg" alt="Imagem do imóvel" onclick="abrirImagem(this.src)" /></li>
+                </ul>
+            </div>
+            <h3>Descrição</h3>
+            <p>Casa no Campo com Jardim, localizada em uma área tranquila e com ótima infraestrutura.</p>
+        </div>
+        <div id="entrar_contato">
+            <div>
+                <button>Agendar Visita</button>
+                <button id="whatsapp">Whatsapp</button>
+            </div>
+            <div>
+                <label id="condominio">Condominio: <p style='color:green;'>R$ 500,00</p></label>
+                <div>
+                    <label id="iptu">IPTU: <p style='color:green;'>R$ 200,00</p></label>
+                    <button id="bt_contato">Entrar em contato</button>
+                    <label>Um especialista irá entrar em contato por email ou whatsapp</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>Copyright 2025 - By Lucas Hartmann</p>
+        <a href="https://github.com/lucashartmann" target="_blank"><i class="fab fa-github"></i></a>
+    </footer>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+</body>
+<!-- <script src="../js/login.js"></script> -->
+<script type="text/javascript">
+    fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+            document.body.insertAdjacentHTML('afterbegin', data);
+            var script = document.createElement('script');
+            script.src = '../js/base.js';
+            script.type = 'text/javascript';
+            script.async = false;
+            document.body.appendChild(script);
+        });
+
+</script>
+<script src="../js/dados-imovel.js"></script>
+
+</html>

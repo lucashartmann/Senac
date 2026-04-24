@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados do Cliente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dados-cliente.css">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div>
+        <div class="grid-container">
+            <label>Username</label>
+            <textarea id="inpt_username"></textarea>
+            <label>Nome</label>
+            <textarea id="inpt_nome"></textarea>
+            <label>CPF/CNPJ</label>
+            <input template="000.000.000-00" id="inpt_cpf" minlength="11" maxlength="14">
+            <label>RG</label>
+            <input id="inpt_rg" placeholder="RG aqui" minlength="7" maxlength="9">
+            <label>"Telefone"</label>
+            <input template="(00) 00000-0000" id="inpt_telefone">
+            <label>Endereco</label>
+            <input id="inpt_endereco" placeholder="Endereco aqui">
+            <label>Email</label>
+            <textarea id="inpt_email"></textarea>
+            <label>Senha</label>
+            <input placeholder="alterar senha" id="inpt_senha" password=True>
+            <label id="stt_data_nascimento">Data de nascimento</label>
+            <input template="00/00/0000" id="inpt_data_nascimento" minlength="10" maxlength="10">
+        </div>
+        <div id="detalhes">
+            <div class="detalhes-content">
+                <label>Quartos:</label>
+                <input placeholder="00" type="number" maxlength="2">
+            </div>
+            <div class="detalhes-content">
+                <label>Banheiros:</label>
+                <input placeholder="00" type="number" maxlength="2">
+            </div>
+            <div class="detalhes-content">
+                <label>CEP desejado:</label>
+                <input placeholder="00000-000" id="inpt_cep" minlength="9" maxlength="9">
+            </div>
+        </div>
+        <div id="ctn-botao">
+            <button>Salvar</button>
+        </div>
+        <label id="stt_compras">Imoveis do usuário</label>
+        <div id="imoveis"></div>
+    </div>
+    <footer class="">
+        <p>Copyright 2025 - By Lucas Hartmann</p>
+        <a href="https://github.com/lucashartmann" target="_blank"><i class="fab fa-github"></i></a>
+    </footer>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+
+</body>
+<!-- <script src="../js/login.js"></script> -->
+<script type="text/javascript">
+    fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+            document.body.insertAdjacentHTML('afterbegin', data);
+            var script = document.createElement('script');
+            script.src = '../js/base.js';
+            script.type = 'text/javascript';
+            script.async = false;
+            document.body.appendChild(script);
+        });
+</script>
+
+</html>
