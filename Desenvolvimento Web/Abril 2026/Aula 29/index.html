@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<form action="php/controller/controller.php" method="post">
+    <label for="txtnome">Nome:</label>
+    <input type="text" id="txtnome" name="txtnome">
+    <br>
+    <label for="txtsexo">Sexo:</label>
+    <div class="sexo">
+        <input type="radio" id="masculino" name="txtsexo" value='Masculino'>
+        <label for="masculino">Masculino</label>
+        <input type="radio" id="feminino" name="txtsexo" value='Feminino'>
+        <label for="feminino">Feminino</label>
+    </div>
+    <br>
+    <label for="txtidade">Idade:</label>
+    <input type="number" id="txtidade" name="txtidade">
+    <br>
+    <input type="submit" value="Enviar">
+</form>
+</body>
+</html>
