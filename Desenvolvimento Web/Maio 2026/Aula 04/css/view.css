@@ -1,0 +1,49 @@
+h3, h4 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: #333;
+    justify-self: center;
+    align-self: center;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;   
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    height: 40vh;
+    width: 40vw;
+    margin: 0 auto;
+    background-color: rgba(178, 225, 117, 0.651);
+    place-items: center;
+}
