@@ -1,0 +1,36 @@
+html {
+    color: red;
+}
+
+ul {
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+    padding: 0;
+    margin: 20px 0px;
+    li {
+        text-align: center;
+        justify-self: center;
+        align-self: center;
+        text-decoration: none;
+        list-style: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 1.2rem;
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
