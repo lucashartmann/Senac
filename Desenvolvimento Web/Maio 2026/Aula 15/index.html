@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Cadastro</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <form action="php/controller/controller.php" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" value="  roberto silva  " placeholder="Lucas Augusto">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="CONTATO@Email.Com  " placeholder="contato@email.com">
+        <label for="idade">Idade:</label>
+        <input type="number" name="idade" id="idade" value="25" min="0" max="120">
+        <label for="tech">Techs:</label>
+        <input type="text" name="tech" id="tech" value="PHP, JavaScript, Python, C++" placeholder="Separados por vírgula, ex: PHP, JavaScript">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

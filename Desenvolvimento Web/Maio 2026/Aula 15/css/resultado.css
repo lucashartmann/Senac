@@ -1,0 +1,50 @@
+html {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(202, 218, 233);
+}
+
+h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 10px 0;
+    background-color: rgb(255, 255, 255);
+}
+
+
+p:nth-child(2) {
+    text-transform: capitalize;
+}
+
+p:nth-child(6) {
+    text-transform: capitalize;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30vw;
+    height: auto;
+    margin: 0 auto;
+    background-color: rgb(160, 200, 234);
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    alignment-baseline: central;
+}
