@@ -85,9 +85,9 @@ class Candidato
 
     public function calcularPontos() {
         $this->pontos = 0;
-        $listaSemDuplicados = array_unique($this->tech, SORT_STRING) ?? [];
+        $listaSemDuplicados = $this->tech ? array_unique($this->tech, SORT_STRING) : [];
         if(count($listaSemDuplicados) < 1) return;
-        for ($i = 0; $i < count($this->$listaSemDuplicados); $i++) {
+        for ($i = 0; $i < count($listaSemDuplicados); $i++) {
             if ($this->$listaSemDuplicados[$i] == "php" || $this->$listaSemDuplicados[$i] == "rust") {
                 $this->pontos+=20;
             }
