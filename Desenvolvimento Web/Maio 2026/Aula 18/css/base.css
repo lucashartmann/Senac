@@ -1,0 +1,220 @@
+/* Projeto: Tech Talent MVC 
+   Responsável: Prof. Claudio Roberto
+   Estilo: Dark Professional / High Contrast
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Garante que a base do navegador não tenha sobras */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Evita barra de rolagem horizontal indesejada */
+}
+
+body {
+    background-color: #0d1117;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #c9d1d9;
+    line-height: 1.6;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    /* Adicione estas linhas se o problema persistir: */
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header & Logo */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #58a6ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Post / Card (Onde fica o conteúdo) */
+.post {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 450px;
+    /* Tamanho ideal para Login */
+
+    margin: 0 auto;
+}
+
+/* No Dashboard, o post pode ser maior */
+.dashboard-container .post {
+    max-width: 900px;
+}
+
+h2.title {
+    color: #f0f6fc;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 300;
+}
+
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="username"],
+select {
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #f0f6fc;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #58a6ff;
+    outline: none;
+}
+
+form .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    label {
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+        color: #8b949e;
+    }
+    input[type="submit"],
+    input[type="reset"] {
+        align-self: flex-start;
+        justify-content: center;
+        justify-self: center;
+        align-self: center;
+        align-content: center;
+        width: 150px;
+    }
+
+    input[type="submit"] {
+        margin-bottom: 20px;
+    }
+
+    .btn-group {
+        display: flex;
+        gap: 15px;
+    }
+}
+
+footer a {
+    color: #58a6ff;
+    text-decoration: none;
+    margin-right: 15px;
+    
+}
+
+input[type="submit"] {
+    background-color: #238636;
+    /* Verde sucesso */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+input[type="reset"] {
+    background-color: #d73a49;
+    /* Vermelho erro */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #2ea043;
+}
+
+/* Mensagens de Erro */
+.error-msg {
+    color: #ff7b72;
+    background-color: rgba(248, 81, 73, 0.1);
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Menu Interno */
+nav.menu-interno {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav.menu-interno a {
+    color: #58a6ff;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+nav.menu-interno a:hover {
+    text-decoration: underline;
+}
+
+.btn-logout {
+    color: #ff7b72 !important;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    font-size: 0.8rem;
+    color: #8b949e;
+}
