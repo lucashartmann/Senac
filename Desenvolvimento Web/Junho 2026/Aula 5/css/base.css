@@ -1,0 +1,401 @@
+/* Projeto: Tech Talent MVC 
+   Responsável: Prof. Claudio Roberto
+   Estilo: Dark Professional / High Contrast
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Garante que a base do navegador não tenha sobras */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Evita barra de rolagem horizontal indesejada */
+}
+
+thead {
+    background-color: #21262d;
+
+    tr {
+        background-color: #21262d;
+
+        th {
+            padding: 12px 15px;
+            border: 1px solid #30363d;
+            text-align: left;
+            color: #58a6ff;
+        }
+    }
+}
+
+tbody tr {
+    background-color: #161b22;
+
+    &:nth-child(even) {
+        background-color: #21262d;
+    }
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #30363d;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+
+    h2 {
+        font-size: 2rem;
+        color: #58a6ff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+td {
+    padding: 12px 15px;
+    border: 1px solid #30363d;
+
+    span {
+        background-color: #21262d;
+        padding: 4px 8px;
+        border-radius: 40px / 50px;
+        font-size: 0.85rem;
+        border: 1px solid #30363d;
+    }
+}
+
+
+body {
+    background-color: #0d1117;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #c9d1d9;
+    line-height: 1.6;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header & Logo */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+
+    h1 {
+        font-size: 2.5rem;
+        color: #58a6ff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
+
+/* Post / Card (Onde fica o conteúdo) */
+.post {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 450px;
+    /* Tamanho ideal para Login */
+
+    margin: 0 auto;
+}
+
+/* No Dashboard, o post pode ser maior */
+.dashboard-container .post {
+    max-width: 900px;
+}
+
+h2.title {
+    color: #f0f6fc;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 300;
+}
+
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+
+    .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+
+        label {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            align-self: flex-start;
+            justify-content: center;
+            justify-self: center;
+            align-self: center;
+            align-content: center;
+            width: 150px;
+        }
+
+        input[type="submit"] {
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+    }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="username"],
+select {
+    /* width: 100%; */
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #f0f6fc;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+input:focus {
+    border-color: #58a6ff;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #238636;
+    /* Verde sucesso */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+        background-color: #2ea043;
+    }
+
+}
+
+input[type="reset"] {
+    background-color: #d73a49;
+    /* Vermelho erro */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+
+@keyframes timeout {
+    0%, 50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+
+/* Mensagens de Erro */
+.error-msg {
+    color: #ff7b72;
+    background-color: rgba(248, 81, 73, 0.1);
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+    animation: timeout 5s forwards;
+}
+
+.success-msg {
+    color: #238636;
+    background-color: rgba(46, 160, 67, 0.1);
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+    animation: timeout 5s forwards;
+}
+
+/* Menu Interno */
+nav.menu-interno {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+        color: #58a6ff;
+        text-decoration: none;
+        margin-right: 15px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+}
+
+
+.btn-logout {
+    color: #ff7b72 !important;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    font-size: 0.8rem;
+    color: #8b949e;
+
+    a {
+        color: #58a6ff;
+        text-decoration: none;
+        margin-right: 15px;
+
+    }
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+a {
+    color: #58a6ff;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    /* Adicione estas linhas se o problema persistir: */
+    text-align: center;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    li {
+        width: 100%;
+
+        a {
+            display: block;
+            background-color: #21262d;
+            color: #c9d1d9;
+            text-decoration: none;
+            padding: 14px 18px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+
+            &:hover {
+                background-color: #2d333b;
+                border-color: #8b949e;
+                color: #58a6ff;
+                cursor: pointer;
+            }
+
+            &:active {
+                transform: scale(0.99);
+            }
+        }
+    }
+}
+
+/* Botões de Ação na Tabela (Editar e Excluir) */
+.btn-acao {
+    padding: 6px 12px !important;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-decoration: none !important;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+/* Botão Editar (Azul sutil) */
+.btn-editar {
+    background-color: #1f6feb;
+    color: #ffffff !important;
+}
+.btn-editar:hover {
+    background-color: #388bfd;
+}
+
+/* Botão Excluir (Vermelho sutil) */
+.btn-excluir {
+    background-color: #da3633;
+    color: #ffffff !important;
+}
+.btn-excluir:hover {
+    background-color: #f85149;
+}
