@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
 
   void _calcular() {
     double? precoAlcool = double.tryParse(
-      _controllerAlcool.text.replaceAll("R\$", "")..replaceAll(",", ".").trim(),
+      _controllerAlcool.text.replaceAll("R\$", "").replaceAll(",", ".").trim(),
     );
     double? precoGasolina = double.tryParse(
       _controllerGasolina.text
@@ -29,6 +29,9 @@ class _HomeState extends State<Home> {
           .replaceAll(",", ".")
           .trim(),
     );
+
+    print("Preço Álcool: $precoAlcool");
+    print("Preço Gasolina: $precoGasolina");
 
     if (precoAlcool == null ||
         precoGasolina == null ||
@@ -65,7 +68,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         backgroundColor: Color(0xFF1D3E97),
       ),
       body: SingleChildScrollView(

@@ -12,8 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Álcool ou Gasolina',
-      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
+      theme: ThemeData(primaryColor: Color(0xFF1D3E97), useMaterial3: true),
       home: const Home(title: 'Álcool ou Gasolina'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
