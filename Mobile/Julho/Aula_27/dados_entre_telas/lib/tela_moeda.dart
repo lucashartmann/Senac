@@ -13,6 +13,11 @@ class TelaSecundaria extends StatefulWidget {
 class _TelaSecundariaState extends State<TelaSecundaria> {
   List imagens = ["assets/moeda_cara.png", "assets/moeda_coroa.png"];
 
+  // final Map<String, String> resultado = {
+  //   "assets/moeda_cara.png": "Cara",
+  //   "assets/moeda_coroa.png": "Coroa",
+  // };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
