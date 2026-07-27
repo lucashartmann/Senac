@@ -8,8 +8,8 @@ class TelaInicial extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tela Principal'),
-        backgroundColor: Colors.amber,
+        title: const Text('Tela Inicial de Sorteio'),
+        backgroundColor: Color(0xFF5CB88C),
       ),
       body: Container(
         padding: const EdgeInsets.all(32),

@@ -17,8 +17,8 @@ class _TelaSecundariaState extends State<TelaSecundaria> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tela Secundária'),
-        backgroundColor: Colors.amber,
+        title: const Text('Moeda'),
+        backgroundColor: Color(0xFF5CB88C),
       ),
       body: Container(
         padding: const EdgeInsets.all(32),
@@ -27,7 +27,7 @@ class _TelaSecundariaState extends State<TelaSecundaria> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(imagens[Random().nextInt(imagens.length)]),
+            Image.asset(imagens[Random.secure().nextInt(imagens.length)]),
             SizedBox(height: 50),
             InkWell(
               child: Image.asset(
