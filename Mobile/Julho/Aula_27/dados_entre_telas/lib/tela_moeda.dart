@@ -26,6 +26,7 @@ class _TelaSecundariaState extends State<TelaSecundaria> {
         backgroundColor: Color(0xFF5CB88C),
       ),
       body: Container(
+        color: Color(0xFF5CB88C),
         padding: const EdgeInsets.all(32),
         alignment: Alignment.center,
         child: Column(

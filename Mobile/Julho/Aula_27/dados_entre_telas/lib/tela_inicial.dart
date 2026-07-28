@@ -12,6 +12,7 @@ class TelaInicial extends StatelessWidget {
         backgroundColor: Color(0xFF5CB88C),
       ),
       body: Container(
+        color: Color(0xFF5CB88C),
         padding: const EdgeInsets.all(32),
         alignment: Alignment.center,
         child: Column(
@@ -20,9 +21,9 @@ class TelaInicial extends StatelessWidget {
           children: [
             Text(
               "Clique na imagem para jogar a moeda!",
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 60),
             InkWell(
               child: Image.asset("assets/logo.png"),
               onTap: () {
