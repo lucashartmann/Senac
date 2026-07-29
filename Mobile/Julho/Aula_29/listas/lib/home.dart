@@ -38,16 +38,19 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Listas')),
-      body: ListView.builder(
-        itemCount: _itens.length,
-        itemBuilder: (context, index) {
-          final item = _itens[index];
-          return ListTile(
-            title: Text(item['titulo'] as String),
-            subtitle: Text(item['descricao'] as String),
-          );
-        },
+      appBar: AppBar(title: const Text('Lista')),
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        child: ListView.builder(
+          itemCount: _itens.length,
+          itemBuilder: (context, index) {
+            final item = _itens[index];
+            return ListTile(
+              title: Text(item['titulo'] as String),
+              subtitle: Text(item['descricao'] as String),
+            );
+          },
+        ),
       ),
     );
   }
