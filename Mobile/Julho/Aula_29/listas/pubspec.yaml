@@ -7,7 +7,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8
+  http: ^1.6.0
+  currency_formatter: ^2.3.0
+  cupertino_icons: ^1.0.9
 dev_dependencies:
   flutter_test:
     sdk: flutter
