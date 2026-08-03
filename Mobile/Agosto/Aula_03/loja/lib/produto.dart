@@ -1,21 +1,21 @@
-class Post {
+class Produto {
   final int id;
   final String title;
-  final price;
+  final double price;
   final String image;
 
-  const Post({
+  const Produto({
     required this.id,
     required this.title,
     required this.price,
     required this.image,
   });
 
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
+  factory Produto.fromJson(Map<String, dynamic> json) {
+    return Produto(
       id: json['id'] as int,
       title: json['title'] as String,
-      price: json['price'],
+      price: (json['price'] as num).toDouble(),
       image: json['image'] as String,
     );
   }

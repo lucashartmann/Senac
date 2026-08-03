@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'post.dart';
+import 'produto.dart';
 import 'dart:convert';
 
 class Home extends StatefulWidget {
@@ -13,21 +13,21 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final _urlBase = 'https://fakestoreapi.com/products';
 
-  Future<List<Post>> _getProdutos() async {
+  Future<List<Produto>> _getProdutos() async {
     var url = Uri.parse(_urlBase);
     http.Response resposta = await http.get(url);
 
     if (resposta.statusCode == 200) {
       var json = jsonDecode(resposta.body);
-      List<Post> postagens = [];
-      for (var post in json) {
-        if (post['id'] == null ||
-            post['title'] == null ||
-            post['price'] == null ||
-            post['image'] == null) {
+      List<Produto> postagens = [];
+      for (var produto in json) {
+        if (produto['id'] == null ||
+            produto['title'] == null ||
+            produto['price'] == null ||
+            produto['image'] == null) {
           continue;
         }
-        postagens.add(Post.fromJson(post));
+        postagens.add(Produto.fromJson(produto));
       }
       print(postagens);
       return postagens;
@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
               return Center(child: CircularProgressIndicator());
             case ConnectionState.done:
               if (snapshot.hasData) {
-                final List<Post> produtos = snapshot.data!;
+                final List<Produto> produtos = snapshot.data!;
                 return ListView.builder(
                   itemCount: produtos.length,
                   itemBuilder: (context, index) {
