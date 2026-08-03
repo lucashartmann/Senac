@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
   final List<Map<String, dynamic>> _itens = [];
   String _precoBRL = "0";
   String _precoUSD = "0";
-  Color _cor = Colors.black;
+  final Color _cor = Colors.black;
   Timer? _timer;
 
   Future<Map<String, dynamic>> _atualizarPreco() async {
@@ -149,7 +149,7 @@ class _HomeState extends State<Home> {
                   double precoUSD = double.parse(data['USD']['buy'].toString());
                   formatarPreco();
                   resultado =
-                      "Preço do Bitcoin:\n\nBRL: ${_precoBRL}\n\nUSD: ${_precoUSD}";
+                      "Preço do Bitcoin:\n\nBRL: $_precoBRL\n\nUSD: $_precoUSD";
                 } else {
                   resultado = "Dados inválidos recebidos do FutureBuilder";
                 }
