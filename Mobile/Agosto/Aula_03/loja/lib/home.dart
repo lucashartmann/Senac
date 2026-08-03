@@ -29,7 +29,6 @@ class _HomeState extends State<Home> {
         }
         postagens.add(Produto.fromJson(produto));
       }
-      print(postagens);
       return postagens;
     } else {
       throw Exception('Falha ao carregar postagens');
@@ -65,10 +64,13 @@ class _HomeState extends State<Home> {
                     return Padding(
                       padding: EdgeInsets.all(8.0),
                       child: ListTile(
-                         shape: RoundedRectangleBorder(
-                        side: const BorderSide(color: Colors.grey, width: 0.2),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                            color: Colors.grey,
+                            width: 0.2,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
                         tileColor: Colors.grey[100],
                         textColor: Colors.black87,
                         contentPadding: EdgeInsets.symmetric(
@@ -76,7 +78,12 @@ class _HomeState extends State<Home> {
                           vertical: 8.0,
                         ),
 
-                        leading: Image.network(produtos[index].image, width: 45, height: 190,),
+                        leading: Image.network(
+                          produtos[index].image,
+                          width: 45,
+                          height: 190,
+                          fit: BoxFit.fill,
+                        ),
 
                         title: Text(
                           produtos[index].title,
