@@ -18,12 +18,10 @@ class _HomeState extends State<Home> {
   Future<List<Post>> _get() async {
     List<Post> postagens = [];
     http.Response response = await http.get(url);
-    print("Status: ${response.statusCode}");
-    if (response.statusCode == 200) {
-      List<dynamic> data = json.decode(response.body);
-      for (var item in data) {
-        postagens.add(Post.fromJson(item));
-      }
+    var dadosJson = json.decode(response.body);
+
+    for (var post in dadosJson) {
+      postagens.add(Post.fromJson(post));
     }
     return postagens;
   }
@@ -51,9 +49,30 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void _put() {}
-  void _patch() {}
-  void _delete() {}
+  void _put() {
+    http.put(
+      Uri.parse('https://jsonplaceholder.typicode.com/posts/1'),
+      headers: {'Content-Type': 'application/json; charset=UTF-8'},
+      body: json.encode({
+        'title': 'Título atualizado via PUT',
+        'body': 'Corpo atualizado via PUT',
+        'userId': 1,
+        'id': 1,
+      }),
+    );
+  }
+
+  void _patch() {
+    http.patch(
+      Uri.parse('https://jsonplaceholder.typicode.com/posts/1'),
+      headers: {'Content-Type': 'application/json; charset=UTF-8'},
+      body: json.encode({'title': 'Título atualizado via PATCH'}),
+    );
+  }
+
+  void _delete() {
+    http.delete(Uri.parse('https://jsonplaceholder.typicode.com/posts/4'));
+  }
 
   @override
   Widget build(BuildContext context) {
