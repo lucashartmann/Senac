@@ -21,11 +21,6 @@ class Tarefa {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'userId': userId,
-      'id': id,
-      'title': title,
-      'completed': completed,
-    };
+    return {'userId': userId, 'id': id, 'title': title, 'completed': completed};
   }
 }
